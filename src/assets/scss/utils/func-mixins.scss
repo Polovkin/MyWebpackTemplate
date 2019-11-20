@@ -1,0 +1,101 @@
+@import "vars";
+
+
+@mixin size($width,$height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {
+    @content
+  }
+  :-moz-placeholder {
+    @content
+  }
+  ::-moz-placeholder {
+    @content
+  }
+  :-ms-input-placeholder {
+    @content
+  }
+}
+
+
+
+// z-index
+@function z($name, $z-indexes-list: $z-indexes) {
+  @if index($z-indexes-list, $name) {
+    @return (length($z-indexes-list) - index($z-indexes-list, $name)) + 1;
+  } @else {
+    @warn 'There is no item "#{$name}" in this list; choose one of: #{$z-indexes-list}';
+
+    @return null;
+  }
+}
+
+// List
+$z-indexes: (
+        'modal',
+        'site-nav',
+        'site-header',
+        'site-content',
+        'site-footer'
+);
+
+//elements align
+@mixin align($vertical: true, $horizontal: false, $position: relative) {
+  @if $position {
+    position: $position;
+  }
+  @if $vertical {
+    top: 50%;
+  }
+  @if $horizontal {
+    left: 50%;
+  }
+
+  @if $vertical and $horizontal {
+    transform: translateX(-50%) translateY(-50%);
+  } @else if $vertical {
+    transform: translateY(-50%);
+  } @else {
+    transform: translateX(-50%);
+  }
+}
+
+//MEdia queries
+@mixin mediaQueriesFor($size) {
+  @if $size == mobile {
+    @media (max-width: $phoneWidth) {
+      @content;
+    }
+  } @else if $size == tablet {
+    @media (max-width: $tableWidth) {
+      @content;
+    }
+  } @else if $size == tablet-max {
+    @media (max-width: $smDesktopWidth) {
+      @content;
+    }
+  } @else if $size == desktop {
+    @media (max-width: $desktopWidth) {
+      @content;
+    }
+  } @else if $size == desktop-only {
+    @media (min-width: $desktopWidth) {
+      @content;
+    }
+  }
+}
+
+
+@mixin pseudoElementImgBackground($width,$height) {
+  content: '';
+  width: $width;
+  height: $height;
+  display: block;
+  position: absolute;
+  background: url("..") no-repeat;
+  background-size: contain;
+}

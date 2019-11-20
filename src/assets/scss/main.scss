@@ -1,8 +1,10 @@
 @import "utils/libs";
 @import "utils/vars";
+@import "utils/func-mixins";
 @import "utils/mixins";
 @import "utils/fonts";
 @import "utils/reset";
+
 
 html {
   line-height: $mainLineHeight;
@@ -73,18 +75,26 @@ section, .section {
   width: 100%;
   flex: 0 0 auto;
   position: relative;
+  padding: 0 15px;
   margin: 0 auto;
   max-width: $desktopWidth;
-  @media screen and (max-width: $smDesktopWidth) {
-    max-width: tableWidth;
+  @media (max-width: $desktopWidth) {
+    max-width: $smDesktopWidth;
   }
-  @media screen and (max-width: $tableWidth) {
-    max-width: phoneWidth;
+  @media (max-width: $smDesktopWidth) {
+    max-width: $tableWidth;
   }
-  @media screen and (max-width: $phoneWidth) {
-    max-width: smPhoneWidth;
+
+  @media (max-width: $tableWidth) {
+    max-width: $phoneWidth;
+  }
+
+  @media (max-width: $phoneWidth) {
+    max-width: $smPhoneWidth;
   }
 }
 
+
+@import "test";
 // Modules
 // @import "modules/my-module.scss";
