@@ -1,9 +1,12 @@
 // JS
-import './js/'
+import './js/ajax'
+import './js/main'
+
+// CSS (example)
 
 // SCSS
+import './assets/css/fontstyles.css'
 import './assets/scss/main.scss'
-// CSS (example)
 // import './assets/css/main.css'
 
 

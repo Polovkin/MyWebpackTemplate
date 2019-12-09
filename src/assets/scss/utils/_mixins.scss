@@ -1,5 +1,15 @@
 @import "vars";
 
+// px to rem
+@function rem($pixels, $context: $mainFontSize) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+  @return $pixels / $context * 1rem;
+}
 
 @mixin size($width,$height: $width) {
   width: $width;
@@ -21,8 +31,6 @@
   }
 }
 
-
-
 // z-index
 @function z($name, $z-indexes-list: $z-indexes) {
   @if index($z-indexes-list, $name) {
@@ -40,6 +48,7 @@ $z-indexes: (
         'site-nav',
         'site-header',
         'site-content',
+        'site-bg-content',
         'site-footer'
 );
 
@@ -66,15 +75,15 @@ $z-indexes: (
 
 //MEdia queries
 @mixin mediaQueriesFor($size) {
-  @if $size == mobile {
+  @if $size == phone-size {
     @media (max-width: $phoneWidth) {
       @content;
     }
-  } @else if $size == tablet {
+  } @else if $size == tablet-normal {
     @media (max-width: $tableWidth) {
       @content;
     }
-  } @else if $size == tablet-max {
+  } @else if $size == tab-m {
     @media (max-width: $smDesktopWidth) {
       @content;
     }
@@ -89,7 +98,6 @@ $z-indexes: (
   }
 }
 
-
 @mixin pseudoElementImgBackground($width,$height) {
   content: '';
   width: $width;
@@ -99,3 +107,39 @@ $z-indexes: (
   background: url("..") no-repeat;
   background-size: contain;
 }
+
+//fonts
+@mixin fontStyleSize($size,$fontFamily) {
+  font-size: rem($size);
+  @if ($fontFamily == regular) {
+    font-family: $mainFont;
+  }
+  @if ($fontFamily == extrabold) {
+    font-family: $mainFontExtraBold;
+  }
+  @if ($fontFamily == bold) {
+    font-family: $mainFontBold;
+  }
+  @if ($fontFamily == thin) {
+    font-family: $mainFontThin;
+  }
+  @if ($fontFamily == light) {
+    font-family: $mainFontLight;
+  }
+  @if ($fontFamily == medium) {
+    font-family: $mainFontMedium;
+  }
+}
+
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+
+@
+
+
