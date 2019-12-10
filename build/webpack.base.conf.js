@@ -54,9 +54,8 @@ module.exports = {
             {
                 test: /\.(html)$/,
                 use: [
-                    // ...The other file-loader and extract-loader go here.
                     {
-                        loader: 'html-loader'
+                        loader: 'html-loader',
                     }
                 ]
             },
