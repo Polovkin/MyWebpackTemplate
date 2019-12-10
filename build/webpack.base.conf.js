@@ -1,10 +1,9 @@
 const webpack = require("webpack");
-const path = require('path')
-const fs = require('fs')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const {VueLoaderPlugin} = require('vue-loader')
+const path = require('path');
+const fs = require('fs');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // Main const
 // see more: https://github.com/vedees/webpack-template/blob/master/README.md#main-const
@@ -12,6 +11,7 @@ const PATHS = {
     src: path.join(__dirname, '../src'),
     dist: path.join(__dirname, '../public'),
     assets: 'assets/'
+
 };
 
 // Pages const for HtmlWebpackPlugin
@@ -25,26 +25,25 @@ module.exports = {
         paths: PATHS
     },
     entry: {
-        app: PATHS.src,
-        // module: `${PATHS.src}/your-module.js`,
+        app: PATHS.src
     },
     output: {
         filename: `${PATHS.assets}js/[name].js`,
         path: PATHS.dist,
         //publicPath: '/'
     },
-    // optimization: {
-    //     splitChunks: {
-    //         cacheGroups: {
-    //             vendor: {
-    //                 name: 'vendors',
-    //                 test: /node_modules/,
-    //                 chunks: 'all',
-    //                 enforce: true
-    //             }
-    //         }
-    //     }
-    // },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    name: 'vendors',
+                    test: /node_modules/,
+                    chunks: 'all',
+                    enforce: true
+                }
+            }
+        }
+    },
     module: {
         rules: [
             {
@@ -53,13 +52,13 @@ module.exports = {
                 exclude: '/node_modules/'
             },
             {
-                test: /\.vue$/,
-                loader: 'vue-loader',
-                options: {
-                    loader: {
-                        scss: 'vue-style-loader!css-loader!sass-loader'
+                test: /\.(html)$/,
+                use: [
+                    // ...The other file-loader and extract-loader go here.
+                    {
+                        loader: 'html-loader'
                     }
-                }
+                ]
             },
             {
                 test: /\.(woff(2)?|ttf|eot|otf)(\?v=\d+\.\d+\.\d+)?$/,
@@ -67,7 +66,7 @@ module.exports = {
                 options: {
                     name: '[name].[ext]',
                     outputPath: `${PATHS.assets}/fonts`,
-                    publicPath: '../fonts/'
+                    publicPath: '/assets/fonts/'
                 }
             },
             {
@@ -77,8 +76,8 @@ module.exports = {
                         loader: "file-loader",
                         options: {
                             name: '[name].[ext]',
-                            outputPath: `${PATHS.assets}/img/icons`,
-                            publicPath: '../img/icons/'
+                            outputPath: `${PATHS.assets}/img`,
+                            publicPath: '/assets/img'
                         }
                     },
                     {
@@ -144,16 +143,10 @@ module.exports = {
             }
         ]
     },
-    resolve: {
-        alias: {
-            '~': PATHS.src,
-            'vue$': 'vue/dist/vue.js',
-        }
-    },
+
     plugins: [
-        new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
-            filename: `${PATHS.assets}css/[name].css`,
+            filename: `${PATHS.assets}css/[name].css`
         }),
         new webpack.ProvidePlugin({
             $: 'jquery',
@@ -161,7 +154,7 @@ module.exports = {
             "window.jQuery": 'jquery'
         }),
         new CopyWebpackPlugin([
-            {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
+            //{from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
             //{from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts` },
             {from: `${PATHS.src}/static`, to: ''},
         ]),
