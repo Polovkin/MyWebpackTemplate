@@ -29,23 +29,34 @@
   padding: 0 15px;
   margin: 0 auto;
   max-width: $desktopWidth;
-  @media (max-width: $desktopWidth) {
+  @include mediaQueriesFor(desktop) {
     max-width: $smDesktopWidth;
   }
-  @media (max-width: $smDesktopWidth) {
+  @include mediaQueriesFor(tab-m) {
     max-width: $tableWidth;
   }
-
-  @media (max-width: $tableWidth) {
+  @include mediaQueriesFor(tablet-normal) {
+    max-width: $phoneWidth;
+  }
+  @include mediaQueriesFor(phone-size) {
     max-width: $phoneWidth;
   }
 
-  @media (max-width: $phoneWidth) {
-    max-width: $smPhoneWidth;
-  }
+  //@media (max-width: $desktopWidth) {
+  //  max-width: $smDesktopWidth;
+  //}
+  //@media (max-width: $smDesktopWidth) {
+  //  max-width: $tableWidth;
+  //}
+  //@media (max-width: $tableWidth) {
+  //  max-width: $phoneWidth;
+  //}
+  //@media (max-width: $phoneWidth) {
+  //  max-width: $smPhoneWidth;
+  //}
 }
 
-h1  {
+h1 {
   display: flex;
   flex-direction: column;
   color: red;
@@ -56,6 +67,15 @@ h1  {
   height: 100px;
   background-image: url("../icons/13224.jpg");
   background-size: cover;
+  @include mediaQueriesFor(tab-m) {
+    width: 170px;
+  }
+  @include mediaQueriesFor(tablet-normal) {
+    width: 100px;
+  }
+  @include mediaQueriesFor(200px) {
+    color: red;
+  }
 }
 
 

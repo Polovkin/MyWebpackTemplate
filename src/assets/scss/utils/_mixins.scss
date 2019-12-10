@@ -1,5 +1,3 @@
-
-
 // px to rem
 @function rem($pixels, $context: $mainFontSize) {
   @if (unitless($pixels)) {
@@ -76,23 +74,27 @@ $z-indexes: (
 //MEdia queries
 @mixin mediaQueriesFor($size) {
   @if $size == phone-size {
-    @media (max-width: $phoneWidth) {
+    @media screen and (max-width: $phoneWidth) {
       @content;
     }
   } @else if $size == tablet-normal {
-    @media (max-width: $tableWidth) {
+    @media screen and (max-width: $tableWidth) {
       @content;
     }
   } @else if $size == tab-m {
-    @media (max-width: $smDesktopWidth) {
+    @media screen and (max-width: $smDesktopWidth) {
       @content;
     }
   } @else if $size == desktop {
-    @media (max-width: $desktopWidth) {
+    @media screen and (max-width: $desktopWidth) {
       @content;
     }
   } @else if $size == desktop-only {
-    @media (min-width: $desktopWidth) {
+    @media screen and (min-width: $desktopWidth) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: $size) {
       @content;
     }
   }

@@ -52,7 +52,6 @@ ul, li {
   list-style-type: none;
 }
 
-
 section, .section {
   position: relative;
   padding-top: 4rem;
@@ -61,18 +60,16 @@ section, .section {
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
-  @include mediaQueriesFor(tablet) {
+  @include mediaQueriesFor(tablet-normal) {
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
 }
 
-
 p, a {
   font-size: rem(18);
   color: $mainFontColor;
 }
-
 
 input,textarea {
   color: white;
