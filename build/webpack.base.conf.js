@@ -9,7 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // see more: https://github.com/vedees/webpack-template/blob/master/README.md#main-const
 const PATHS = {
     src: path.join(__dirname, '../src'),
-    dist: path.join(__dirname, '../public'),
+    dist: path.join(__dirname, '../dist'),
     assets: 'assets/'
 };
 
@@ -31,18 +31,6 @@ module.exports = {
         path: PATHS.dist,
         //publicPath: '/'
     },
-    // optimization: {
-    //     splitChunks: {
-    //         cacheGroups: {
-    //             vendor: {
-    //                 name: 'vendors',
-    //                 test: /node_modules/,
-    //                 chunks: 'all',
-    //                 enforce: true
-    //             }
-    //         }
-    //     }
-    //
     module: {
         rules: [
             {
@@ -195,16 +183,16 @@ module.exports = {
         new CopyWebpackPlugin([
             //{from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
             //{from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts` },
-            {from: `${PATHS.src}/static`, to: ''},
+           // {from: `${PATHS.src}/static`, to: ''},
         ]),
 
         // Automatic creation any html pages (Don't forget to RERUN dev server)
         // see more: https://github.com/vedees/webpack-template/blob/master/README.md#create-another-html-files
         // best way to create pages: https://github.com/vedees/webpack-template/blob/master/README.md#third-method-best
-        ...PAGES.map(page => new HtmlWebpackPlugin({
-            template: `${PAGES_DIR}/${page}`,
-            filename: `./${page}`
-        })),
+        // ...PAGES.map(page => new HtmlWebpackPlugin({
+        //     template: `${PAGES_DIR}/${page}`,
+        //     filename: `./${page}`
+        // })),
         // ...PAGESPhP.map(page => new HtmlWebpackPlugin({
         //     template: `${PAGES_DIR}/${page}`,
         //     filename: `./${page}`

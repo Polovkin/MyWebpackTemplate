@@ -10,5 +10,8 @@
 </head>
 <body>
 <h1>Hello</h1>
+<div class="img"></div>
+<img src="assets/img/1-1.png"
+     alt="">
 </body>
 </html>
