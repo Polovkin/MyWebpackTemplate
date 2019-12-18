@@ -11,7 +11,6 @@ const PATHS = {
     src: path.join(__dirname, '../src'),
     dist: path.join(__dirname, '../public'),
     assets: 'assets/'
-
 };
 
 // Pages const for HtmlWebpackPlugin
@@ -32,18 +31,18 @@ module.exports = {
         path: PATHS.dist,
         //publicPath: '/'
     },
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    name: 'vendors',
-                    test: /node_modules/,
-                    chunks: 'all',
-                    enforce: true
-                }
-            }
-        }
-    },
+    // optimization: {
+    //     splitChunks: {
+    //         cacheGroups: {
+    //             vendor: {
+    //                 name: 'vendors',
+    //                 test: /node_modules/,
+    //                 chunks: 'all',
+    //                 enforce: true
+    //             }
+    //         }
+    //     }
+    //
     module: {
         rules: [
             {
@@ -206,9 +205,12 @@ module.exports = {
             template: `${PAGES_DIR}/${page}`,
             filename: `./${page}`
         })),
-        ...PAGESPhP.map(page => new HtmlWebpackPlugin({
-            template: `${PAGES_DIR}/${page}`,
-            filename: `./${page}`
-        })),
+        // ...PAGESPhP.map(page => new HtmlWebpackPlugin({
+        //     template: `${PAGES_DIR}/${page}`,
+        //     filename: `./${page}`
+        // })),
     ],
 }
+
+
+

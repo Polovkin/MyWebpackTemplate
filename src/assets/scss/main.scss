@@ -41,19 +41,6 @@
   @include mediaQueriesFor(phone-size) {
     max-width: $phoneWidth;
   }
-
-  //@media (max-width: $desktopWidth) {
-  //  max-width: $smDesktopWidth;
-  //}
-  //@media (max-width: $smDesktopWidth) {
-  //  max-width: $tableWidth;
-  //}
-  //@media (max-width: $tableWidth) {
-  //  max-width: $phoneWidth;
-  //}
-  //@media (max-width: $phoneWidth) {
-  //  max-width: $smPhoneWidth;
-  //}
 }
 
 h1 {

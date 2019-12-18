@@ -1,5 +1,5 @@
 //Html
-import './index.html'
+//import './index.html'
 
 // JS
 import './js/main'
