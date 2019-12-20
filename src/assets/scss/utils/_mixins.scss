@@ -1,5 +1,5 @@
 // px to rem
-@function rem($pixels, $context: $mainFontSize) {
+@function rem($pixels, $context: $font-size) {
   @if (unitless($pixels)) {
     $pixels: $pixels * 1px;
   }
@@ -14,20 +14,7 @@
   height: $height;
 }
 
-@mixin placeholder {
-  ::-webkit-input-placeholder {
-    @content
-  }
-  :-moz-placeholder {
-    @content
-  }
-  ::-moz-placeholder {
-    @content
-  }
-  :-ms-input-placeholder {
-    @content
-  }
-}
+
 
 // z-index
 @function z($name, $z-indexes-list: $z-indexes) {
@@ -73,7 +60,7 @@ $z-indexes: (
 
 //MEdia queries
 @mixin mediaQueriesFor($size) {
-  @if $size == phone-size {
+  @if $size == mobile {
     @media screen and (max-width: $phoneWidth) {
       @content;
     }
@@ -81,7 +68,7 @@ $z-indexes: (
     @media screen and (max-width: $tableWidth) {
       @content;
     }
-  } @else if $size == tab-m {
+  } @else if $size == tablet-max {
     @media screen and (max-width: $smDesktopWidth) {
       @content;
     }
@@ -100,36 +87,9 @@ $z-indexes: (
   }
 }
 
-@mixin pseudoElementImgBackground($width,$height) {
-  content: '';
-  width: $width;
-  height: $height;
-  display: block;
-  position: absolute;
-  background: url("..") no-repeat;
-  background-size: contain;
-}
-
-//fonts
-@mixin fontStyleSize($size,$fontFamily) {
-  font-size: rem($size);
-  @if ($fontFamily == regular) {
-    font-family: $mainFont;
-  }
-  @if ($fontFamily == extrabold) {
-    font-family: $mainFontExtraBold;
-  }
-  @if ($fontFamily == bold) {
-    font-family: $mainFontBold;
-  }
-  @if ($fontFamily == thin) {
-    font-family: $mainFontThin;
-  }
-  @if ($fontFamily == light) {
-    font-family: $mainFontLight;
-  }
-  @if ($fontFamily == medium) {
-    font-family: $mainFontMedium;
+@mixin mediaQueriesValue($size) {
+  @media screen and (max-width: $size + 'px') {
+    @content
   }
 }
 
@@ -140,7 +100,6 @@ $z-indexes: (
   bottom: $bottom;
   left: $left;
 }
-
 
 
 
