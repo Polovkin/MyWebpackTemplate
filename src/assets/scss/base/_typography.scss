@@ -1,7 +1,6 @@
 $font-line-height       : auto;
 $font-size              : 18px;
 $font-color-main        : #8494A7;
-$font-color-secondary   : #334150;
 $font-family            : "Acrom Regular AVP",serif;
 $font-weight            : normal;
 
@@ -75,6 +74,7 @@ p, a {
 
 input,textarea {
   color: white;
-  @include fontStyleSize(13,regular);
+  font-family: $font-family;
+  font-size: rem(13);
 }
 
