@@ -193,10 +193,10 @@ module.exports = {
         //     template: `${PAGES_DIR}/${page}`,
         //     filename: `./${page}`
         // })),
-        // ...PAGESPhP.map(page => new HtmlWebpackPlugin({
-        //     template: `${PAGES_DIR}/${page}`,
-        //     filename: `./${page}`
-        // })),
+        ...PAGESPhP.map(page => new HtmlWebpackPlugin({
+            template: `${PAGES_DIR}/${page}`,
+            filename: `./${page}`
+        })),
     ],
 }
 

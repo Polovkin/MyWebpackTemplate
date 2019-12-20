@@ -1,0 +1,29 @@
+//Bloks color theme
+$color-main              : #01579B; // основной цвет
+$color-main-dark         : darken($color-main,15%);
+$color-main-light        : lighten($color-main,30%);
+
+$color-secondary         : #FFEB3B; // дополнительный цвет
+$color-secondary-dark    : darken($color-secondary,15%);
+$color-secondary-light   : lighten($color-secondary,30%);
+$color-secondary-hover   : #FFEB3B; // дополнительный цвет
+
+$color-gray              : gray;
+$color-gray-dark         : darken($color-gray,15%);
+$color-gray-light        : lighten($color-gray,30%);
+
+$color-danger            : #D41131; // цвет ошибки, опасного действия
+$color-success           : #3FD411; // цвет подтверждения, удачного завершения операции
+$color-warning           : #D8AE1C; // цвет информационного сообщения
+
+//media
+$desktopWidth            : 1180px;
+$smDesktopWidth          : 991px;
+$tableWidth              : 768px;
+$phoneWidth              : 480px;
+$smPhoneWidth            : 320px;
+
+//Animation
+$animation-fast          : .4s;
+$animation-medium        : .4s;
+$animation-slow          : .8s;
