@@ -25,5 +25,14 @@ module.exports = new Promise((resolve, reject) => {
   resolve(devWebpackConfig)
 })
 
+//Php template
+// module.exports = {
+//   plugins: [
+//     new HtmlWebpackPlugin({  // Also generate a test.html
+//       filename: 'index.html',
+//       template: 'src/index.html'
+//     })
+//   ]
+// }
 
 
