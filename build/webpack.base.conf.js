@@ -4,7 +4,7 @@ const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const {VueLoaderPlugin} = require('vue-loader');
 // Main const
 // see more: https://github.com/vedees/webpack-template/blob/master/README.md#main-const
 const PATHS = {
@@ -39,6 +39,15 @@ module.exports = {
                 exclude: '/node_modules/'
             },
             {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    loader: {
+                        scss: 'vue-style-loader!css-loader!sass-loader'
+                    }
+                }
+            },
+            {
                 test: /\.(html)$/,
                 use: [
                     {
@@ -65,7 +74,7 @@ module.exports = {
                         options: {
                             name: '[name].[ext]',
                             outputPath: `${PATHS.assets}/img`,
-                            publicPath: '/assets/img'
+                            publicPath: 'assets/img'
                         }
                     },
                     {
@@ -104,7 +113,7 @@ module.exports = {
                         options: {
                             name: '[name].[ext]',
                             outputPath: `${PATHS.assets}/icons`,
-                            publicPath: '/assets/icons'
+                            publicPath: 'assets/icons'
                         }
                     },
                     {
@@ -170,8 +179,14 @@ module.exports = {
             }
         ]
     },
-
+    resolve: {
+        alias: {
+            '~': PATHS.src,
+            'vue$': 'vue/dist/vue.js',
+        }
+    },
     plugins: [
+        new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
             filename: `${PATHS.assets}css/[name].css`
         }),
@@ -189,14 +204,14 @@ module.exports = {
         // Automatic creation any html pages (Don't forget to RERUN dev server)
         // see more: https://github.com/vedees/webpack-template/blob/master/README.md#create-another-html-files
         // best way to create pages: https://github.com/vedees/webpack-template/blob/master/README.md#third-method-best
-        // ...PAGES.map(page => new HtmlWebpackPlugin({
-        //     template: `${PAGES_DIR}/${page}`,
-        //     filename: `./${page}`
-        // })),
-        ...PAGESPhP.map(page => new HtmlWebpackPlugin({
+        ...PAGES.map(page => new HtmlWebpackPlugin({
             template: `${PAGES_DIR}/${page}`,
             filename: `./${page}`
         })),
+        // ...PAGESPhP.map(page => new HtmlWebpackPlugin({
+        //     template: `${PAGES_DIR}/${page}`,
+        //     filename: `./${page}`
+        // })),
     ],
 }
 

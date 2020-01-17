@@ -1,9 +1,10 @@
 //Html
-//import './index.php'
+import './index.html'
 
 // JS
 import './js/main'
-
+// Vue
+import './main'
 // CSS (example)
 
 // SCSS

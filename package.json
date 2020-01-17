@@ -57,6 +57,10 @@
   "dependencies": {
     "html-loader": "^0.5.5",
     "jquery": "^3.4.1",
-    "sort-css-media-queries": "^1.5.0"
+    "sort-css-media-queries": "^1.5.0",
+    "vue": "^2.6.11",
+    "vue-loader": "^15.8.3",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.11"
   }
 }
