@@ -1,8 +1,9 @@
 <template>
-  <div id="app">
-
+    <div id="app">
+        <h2>{{ eblo }}</h2>
+        <button @click="eblo++">push</button>
         <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -12,7 +13,12 @@
         name: "app",
         components: {
             HelloWorld
-        }
+        },
+        data() {
+            return {
+                eblo: 1
+            }
+        },
     };
 </script>
 

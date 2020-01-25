@@ -9,7 +9,7 @@ const {VueLoaderPlugin} = require('vue-loader');
 // see more: https://github.com/vedees/webpack-template/blob/master/README.md#main-const
 const PATHS = {
     src: path.join(__dirname, '../src'),
-    dist: path.join(__dirname, '../dist'),
+    dist: path.join(__dirname, '../public'),
     assets: 'assets/'
 };
 
@@ -113,7 +113,7 @@ module.exports = {
                         options: {
                             name: '[name].[ext]',
                             outputPath: `${PATHS.assets}/icons`,
-                            publicPath: 'assets/icons'
+                            publicPath: '../icons'
                         }
                     },
                     {
