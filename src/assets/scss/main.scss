@@ -34,7 +34,7 @@
     max-width: $smDesktopWidth;
   }
 
-  @include mediaQueriesFor(tab-m) {
+  @include mediaQueriesFor(tablet-max) {
     max-width: $tableWidth;
   }
 
@@ -47,33 +47,3 @@
   }
 }
 
-h1 {
-  display: flex;
-  flex-direction: column;
-  color: red;
-}
-
-.img {
-  width: 200px;
-  height: 100px;
-  background-image: url('../icons/13224.jpg');
-  background-size: cover;
-
-  @include mediaQueriesFor(tab-m) {
-    width: 170px;
-  }
-
-  @include mediaQueriesFor(tablet-normal) {
-    width: 100px;
-  }
-
-  @include mediaQueriesFor(200px) {
-    color: red;
-  }
-}
-
-
-
-h1  {
-  color: red;
-}
