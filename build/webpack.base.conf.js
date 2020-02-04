@@ -10,7 +10,7 @@ const {VueLoaderPlugin} = require('vue-loader');
 const PATHS = {
     src: path.join(__dirname, '../src'),
     dist: path.join(__dirname, '../dist'),
-    ublic: path.join(__dirname, '../public'),
+    public: path.join(__dirname, '../public'),
     assets: 'assets/'
 };
 
@@ -29,7 +29,7 @@ module.exports = {
     },
     output: {
         filename: `${PATHS.assets}js/[name].js`,
-        path: PATHS.public,
+        path: PATHS.dist,
         //publicPath: '/'
     },
     module: {
@@ -66,54 +66,16 @@ module.exports = {
                 }
             },
 
-            // {
-            //     test: /\.(png|jpg|gif|svg)$/,
-            //     include: /img/,
-            //     use: [
-            //         {
-            //             loader: "file-loader",
-            //             options: {
-            //                 name: '[name].[ext]',
-            //                 outputPath: `${PATHS.assets}/img`,
-            //                 publicPath: 'assets/img'
-            //             }
-            //         },
-            //         {
-            //             loader: "image-webpack-loader",
-            //             options: {
-            //                 mozjpeg: {
-            //                     progressive: false,
-            //                     quality: 65
-            //                 },
-            //                 // optipng.enabled: false will disable optipng
-            //                 optipng: {
-            //                     enabled: false,
-            //                 },
-            //                 pngquant: {
-            //                     quality: [0.65, 0.90],
-            //                     speed: 4
-            //                 },
-            //                 gifsicle: {
-            //                     interlaced: false,
-            //                 },
-            //                 // the webp option will enable WEBP
-            //                 webp: {
-            //                     quality: 75
-            //                 }
-            //             }
-            //         }
-            //     ]
-            //
-            // },
             {
                 test: /\.(png|jpg|gif|svg)$/,
+                include: /img/,
                 use: [
                     {
                         loader: "file-loader",
                         options: {
-                            name: '[path][name].[ext]',
-                            // outputPath: `${PATHS.assets}/icons`,
-                            // publicPath: '/assets/icons'
+                            name: '[name].[ext]',
+                            outputPath: `${PATHS.assets}/img`,
+                            publicPath: 'assets/img'
                         }
                     },
                     {
@@ -135,9 +97,48 @@ module.exports = {
                                 interlaced: false,
                             },
                             // the webp option will enable WEBP
-                            webp: {
-                                quality: 75
-                            }
+                            // webp: {
+                            //     quality: 75
+                            // }
+                        }
+                    }
+                ]
+
+            },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                include: /icons/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: `${PATHS.assets}/icons`,
+                            publicPath: '../icons'
+                        }
+                    },
+                    {
+                        loader: "image-webpack-loader",
+                        options: {
+                            mozjpeg: {
+                                progressive: false,
+                                quality: 65
+                            },
+                            // optipng.enabled: false will disable optipng
+                            optipng: {
+                                enabled: false,
+                            },
+                            pngquant: {
+                                quality: [0.65, 0.90],
+                                speed: 4
+                            },
+                            gifsicle: {
+                                interlaced: false,
+                            },
+                            // the webp option will enable WEBP
+                            // webp: {
+                            //     quality: 75
+                            // }
                         }
                     }
                 ]
