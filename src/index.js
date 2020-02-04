@@ -4,7 +4,7 @@ import './index.html'
 // JS
 import './js/main'
 // Vue
-import './main'
+//import './main'
 // CSS (example)
 
 // SCSS
