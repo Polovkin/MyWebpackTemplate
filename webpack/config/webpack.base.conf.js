@@ -18,7 +18,7 @@ const PATHS = {
 
 // Pages const for HtmlWebpackPlugin
 // see more: https://github.com/vedees/webpack-template/blob/master/README.md#html-dir-folder
-const PAGES_DIR = PATHS.src;
+const PAGES_DIR = `${PATHS.src}/pages`;
 const PAGES = fs
   .readdirSync(PAGES_DIR)
   .filter(fileName => fileName.endsWith(".html"));
@@ -79,56 +79,47 @@ module.exports = {
         use: [
           {
             loader: 'html-loader',
+            options: {
+              minimize: true,
+            },
           }
         ]
       },
       {
-        // images / icons
         test: /\.(png|jpg|gif|svg)$/,
-        loader: "file-loader",
-        options: {
-          name: "[name].[ext]",
-          esModule: false,
-          // outputPath: `${PATHS.assets}/img`,
-          // publicPath: 'assets/img'
-        }
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              esModule: false,
+              name: '[name].[ext]',
+              outputPath: `${PATHS.assets}/img`,
+              publicPath: `/${PATHS.assets}/img`
+            }
+          },
+          {
+            loader: "image-webpack-loader",
+            options: {
+              mozjpeg: {
+                progressive: false,
+                quality: 65
+              },
+              // optipng.enabled: false will disable optipng
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: [0.65, 0.90],
+                speed: 4
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+            }
+          }
+        ]
+
       },
-      // {
-      //   test: /\.(png|jpg|gif|svg)$/,
-      //   use: [
-      //     {
-      //       loader: "file-loader",
-      //       options: {
-      //         name: '[name].[ext]',
-      //       }
-      //     },
-      //     {
-      //       loader: "image-webpack-loader",
-      //       options: {
-      //         mozjpeg: {
-      //           progressive: false,
-      //           quality: 65
-      //         },
-      //         // optipng.enabled: false will disable optipng
-      //         optipng: {
-      //           enabled: false,
-      //         },
-      //         pngquant: {
-      //           quality: [0.65, 0.90],
-      //           speed: 4
-      //         },
-      //         gifsicle: {
-      //           interlaced: false,
-      //         },
-      //         // the webp option will enable WEBP
-      //         // webp: {
-      //         //     quality: 75
-      //         // }
-      //       }
-      //     }
-      //   ]
-      //
-      // },
       {
         // scss
         test: /\.scss$/,
@@ -190,14 +181,6 @@ module.exports = {
       {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
       {from: `${PATHS.src}/static`, to: ""}
     ]),
-
-    /*
-      Automatic creation any html pages (Don't forget to RERUN dev server!)
-      See more:
-      https://github.com/vedees/webpack-template/blob/master/README.md#create-another-html-files
-      Best way to create pages:
-      https://github.com/vedees/webpack-template/blob/master/README.md#third-method-best
-    */
     ...PAGES.map(
       page =>
         new HtmlWebpackPlugin({
