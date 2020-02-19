@@ -1,7 +1,7 @@
 $font-line-height       : auto;
 $font-size              : 18px;
 $font-color-main        : #8494A7;
-$font-family            : "Acrom Regular AVP",serif;
+$font-family            : "Roboto",serif;
 $font-weight            : normal;
 
 
@@ -57,7 +57,7 @@ section, .section {
   position: relative;
   padding-top: 4rem;
   padding-bottom: 4rem;
-  @include mediaQueriesFor(tab-m) {
+  @include mediaQueriesFor(tablet-max) {
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
