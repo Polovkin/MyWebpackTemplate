@@ -80,7 +80,10 @@ module.exports = {
           {
             loader: 'html-loader',
             options: {
-              minimize: true,
+              minimize: {
+                removeComments: true,
+                collapseWhitespace: false,
+              },
             },
           }
         ]
