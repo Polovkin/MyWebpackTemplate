@@ -1,5 +1,5 @@
 const sortCSSmq = require('sort-css-media-queries');
-
+const colors = require('colors');
 
 module.exports = {
   plugins: [
@@ -8,9 +8,9 @@ module.exports = {
       sort: sortCSSmq
     }),
     // require('doiuse')({
-    //   browsers: ['ie > 11', '> 5%'],
     //   ignore: ['rem'],
     //   ignoreFiles: ['**/normalize.css'],
+    //   //onFeatureUsage: function(usageInfo) { }
     //   onFeatureUsage(info) {
     //     const selector = info.usage.parent.selector;
     //     const property = `${info.usage.prop}: ${info.usage.value}`;
@@ -34,7 +34,7 @@ module.exports = {
           }
         }
       ]
-    })
+    }),
   ]
 };
 
