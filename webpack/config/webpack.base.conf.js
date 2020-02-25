@@ -63,6 +63,11 @@ module.exports = {
         options: {
           loader: {
             scss: "vue-style-loader!css-loader!sass-loader"
+          },
+          postcss: {
+            config: {
+              path: PATHS.webpack
+            }
           }
         }
       },
