@@ -50,7 +50,7 @@
   }
 }
 
-
+$test-color : white;
 .img {
   height: 300px;
 
@@ -90,4 +90,20 @@
 
     @include size(30px);
   }
+}
+
+.h2 {
+  color: white;
+}
+
+.h3 {
+  color: #fff;
+}
+
+.h4 {
+  color: $test-color;
+}
+
+.h5 {
+  color: #fffffa;
 }
