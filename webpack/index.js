@@ -1,7 +1,7 @@
 
 // JS
-import '../src/js'
-import '../src/vue/main'
+import '../src/js/custom'
+//import '../src/vue/main'
 // SCSS
 import '../src/assets/scss/main.scss'
 
