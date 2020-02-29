@@ -25,13 +25,19 @@ $border-light            : #E4E7ED;
 $border-lighter          : #EBEEF5;
 
 //media
-$desktopWidth            : 1180px;
+$desktopMaxWidth         : 1600px;
+$desktopWidth            : 1200px;
 $smDesktopWidth          : 991px;
-$tableWidth              : 768px;
+$tabletWidth              : 768px;
 $phoneWidth              : 480px;
 $smPhoneWidth            : 320px;
-
-//Animation
+// "only breakpoints"
+$desktop-only            : $desktopWidth;
+$tablet-landscape-only   : $smDesktopWidth ($desktopWidth - 1) ;
+$tablet-portrait-only    : $tabletWidth     ($smDesktopWidth - 1) ;
+$tablet-only             : $tabletWidth     ($desktopWidth - 1) ;
+$phone-only              : $smPhoneWidth   ($tabletWidth  - 1) ;
+  //Animation
 $animation-fast          : .4s;
 $animation-medium        : .4s;
 $animation-slow          : .8s;

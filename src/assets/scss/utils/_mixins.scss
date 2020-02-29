@@ -65,7 +65,7 @@ $z-indexes: (
       @content;
     }
   } @else if $size == tablet-normal {
-    @media screen and (max-width: $tableWidth) {
+    @media screen and (max-width: $tabletWidth) {
       @content;
     }
   } @else if $size == tablet-max {

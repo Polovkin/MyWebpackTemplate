@@ -5,6 +5,7 @@
 @import 'base/normalize';
 @import 'base/typography';
 @import 'base/fonts';
+@import 'breakpoint-2.x.x/stylesheets/breakpoint';
 //Layout
 @import 'layout/footer';
 @import 'layout/header';
@@ -30,26 +31,27 @@
 
   flex: 0 0 auto;
   margin: 0 auto;
-  max-width: $desktopWidth;
   padding: 0 15px;
   position: relative;
 
   width: 100%;
-
-  @include mediaQueriesFor(desktop) {
-    max-width: $smDesktopWidth;
+  @include breakpoint($desktopMaxWidth) {
+    max-width: $desktopMaxWidth;
   }
-
-  @include mediaQueriesFor(tablet-max) {
-    max-width: $tableWidth;
+  @include breakpoint($desktop-only) {
+    max-width: $smDesktopWidth - 30;
   }
-
-  @include mediaQueriesFor(tablet-normal) {
-    max-width: $phoneWidth;
+  @include breakpoint($smDesktopWidth) {
+    max-width: $smDesktopWidth - 30;
   }
-
-  @include mediaQueriesFor(mobile) {
-    max-width: $phoneWidth;
+  @include breakpoint($tabletWidth) {
+    max-width: $tabletWidth - 30;
+  }
+  @include breakpoint($phoneWidth) {
+    max-width: $smPhoneWidth
+  }
+  @include breakpoint($smPhoneWidth $phoneWidth) {
+    max-width: $smPhoneWidth
   }
 }
 
@@ -65,51 +67,18 @@ $test-color: white;
 }
 
 .test {
-  display: grid;
-}
+  width: 500px;
+  height: 200px;
 
-#h1 {
-
-  color: $color-main;
-  display: flex;
-  flex-direction: column-reverse;
-
-  @include mediaQueriesFor(mobile) {
-    display: grid;
+  @include breakpoint($desktop-only) {
+    background-color: green;
   }
-
-  @include mediaQueriesFor(tablet-normal) {
-    color: red;
+  @include breakpoint($tablet-landscape-only) {
+    background-color: red;
   }
-
-  @include mediaQueriesFor(desktop) {
-    color: green;
-  }
-
-  &::after {
-
-    @include size(30px);
-
-    background-image: url(/assets/icons/13224.jpg);
-    background-size: cover;
-
-    content: '';
-    display: block;
+  @include breakpoint($smPhoneWidth $tabletWidth) {
+    width: 100%;
   }
 }
 
-.h2 {
-  color: #fff;
-}
 
-.h3 {
-  color: #fff;
-}
-
-.h4 {
-  color: $test-color;
-}
-
-.h5 {
-  color: #fffffa;
-}
