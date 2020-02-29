@@ -4,7 +4,7 @@
 //Base
 @import 'base/normalize';
 @import 'base/typography';
-@import "base/fonts";
+@import 'base/fonts';
 //Layout
 @import 'layout/footer';
 @import 'layout/header';
@@ -14,6 +14,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+
   min-height: 100vh;
   margin: 0 auto;
 }
@@ -21,29 +22,29 @@
 .content-wrapper {
   display: flex;
   flex-direction: column;
+
   margin: 0 auto;
 }
 
 .container {
   position: relative;
+
   flex: 0 0 auto;
 
   width: 100%;
   max-width: $desktopWidth;
   margin: 0 auto;
   padding: 0 15px;
+
   @include mediaQueriesFor(desktop) {
     max-width: $smDesktopWidth;
   }
-
   @include mediaQueriesFor(tablet-max) {
     max-width: $tableWidth;
   }
-
   @include mediaQueriesFor(tablet-normal) {
     max-width: $phoneWidth;
   }
-
   @include mediaQueriesFor(mobile) {
     max-width: $phoneWidth;
   }
@@ -51,25 +52,42 @@
 
 
 .img {
-  background-image: url("/assets/icons/13224.jpg");
-  width: 1200px;
-  height: 200px;
+  height: 300px;
+
+  background-image: url('../img/1-1.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .test {
   display: grid;
 }
+
 #h1 {
-  color: $color-main;
   display: flex;
   flex-direction: column-reverse;
+
+  color: $color-main;
+
   @include mediaQueriesFor(mobile) {
     display: grid;
   }
   @include mediaQueriesFor(tablet-normal) {
-      color: red;
+    color: red;
   }
   @include mediaQueriesFor(desktop) {
-      color: green;
+    color: green;
+  }
+
+  &:after {
+    display: block;
+
+    content: '';
+
+    background-image: url(/assets/icons/13224.jpg);
+    background-size: cover;
+
+    @include size(30px);
   }
 }
