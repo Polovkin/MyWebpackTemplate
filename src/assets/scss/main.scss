@@ -14,9 +14,9 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
 
   min-height: 100vh;
-  margin: 0 auto;
 }
 
 .content-wrapper {
@@ -27,37 +27,41 @@
 }
 
 .container {
-  position: relative;
 
   flex: 0 0 auto;
+  margin: 0 auto;
+  max-width: $desktopWidth;
+  padding: 0 15px;
+  position: relative;
 
   width: 100%;
-  max-width: $desktopWidth;
-  margin: 0 auto;
-  padding: 0 15px;
 
   @include mediaQueriesFor(desktop) {
     max-width: $smDesktopWidth;
   }
+
   @include mediaQueriesFor(tablet-max) {
     max-width: $tableWidth;
   }
+
   @include mediaQueriesFor(tablet-normal) {
     max-width: $phoneWidth;
   }
+
   @include mediaQueriesFor(mobile) {
     max-width: $phoneWidth;
   }
 }
 
-$test-color : white;
+$test-color: white;
+
 .img {
-  height: 300px;
 
   background-image: url('../img/1-1.png');
-  background-repeat: no-repeat;
   background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
+  height: 300px;
 }
 
 .test {
@@ -65,35 +69,37 @@ $test-color : white;
 }
 
 #h1 {
-  display: flex;
-  flex-direction: column-reverse;
 
   color: $color-main;
+  display: flex;
+  flex-direction: column-reverse;
 
   @include mediaQueriesFor(mobile) {
     display: grid;
   }
+
   @include mediaQueriesFor(tablet-normal) {
     color: red;
   }
+
   @include mediaQueriesFor(desktop) {
     color: green;
   }
 
-  &:after {
-    display: block;
+  &::after {
 
-    content: '';
+    @include size(30px);
 
     background-image: url(/assets/icons/13224.jpg);
     background-size: cover;
 
-    @include size(30px);
+    content: '';
+    display: block;
   }
 }
 
 .h2 {
-  color: white;
+  color: #fff;
 }
 
 .h3 {
