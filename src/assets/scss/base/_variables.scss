@@ -33,10 +33,10 @@ $phoneWidth              : 480px;
 $smPhoneWidth            : 320px;
 // "only breakpoints"
 $desktop-only            : $desktopWidth;
-$tablet-landscape-only   : $smDesktopWidth ($desktopWidth - 1) ;
+$tablet-landscape-only   : $smDesktopWidth  ($desktopWidth - 1) ;
 $tablet-portrait-only    : $tabletWidth     ($smDesktopWidth - 1) ;
 $tablet-only             : $tabletWidth     ($desktopWidth - 1) ;
-$phone-only              : $smPhoneWidth   ($tabletWidth  - 1) ;
+$phone-only              : $smPhoneWidth    ($tabletWidth  - 1) ;
   //Animation
 $animation-fast          : .4s;
 $animation-medium        : .4s;
