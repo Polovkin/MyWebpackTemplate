@@ -27,29 +27,29 @@
 
 // List
 $z-indexes: (
-        'modal',
-        'site-nav',
-        'site-header',
-        'site-content',
-        'site-bg-content',
-        'site-footer'
+  'modal',
+  'site-nav',
+  'site-header',
+  'site-content',
+  'site-bg-content',
+  'site-footer'
 );
 
 //elements align
-@mixin align($vertical: true, $horizontal: false, $position: relative) {
+@mixin align($v: true, $h: false, $position: relative) {
   @if $position {
     position: $position;
   }
-  @if $vertical {
+  @if $v {
     top: 50%;
   }
-  @if $horizontal {
+  @if $h {
     left: 50%;
   }
 
-  @if $vertical and $horizontal {
+  @if $v and $h {
     transform: translateX(-50%) translateY(-50%);
-  } @else if $vertical {
+  } @else if $v {
     transform: translateY(-50%);
   } @else {
     transform: translateX(-50%);
@@ -91,24 +91,25 @@ $z-indexes: (
 
   @return $is-keyword or $is-angle;
 }
+
 @function legacy-direction($value) {
   @if is-direction($value) == false {
     @error "Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be a direction.";
   }
 
   $conversion-map: (
-          to top          : bottom,
-          to top right    : bottom left,
-          to right top    : left bottom,
-          to right        : left,
-          to bottom right : top left,
-          to right bottom : left top,
-          to bottom       : top,
-          to bottom left  : top right,
-          to left bottom  : right top,
-          to left         : right,
-          to left top     : right bottom,
-          to top left     : bottom right
+    to top : bottom,
+    to top right : bottom left,
+    to right top : left bottom,
+    to right : left,
+    to bottom right : top left,
+    to right bottom : left top,
+    to bottom : top,
+    to bottom left : top right,
+    to left bottom : right top,
+    to left : right,
+    to left top : right bottom,
+    to top left : bottom right
   );
 
   @if map-has-key($conversion-map, $value) {
@@ -130,32 +131,32 @@ $z-indexes: (
   background: linear-gradient($direction, $color-stops);
 }
 
-@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
-  @if($position == a) {
+@mixin position($position, $t: null,$l: null, $r: null, $b: null ) {
+  @if ($position == a) {
     position: absolute;
-  } @else if($position == r) {
+  } @else if ($position == r) {
     position: relative;
-  } @else if($position == f) {
+  } @else if ($position == f) {
     position: fixed;
   } @else {
     position: unset;
   }
-  top: $top;
-  right: $right;
-  bottom: $bottom;
-  left: $left;
+  top: $t;
+  right: $r;
+  bottom: $b;
+  left: $l;
 }
 
-@mixin centerer($horizontal: true, $vertical: true) {
+@mixin align($c: null,$h: null, $v: null,) {
   position: absolute;
-  @if ($horizontal and $vertical) {
+  @if ($c) {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  } @else if ($horizontal) {
+  } @else if ($h) {
     left: 50%;
     transform: translate(-50%, 0);
-  } @else if ($vertical) {
+  } @else if ($v) {
     top: 50%;
     transform: translate(0, -50%);
   }
@@ -170,6 +171,36 @@ $z-indexes: (
     background-image: url($url);
     background-size: cover;
     background-repeat: no-repeat;
+  }
+}
+
+@mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false) {
+  position: $position;
+  width: 0;
+  height: 0;
+  @if $round {
+    border-radius: 3px;
+  }
+  @if $direction == down {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-top: $size solid $color;
+    margin-top: 0 - round( $size / 2.5 );
+  } @else if $direction == up {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+    margin-bottom: 0 - round( $size / 2.5 );
+  } @else if $direction == right {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+    margin-right: -$size;
+  } @else if $direction == left {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+    margin-left: -$size;
   }
 }
 

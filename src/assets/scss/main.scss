@@ -70,5 +70,7 @@ img {
 }
 
 .test {
-  @include position(r,$left: 2px)
+
+  @include css-triangle($color-main,down,20px,$round: true);
+
 }
