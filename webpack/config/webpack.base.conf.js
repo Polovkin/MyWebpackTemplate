@@ -102,7 +102,7 @@ module.exports = {
               esModule: false,
               name: '[name].[ext]',
               outputPath: `${PATHS.assets}/img`,
-              publicPath: `/${PATHS.assets}/img`,
+              publicPath: `/${PATHS.assets}img`,
             },
           },
           {
