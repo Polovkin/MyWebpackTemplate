@@ -66,6 +66,9 @@ img {
   display: block;
   margin: 10px auto;
   border: 0;
+
 }
 
-
+.test {
+  @include position(r,$left: 2px)
+}

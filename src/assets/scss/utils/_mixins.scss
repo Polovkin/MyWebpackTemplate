@@ -14,8 +14,6 @@
   height: $height;
 }
 
-
-
 // z-index
 @function z($name, $z-indexes-list: $z-indexes) {
   @if index($z-indexes-list, $name) {
@@ -87,28 +85,6 @@ $z-indexes: (
   }
 }
 
-@mixin mediaQueriesValue($size) {
-  @media screen and (max-width: $size + 'px') {
-    @content
-  }
-}
-
-@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
-  @if($position == a) {
-    position: absolute;
-  } @else if($position == r) {
-    position: relative;
-  } @else if($position == f) {
-    position: fixed;
-  } @else {
-    position: unset;
-  }
-  top: $top;
-  right: $right;
-  bottom: $bottom;
-  left: $left;
-}
-
 @function is-direction($value) {
   $is-keyword: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value);
   $is-angle: type-of($value) == 'number' and index('deg' 'grad' 'turn' 'rad', unit($value));
@@ -153,6 +129,50 @@ $z-indexes: (
   background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
   background: linear-gradient($direction, $color-stops);
 }
+
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+  @if($position == a) {
+    position: absolute;
+  } @else if($position == r) {
+    position: relative;
+  } @else if($position == f) {
+    position: fixed;
+  } @else {
+    position: unset;
+  }
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin centerer($horizontal: true, $vertical: true) {
+  position: absolute;
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if ($horizontal) {
+    left: 50%;
+    transform: translate(-50%, 0);
+  } @else if ($vertical) {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+
+@mixin pseudoElement($width,$url: null) {
+  content: '';
+  display: block;
+  position: absolute;
+  @include size($width);
+  @if ($url != null) {
+    background-image: url($url);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
 
 
 
