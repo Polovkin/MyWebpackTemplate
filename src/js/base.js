@@ -1,3 +1,21 @@
+//Smoth paga scroll
+let $page = $('html, body');
+$('a[href*="#"]').click(function () {
+  $page.animate({
+    scrollTop: $($.attr(this, 'href')).offset().top
+  }, 500);
+  return false;
+});
+
+//Click on header mobile size)
+$(document).mouseup(function(e) {
+  const container = $('#header');
+  if (container.has(e.target).length === 0) {
+    $('.header__nav').removeClass('show');
+  }
+});
+
+//Lazy-loading
 document.addEventListener('DOMContentLoaded', function() {
   let lazyLoadImages;
 
