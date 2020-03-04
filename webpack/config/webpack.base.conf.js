@@ -193,7 +193,7 @@ module.exports = {
         (page) =>
           new HtmlWebpackPlugin({
             template: `${PAGES_DIR}/${page}`,
-            filename: `./${page}`,
+            filename: page ==='index.html' ? page : `${page.split('.')[0]}/index.html`,
           }),
     ),
   ],

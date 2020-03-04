@@ -15,6 +15,11 @@ $(document).mouseup(function(e) {
   }
 });
 
+//Video auto height
+const iframe = $('.main-video-popup iframe');
+const width = iframe.width();
+iframe.css('height', width / 1.7777 + 'px');
+
 //Lazy-loading
 document.addEventListener('DOMContentLoaded', function() {
   let lazyLoadImages;
