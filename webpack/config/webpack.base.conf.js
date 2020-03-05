@@ -22,7 +22,9 @@ const PAGES_DIR = `${PATHS.src}/pages`;
 const PAGES = fs
     .readdirSync(PAGES_DIR)
     .filter((fileName) => fileName.endsWith('.html'));
-
+const PAGES_PHP = fs
+  .readdirSync(PATHS.src)
+  .filter((fileName) => fileName.endsWith('.php'));
 module.exports = {
   externals: {
     paths: PATHS,
@@ -195,6 +197,13 @@ module.exports = {
             template: `${PAGES_DIR}/${page}`,
             filename: page ==='index.html' ? page : `${page.split('.')[0]}/index.html`,
           }),
+    ),
+    ...PAGES_PHP.map(
+      (page) =>
+        new HtmlWebpackPlugin({
+          template: `${PATHS.src}/${page}`,
+          filename: `${page}`,
+        }),
     ),
   ],
 };
