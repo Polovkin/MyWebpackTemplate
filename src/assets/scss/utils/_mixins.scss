@@ -56,34 +56,7 @@ $z-indexes: (
   }
 }
 
-//MEdia queries
-@mixin mediaQueriesFor($size) {
-  @if $size == mobile {
-    @media screen and (max-width: $phoneWidth) {
-      @content;
-    }
-  } @else if $size == tablet-normal {
-    @media screen and (max-width: $tabletWidth) {
-      @content;
-    }
-  } @else if $size == tablet-max {
-    @media screen and (max-width: $smDesktopWidth) {
-      @content;
-    }
-  } @else if $size == desktop {
-    @media screen and (max-width: $desktopWidth) {
-      @content;
-    }
-  } @else if $size == desktop-only {
-    @media screen and (min-width: $desktopWidth) {
-      @content;
-    }
-  } @else {
-    @media screen and (min-width: $size) {
-      @content;
-    }
-  }
-}
+
 
 @function is-direction($value) {
   $is-keyword: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value);
@@ -205,6 +178,32 @@ $z-indexes: (
 }
 
 
-
-
-
+//Old media mixin
+//MEdia queries
+@mixin mediaQueriesFor($size) {
+  @if $size == mobile {
+    @media screen and (max-width: $phoneWidth) {
+      @content;
+    }
+  } @else if $size == tablet-normal {
+    @media screen and (max-width: $tableWidth) {
+      @content;
+    }
+  } @else if $size == tablet-max {
+    @media screen and (max-width: $smDesktopWidth) {
+      @content;
+    }
+  } @else if $size == desktop {
+    @media screen and (max-width: $desktopWidth) {
+      @content;
+    }
+  } @else if $size == desktop-only {
+    @media screen and (min-width: $desktopWidth) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: $size) {
+      @content;
+    }
+  }
+}

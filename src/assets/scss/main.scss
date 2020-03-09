@@ -6,6 +6,7 @@
 @import 'base/typography';
 @import 'base/fonts';
 @import 'breakpoint-2.x.x/stylesheets/breakpoint';
+@import 'animation/animation';
 //Layout
 @import 'layout/footer';
 @import 'layout/header';
@@ -27,50 +28,62 @@
   margin: 0 auto;
 }
 
-.container {
+section, .section {
+  position: relative;
+  padding: 3rem 0;
+  overflow: hidden;
+  //@include mediaQueriesFor(tablet-max) {
+  //  padding-top: 2rem;
+  //  padding-bottom: 2rem;
+  //}
+  //@include mediaQueriesFor(tablet-normal) {
+  //  padding-top: 1rem;
+  //  padding-bottom: 1rem;
+  //}
+}
 
+.container {
   flex: 0 0 auto;
   margin: 0 auto;
   padding: 0 15px;
   position: relative;
 
   width: 100%;
-  @include breakpoint($desktopMaxWidth) {
-    max-width: $desktopMaxWidth;
-  }
-  @include breakpoint($desktop-only) {
-    max-width: $smDesktopWidth - 30;
-  }
-  @include breakpoint($smDesktopWidth) {
-    max-width: $smDesktopWidth - 30;
-  }
-  @include breakpoint($tabletWidth) {
-    max-width: $tabletWidth - 30;
-  }
-  @include breakpoint($phoneWidth) {
-    max-width: $smPhoneWidth
-  }
-  @include breakpoint($smPhoneWidth $phoneWidth) {
-    max-width: $smPhoneWidth
-  }
-}
-
-$test-color: white;
+  max-width: $desktopBreakpoint;
 
 
-
-img {
-  background: #F1F1FA;
-  width: 400px;
-  height: 300px;
-  display: block;
-  margin: 10px auto;
-  border: 0;
+  @include breakpoint($desktopOnly) {
+    @include containerMaxWidth($desktopOnly)
+  }
+  @include breakpoint($tabletLandscapeOnly) {
+    @include containerMaxWidth($tabletLandscapeBreakpoint)
+  }
+  @include breakpoint($tabletPortraitOnly) {
+    @include containerMaxWidth($mobileBreakpoint)
+  }
+  @include breakpoint($mobileLargeOnly) {
+    max-width: $mobileLargeBreakpoint
+  }
+  @include breakpoint($mobileMinOnly) {
+    max-width: $minWidthBreakpoint;
+  }
 
 }
+
 
 .test {
-
-  @include css-triangle($color-main,down,20px,$round: true);
-
+  font-size: rem(20);
+  color: black;
+  @include breakpoint($desktopOnly) {
+    color: red;
+  }
+  @include breakpoint($tabletOnly) {
+    color: green;
+  }
+  @include breakpoint($tabletLandscapeOnly) {
+    color: greenyellow;
+  }
+  @include breakpoint($mobileOnly) {
+    color: aqua;
+  }
 }
