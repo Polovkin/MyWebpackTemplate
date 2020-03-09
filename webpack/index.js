@@ -1,8 +1,11 @@
 // JS
 
+
 import '../src/js/custom';
 import '../src/js/base';
-//import '../src/vue/main';
+
+// Vue.js
+import '../src/vue/vue-entry';
 // SCSS
 import '../src/assets/scss/main.scss';
 
