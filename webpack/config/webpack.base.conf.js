@@ -205,8 +205,9 @@ module.exports = {
         (page) =>
           new HtmlWebpackPlugin({
             template: `${PAGES_DIR}/${page}`,
-            // filename: (page === 'index.html' || page === '404.html' ? page : `${page.split('.')[0]}/index.html`),
-            filename: `./${page.replace(/\.pug/, '.html')}`,
+            filename: (page === 'index.pug' || page === '404.pug' ?
+              page.replace(/\.pug/, '.html') :
+              `${page.split('.')[0].replace(/\.pug/, '.html')}/index.html`),
           }),
     ),
     ...PAGES_PHP.map(
