@@ -23,8 +23,8 @@ const PAGES = fs
     .readdirSync(PAGES_DIR)
     .filter((fileName) => fileName.endsWith('.html'));
 const PAGES_PHP = fs
-  .readdirSync(PATHS.src)
-  .filter((fileName) => fileName.endsWith('.php'));
+    .readdirSync(PATHS.src)
+    .filter((fileName) => fileName.endsWith('.php'));
 module.exports = {
   externals: {
     paths: PATHS,
@@ -199,11 +199,11 @@ module.exports = {
           }),
     ),
     ...PAGES_PHP.map(
-      (page) =>
-        new HtmlWebpackPlugin({
-          template: `${PATHS.src}/${page}`,
-          filename: `${page}`,
-        }),
+        (page) =>
+          new HtmlWebpackPlugin({
+            template: `${PATHS.src}/${page}`,
+            filename: `${page}`,
+          }),
     ),
   ],
 };

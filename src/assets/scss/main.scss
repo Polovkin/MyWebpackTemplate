@@ -32,14 +32,15 @@ section, .section {
   position: relative;
   padding: 3rem 0;
   overflow: hidden;
-  //@include mediaQueriesFor(tablet-max) {
-  //  padding-top: 2rem;
-  //  padding-bottom: 2rem;
-  //}
-  //@include mediaQueriesFor(tablet-normal) {
-  //  padding-top: 1rem;
-  //  padding-bottom: 1rem;
-  //}
+  @include breakpoint ($tabletLandscapeOnly) {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+   }
+  @include breakpoint ($tabletPortraitOnly) {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+   }
+
 }
 
 .container {
@@ -71,19 +72,3 @@ section, .section {
 }
 
 
-.test {
-  font-size: rem(20);
-  color: black;
-  @include breakpoint($desktopOnly) {
-    color: red;
-  }
-  @include breakpoint($tabletOnly) {
-    color: green;
-  }
-  @include breakpoint($tabletLandscapeOnly) {
-    color: greenyellow;
-  }
-  @include breakpoint($mobileOnly) {
-    color: aqua;
-  }
-}

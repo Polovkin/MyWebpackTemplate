@@ -1,6 +1,6 @@
 $font-line-height       : auto;
 $font-size              : 18px;
-$font-color-main        : #8494A7;
+//$font-color-main        : #000000;
 $font-family            : "Roboto",serif;
 $font-weight            : normal;
 
@@ -8,7 +8,7 @@ $font-weight            : normal;
 html {
   line-height: $font-line-height;
   font-size: $font-size;
-  color: $font-color-main;
+  //color: $font-color-main;
   height: 100%;
   @media screen and (max-width: $tabletBreakpoint) {
     font-size: 16px;
@@ -56,7 +56,6 @@ ul, li {
 
 p, a {
   font-size: rem(18);
-  color: $font-color-main;
 }
 
 input,textarea {
