@@ -1,4 +1,3 @@
-
 include ../utils/mixins
 block variables
 
@@ -10,11 +9,15 @@ html(lang='en')
     meta(name="description", content=description)
     block head
 
-  body(class=pageClass)
-    .wrapper
-      #app
-        include ../includes/modules/header
-        .content-wrapper
-          block content
-          block content
-        include ../includes/modules/footer
+  body
+    .container
+      include ../includes/modules/header
+      .container
+        h1 Polova
+        p.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda commodi
+          impedit laborum nesciunt nihil. Accusamus consequatur culpa cum debitis, dol
+          ores et fuga fugit incidunt nihil odit possimus velit vitae voluptatem!
+        .galery
+            a: img(data-src='/assets/img/1-1.png').lazy
+      include ../includes/modules/footer
