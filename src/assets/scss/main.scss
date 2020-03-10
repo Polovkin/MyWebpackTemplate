@@ -50,9 +50,10 @@ section, .section {
   position: relative;
 
   width: 100%;
-  max-width: $desktopBreakpoint;
 
-
+  @include breakpoint($desktopBreakpoint) {
+    @include containerMaxWidth($desktopBreakpoint)
+  }
   @include breakpoint($desktopOnly) {
     @include containerMaxWidth($desktopOnly)
   }
@@ -71,6 +72,4 @@ section, .section {
 
 }
 
-h1 {
-  margin-bottom: 1000px;
-}
+
