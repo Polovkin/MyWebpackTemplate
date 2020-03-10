@@ -207,15 +207,16 @@ module.exports = {
             template: `${PAGES_DIR}/${page}`,
             filename: (page === 'index.pug' || page === '404.pug' ?
               page.replace(/\.pug/, '.html') :
-              `${page.split('.')[0].replace(/\.pug/, '.html')}/index.html`),
+              `${page.split('.')[0]}/${page.replace(/\.pug/, '.html')}`),
           }),
     ),
     ...PAGES_PHP.map(
-        (page) =>
-          new HtmlWebpackPlugin({
-            template: `${PATHS.src}/${page}`,
-            filename: `${page}`,
-          }),
+      (page) =>
+        new HtmlWebpackPlugin({
+          template: `${PATHS.src}/${page}`,
+          filename: `${page}`,
+          inject: false
+        }),
     ),
   ],
 };
