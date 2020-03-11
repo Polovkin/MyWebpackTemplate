@@ -32,14 +32,14 @@ section, .section {
   position: relative;
   padding: 3rem 0;
   overflow: hidden;
-  @include breakpoint ($tabletLandscapeOnly) {
+  @include breakpoint($tabletLandscapeOnly) {
     padding-top: 2rem;
     padding-bottom: 2rem;
-   }
-  @include breakpoint ($tabletPortraitOnly) {
+  }
+  @include breakpoint($tabletPortraitOnly) {
     padding-top: 1rem;
     padding-bottom: 1rem;
-   }
+  }
 
 }
 
@@ -48,11 +48,8 @@ section, .section {
   margin: 0 auto;
   padding: 0 15px;
   position: relative;
-
-  width: 100%;
-
-  @include breakpoint($desktopBreakpoint) {
-    @include containerMaxWidth($desktopBreakpoint)
+  @include breakpoint($desktopFullBreakpoint) {
+    @include containerMaxWidth($desktopFullBreakpoint);
   }
   @include breakpoint($desktopOnly) {
     @include containerMaxWidth($desktopOnly)
@@ -61,7 +58,7 @@ section, .section {
     @include containerMaxWidth($tabletLandscapeBreakpoint)
   }
   @include breakpoint($tabletPortraitOnly) {
-    @include containerMaxWidth($mobileBreakpoint)
+    width: $mobileBreakpoint;
   }
   @include breakpoint($mobileLargeOnly) {
     max-width: $mobileLargeBreakpoint
@@ -71,5 +68,7 @@ section, .section {
   }
 
 }
+
+
 
 
