@@ -204,7 +204,7 @@ module.exports = {
       {from: `${PATHS.src}/static`, to: ''},
     ]),
     new ImageMinPlugin({
-      //disable: process.env.NODE_ENV !== 'production',
+     // disable: process.env.NODE_ENV !== 'production',
       test: /\.(jpe?g|png|gif|svg)$/i,
       plugins: [
         imageMinMozjpeg({
@@ -237,3 +237,4 @@ module.exports = {
     ),
   ],
 };
+
