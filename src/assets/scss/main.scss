@@ -1,15 +1,15 @@
 //Utils
-@import 'base/variables';
+@import 'utils/variables';
 @import 'utils/mixins';
 //Base
-@import 'base/normalize';
-@import 'base/typography';
-@import 'base/fonts';
-@import 'breakpoint-2.x.x/stylesheets/breakpoint';
+@import 'text/normalize';
+@import 'text/typography';
+@import 'text/fonts';
+@import 'vendors/breakpoint-2.x.x/stylesheets/breakpoint';
 @import 'animation/animation';
 //Layout
-@import 'layout/footer';
-@import 'layout/header';
+@import 'modules/footer';
+@import 'modules/header';
 
 //@import "/assets/fonts/fonts.css";
 
