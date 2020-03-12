@@ -1,9 +1,12 @@
-extends ../layout/main-loyaut
+extends ../layout/base
 
 block variables
   - var title = 'Amemory title';
   - var description = 'Amemory description';
   - var mainId = 'main';
+block head
+  include ../includes/templates/headMetaTags
+  include ../includes/templates/headScripts
 
   .container
     h1 test

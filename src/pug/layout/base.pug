@@ -1,0 +1,16 @@
+include ../utils/mixins
+block variables
+
+doctype html
+html(lang='en')
+  head
+    block head
+    title #{title}
+  body
+    include ../includes/modules/header
+    main(id=mainId)
+    include ../includes/modules/footer
+
+
+
+
