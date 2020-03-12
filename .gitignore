@@ -9,7 +9,7 @@ node_modules
 # Dist & tests
 test
 dist
-
+public
 # Logs:
 *.log
 npm-debug.log*
@@ -21,4 +21,3 @@ Thumbs.db
 Desktop.ini
 .DS_Store*
 ehthumbs.db
-Icon?

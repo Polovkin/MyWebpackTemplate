@@ -7,7 +7,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {VueLoaderPlugin} = require('vue-loader');
-
+const ImageMinPlugin = require('imagemin-webpack-plugin').default;
+const imageMinMozjpeg = require('imagemin-mozjpeg');
+const imageMinPngquant = require('imagemin-pngquant');
 // Main const. Feel free to change it
 const PATHS = {
   src: path.join(__dirname, '../../src'),
@@ -20,11 +22,11 @@ const PATHS = {
 // see more: https://github.com/vedees/webpack-template/blob/master/README.md#html-dir-folder
 const PAGES_DIR = `${PATHS.src}/pug/pages`;
 const PAGES = fs
-    .readdirSync(PAGES_DIR)
-    .filter((fileName) => fileName.endsWith('.pug'));
+  .readdirSync(PAGES_DIR)
+  .filter((fileName) => fileName.endsWith('.pug'));
 const PAGES_PHP = fs
-    .readdirSync(PATHS.src)
-    .filter((fileName) => fileName.endsWith('.php'));
+  .readdirSync(PATHS.src)
+  .filter((fileName) => fileName.endsWith('.php'));
 module.exports = {
   externals: {
     paths: PATHS,
@@ -201,14 +203,29 @@ module.exports = {
       {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
       {from: `${PATHS.src}/static`, to: ''},
     ]),
+    new ImageMinPlugin({
+      //disable: process.env.NODE_ENV !== 'production',
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      plugins: [
+        imageMinMozjpeg({
+          progressive: false,
+          quality: 65,
+        }),
+        imageMinPngquant({
+          quality: [0.65, 0.90],
+          speed: 4,
+        })
+      ]
+    }),
+
     ...PAGES.map(
-        (page) =>
-          new HtmlWebpackPlugin({
-            template: `${PAGES_DIR}/${page}`,
-            filename: (page === 'index.pug' || page === '404.pug' ?
-              page.replace(/\.pug/, '.html') :
-              `${page.split('.')[0]}/${page.replace(/\.pug/, '.html')}`),
-          }),
+      (page) =>
+        new HtmlWebpackPlugin({
+          template: `${PAGES_DIR}/${page}`,
+          filename: (page === 'index.pug' || page === '404.pug' ?
+            page.replace(/\.pug/, '.html') :
+            `${page.split('.')[0]}/${page.replace(/\.pug/, '.html')}`),
+        }),
     ),
     ...PAGES_PHP.map(
       (page) =>
