@@ -59,7 +59,7 @@ module.exports = {
         exclude: '/node_modules/',
       },
       {
-        // JavaScript
+        // Pug loader
         test: /\.pug$/,
         loader: 'pug-loader',
       },
@@ -86,20 +86,20 @@ module.exports = {
           name: '[name].[ext]',
         },
       },
-      {
-        test: /\.(html)$/,
-        use: [
-          {
-            loader: 'html-loader',
-            options: {
-              minimize: {
-                removeComments: true,
-                collapseWhitespace: false,
-              },
-            },
-          },
-        ],
-      },
+      // {
+      //   test: /\.(html)$/,
+      //   use: [
+      //     {
+      //       loader: 'html-loader',
+      //       // options: {
+      //       //   minimize: {
+      //       //     removeComments: true,
+      //       //     collapseWhitespace: false,
+      //       //   },
+      //       // },
+      //     },
+      //   ],
+      // },
       {
         test: /\.(png|jpg|gif|svg)$/,
         use: [
@@ -112,26 +112,26 @@ module.exports = {
               publicPath: `/${PATHS.assets}img`,
             },
           },
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              mozjpeg: {
-                progressive: false,
-                quality: 65,
-              },
-              // optipng.enabled: false will disable optipng
-              optipng: {
-                enabled: false,
-              },
-              pngquant: {
-                quality: [0.65, 0.90],
-                speed: 4,
-              },
-              gifsicle: {
-                interlaced: false,
-              },
-            },
-          },
+          // {
+          //   loader: 'image-webpack-loader',
+          //   options: {
+          //     mozjpeg: {
+          //       progressive: false,
+          //       quality: 65,
+          //     },
+          //     // optipng.enabled: false will disable optipng
+          //     optipng: {
+          //       enabled: false,
+          //     },
+          //     pngquant: {
+          //       quality: [0.65, 0.90],
+          //       speed: 4,
+          //     },
+          //     gifsicle: {
+          //       interlaced: false,
+          //     },
+          //   },
+          // },
         ],
 
       },
@@ -197,7 +197,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
-    //  {from: `${PATHS.src}/${PATHS.assets}icons`, to: `${PATHS.assets}icons`},
+      {from: `${PATHS.src}/${PATHS.assets}icons`, to: `${PATHS.assets}icons`},
       {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
       {from: `${PATHS.src}/static`, to: ''},
     ]),
