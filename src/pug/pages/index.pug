@@ -5,17 +5,16 @@ block variables
   - var description = 'Amemory description';
   - var mainId = 'main';
 
-block head
-  include ../includes/templates/headMetaTags
-  include ../includes/templates/headScripts
-
-block main-content
-  main#main.wrapper.container
-    h1 Images test
-      .galery
-        - for(let i = 0; i < 3; i++)
-          div(class=`img-block img-block${i}`)
-            img(class=`img${i}`, src=`/assets/img/logo.png`)
-
+  .container
+    .grid
+      .box.box1(data-src='polova') 1
+      .box.box2.light 2
+      .box.box3 3
+      .box.box4.light 4
+      .box.box5 5
+      .box.box6.light 6
+    .wrapper
+      - for(let i = 0; i < 5; i++)
+        div(class=i)=i
 
 

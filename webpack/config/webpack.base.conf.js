@@ -22,11 +22,11 @@ const PATHS = {
 // see more: https://github.com/vedees/webpack-template/blob/master/README.md#html-dir-folder
 const PAGES_DIR = `${PATHS.src}/pug/pages`;
 const PAGES = fs
-  .readdirSync(PAGES_DIR)
-  .filter((fileName) => fileName.endsWith('.pug'));
+    .readdirSync(PAGES_DIR)
+    .filter((fileName) => fileName.endsWith('.pug'));
 const PAGES_PHP = fs
-  .readdirSync(PATHS.src)
-  .filter((fileName) => fileName.endsWith('.php'));
+    .readdirSync(PATHS.src)
+    .filter((fileName) => fileName.endsWith('.php'));
 module.exports = {
   externals: {
     paths: PATHS,
@@ -61,7 +61,7 @@ module.exports = {
         exclude: '/node_modules/',
       },
       {
-        // Pug loader
+        // JavaScript
         test: /\.pug$/,
         loader: 'pug-loader',
       },
@@ -228,13 +228,12 @@ module.exports = {
         }),
     ),
     ...PAGES_PHP.map(
-      (page) =>
-        new HtmlWebpackPlugin({
-          template: `${PATHS.src}/${page}`,
-          filename: `${page}`,
-          inject: false
-        }),
+        (page) =>
+          new HtmlWebpackPlugin({
+            template: `${PATHS.src}/${page}`,
+            filename: `${page}`,
+            inject: false,
+          }),
     ),
   ],
 };
-
