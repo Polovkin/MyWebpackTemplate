@@ -36,12 +36,20 @@ $minWidthBreakpoint             : 319px;
 
 //Only
 $desktopOnly                    : $tabletBreakpoint +1;
+//641px to 1200px
 $tabletOnly                     : $mobileBreakpoint +1 $tabletBreakpoint;
+//992px to 1200px
 $tabletLandscapeOnly            : $tabletLandscapeBreakpoint +1 $tabletBreakpoint;
+//641px to 991px
 $tabletPortraitOnly             : $mobileBreakpoint +1 $tabletLandscapeBreakpoint;
+//319px to 640px
 $mobileOnly                     : $minWidthBreakpoint $mobileBreakpoint;
+//481x to 640px
 $mobileLargeOnly                : $mobileLargeBreakpoint +1 $mobileBreakpoint;
+//319x to 640px
 $mobileMinOnly                  : $minWidthBreakpoint $mobileBreakpoint;
+//319x to 1200px
+$mobileDevice                   : $minWidthBreakpoint $tabletBreakpoint;
 
 @mixin containerMaxWidth($breakpoint) {
   width: ($breakpoint - 30)

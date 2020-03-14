@@ -54,7 +54,6 @@ section,
   flex: 0 0 auto;
   margin: 0 auto;
   padding: 0 15px;
-  position: relative;
   @include breakpoint($desktopFullBreakpoint) {
     @include containerMaxWidth($desktopFullBreakpoint);
   }
@@ -73,30 +72,6 @@ section,
   @include breakpoint($mobileMinOnly) {
     max-width: $minWidthBreakpoint;
   }
-
-
-.grid {
-
-  display: grid;
-
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-auto-rows: minmax(100px, auto);
-  grid-gap: 1rem;
-  justify-items: stretch;
-  align-items: stretch;
-
-  div {
-    background-color: red;
-
-    & > .light {
-      background-color: green;
-    }
-  }
-
-  .box1 {
-   grid-column: 1/4;
-  }
-  .box2 {
-
-  }
 }
+
+
