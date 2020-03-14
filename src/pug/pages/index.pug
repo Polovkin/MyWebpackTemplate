@@ -4,34 +4,9 @@ block variables
   - var title = 'Amemory title';
   - var description = 'Amemory description';
   - var mainId = 'main';
+block main
+  section#section
+    .container
+      h1 [popasd
 
-  .container
-    .grid
-      .box.box1(data-src='polova') 1
-      .box.box2.light 2
-      .box.box3 3
-      .box.box4.light 4
-      .box.box5 5
-      .box.box6.light 6
-    .wrapper
-      - var formId = `formId`
-      form(id=`${formId}`)
-        -var formIdplaceholders = ['Имя', 'Пароль', 'Телефон', 'Разное']
-        -var n = 0;
-        each inputs,index in {name: 'text', password: 'password', phone: 'tel', data: 'text'}
-          label(for=`input__${index}`)
-            input(
-              id=`input__${index}`
-              form=`${formId}`,
-              name=`${index}`,
-              type=`${inputs}` ,
-              placeholder=`${formIdplaceholders[n]}`)
-          -n++
-        label(for=`textarea__${formId}`)
-          textarea(
-            id=`textarea__${formId}`,
-            name=`textarea__${formId}`,
-            placeholder=``)
-        button(id=`submit-${formId}`, form=`${formId}`, ) press
-      .block
-        img.polova(src=`${imgPath}1-1.png`, alt=``)
+
