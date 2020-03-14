@@ -204,7 +204,7 @@ module.exports = {
       {from: `${PATHS.src}/static`, to: ''},
     ]),
     new ImageMinPlugin({
-     // disable: process.env.NODE_ENV !== 'production',
+      disable: (process.env.NODE_ENV || '').trim() !== 'production',
       test: /\.(jpe?g|png|gif|svg)$/i,
       plugins: [
         imageMinMozjpeg({
@@ -214,18 +214,18 @@ module.exports = {
         imageMinPngquant({
           quality: [0.65, 0.90],
           speed: 4,
-        })
-      ]
+        }),
+      ],
     }),
 
     ...PAGES.map(
-      (page) =>
-        new HtmlWebpackPlugin({
-          template: `${PAGES_DIR}/${page}`,
-          filename: (page === 'index.pug' || page === '404.pug' ?
+        (page) =>
+          new HtmlWebpackPlugin({
+            template: `${PAGES_DIR}/${page}`,
+            filename: (page === 'index.pug' || page === '404.pug' ?
             page.replace(/\.pug/, '.html') :
             `${page.split('.')[0]}/${page.replace(/\.pug/, '.html')}`),
-        }),
+          }),
     ),
     ...PAGES_PHP.map(
         (page) =>

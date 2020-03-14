@@ -14,7 +14,12 @@ block variables
       .box.box5 5
       .box.box6.light 6
     .wrapper
-      - for(let i = 0; i < 5; i++)
-        div(class=i)=i
+      each val ,index in ['1-1.png','logo.png','13224.jpg']
+        div(class='list__item' + index)
+          img(src=`/assets/img/${val}`, alt=`${val.split('.')[0]}`)
 
+    .container
+      each val ,index in ['1-1.png','logo.png','13224.jpg']
+        div(class=`img-wrap img-wrap${index}`)
+          img(src=`/assets/img/${val}`, alt=`${val.split('.')[0]}`)
 
