@@ -14,12 +14,24 @@ block variables
       .box.box5 5
       .box.box6.light 6
     .wrapper
-      each val ,index in ['1-1.png','logo.png','13224.jpg']
-        div(class='list__item' + index)
-          img(src=`/assets/img/${val}`, alt=`${val.split('.')[0]}`)
-
-    .container
-      each val ,index in ['1-1.png','logo.png','13224.jpg']
-        div(class=`img-wrap img-wrap${index}`)
-          img(src=`/assets/img/${val}`, alt=`${val.split('.')[0]}`)
-
+      - var formId = `formId`
+      form(id=`${formId}`)
+        -var formIdplaceholders = ['Имя', 'Пароль', 'Телефон', 'Разное']
+        -var n = 0;
+        each inputs,index in {name: 'text', password: 'password', phone: 'tel', data: 'text'}
+          label(for=`input__${index}`)
+            input(
+              id=`input__${index}`
+              form=`${formId}`,
+              name=`${index}`,
+              type=`${inputs}` ,
+              placeholder=`${formIdplaceholders[n]}`)
+          -n++
+        label(for=`textarea__${formId}`)
+          textarea(
+            id=`textarea__${formId}`,
+            name=`textarea__${formId}`,
+            placeholder=``)
+        button(id=`submit-${formId}`, form=`${formId}`, ) press
+      .block
+        img.polova(src=`${imgPath}1-1.png`, alt=``)
