@@ -3,7 +3,12 @@ extends ../layout/base
 block variables
   - var title = 'Amemory title';
   - var description = 'Amemory description';
-  - var mainId = 'main';
+  - var mainId = 'id';
+
+block head
+  include ../includes/templates/headMetaTags
+  include ../includes/templates/headScripts
+
 block main
   section#section
     .container
