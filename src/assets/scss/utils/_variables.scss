@@ -35,17 +35,17 @@ $mobileBreakpoint               : 576px;
 $minWidthBreakpoint             : 100px;
 
 //Only
-//1200 min
+//1200 min (XL)
 $desktopOnly                    : $tabletBreakpoint;
 //768-1199px
 $tabletOnly                     : $tabletPortraitBreakpoint ($tabletBreakpoint - 1);
-//992-1199px
+//992-1199px (LG)
 $tabletLandscapeOnly            : $tabletLandscapeBreakpoint ($tabletBreakpoint - 1);
-//768-991px
+//768-991px (MD)
 $tabletPortraitOnly             : $tabletPortraitBreakpoint ($tabletLandscapeBreakpoint - 1);
-//576-767px
+//576-767px (SM)
 $mobileLargeOnly                : $mobileBreakpoint ($tabletPortraitBreakpoint - 1);
-//100-767px
+//100-767px (XS)
 $mobileOnly                     : $minWidthBreakpoint ($tabletPortraitBreakpoint - 1);
 
 
