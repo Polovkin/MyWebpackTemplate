@@ -1,12 +1,10 @@
 import Vue from 'vue';
-
-
+import App from "./App.vue";
 Vue.config.productionTip = false;
 
 Vue.component('example-component', require('./components/Example.vue').default);
 
-const app = new Vue({
-  el: '#app',
-});
+new Vue({render: h => h(App)}).$mount("#app");
+
 
 

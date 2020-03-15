@@ -45,7 +45,7 @@ $tabletLandscapeOnly            : $tabletLandscapeBreakpoint ($tabletBreakpoint 
 $tabletPortraitOnly             : $tabletPortraitBreakpoint ($tabletLandscapeBreakpoint - 1);
 //576-767px (SM)
 $mobileLargeOnly                : $mobileBreakpoint ($tabletPortraitBreakpoint - 1);
-//100-767px (XS)
+//100-767px
 $mobileOnly                     : $minWidthBreakpoint ($tabletPortraitBreakpoint - 1);
 
 
