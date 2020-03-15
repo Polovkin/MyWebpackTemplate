@@ -26,34 +26,28 @@ $border-light            : #E4E7ED;
 $border-lighter          : #EBEEF5;
 
 //Breakpoints
-$desktopFullBreakpoint          : 1600px;
+
+//Bootstrap xl
 $tabletBreakpoint               : 1200px;
-$tabletLandscapeBreakpoint      : 991px;
+$tabletLandscapeBreakpoint      : 992px;
 $tabletPortraitBreakpoint       : 768px;
-$mobileBreakpoint               : 640px;
-$mobileLargeBreakpoint          : 480px;
-$minWidthBreakpoint             : 319px;
+$mobileBreakpoint               : 576px;
+$minWidthBreakpoint             : 100px;
 
 //Only
-$desktopOnly                    : $tabletBreakpoint +1;
-//641px to 1200px
-$tabletOnly                     : $mobileBreakpoint +1 $tabletBreakpoint;
-//992px to 1200px
-$tabletLandscapeOnly            : $tabletLandscapeBreakpoint +1 $tabletBreakpoint;
-//641px to 991px
-$tabletPortraitOnly             : $mobileBreakpoint +1 $tabletLandscapeBreakpoint;
-//319px to 640px
-$mobileOnly                     : $minWidthBreakpoint $mobileBreakpoint;
-//481x to 640px
-$mobileLargeOnly                : $mobileLargeBreakpoint +1 $mobileBreakpoint;
-//319x to 640px
-$mobileMinOnly                  : $minWidthBreakpoint $mobileBreakpoint;
-//319x to 1200px
-$mobileDevice                   : $minWidthBreakpoint $tabletBreakpoint;
+//1200 min
+$desktopOnly                    : $tabletBreakpoint;
+//768-1199px
+$tabletOnly                     : $tabletPortraitBreakpoint ($tabletBreakpoint - 1);
+//992-1199px
+$tabletLandscapeOnly            : $tabletLandscapeBreakpoint ($tabletBreakpoint - 1);
+//768-991px
+$tabletPortraitOnly             : $tabletPortraitBreakpoint ($tabletLandscapeBreakpoint - 1);
+//576-767px
+$mobileLargeOnly                : $mobileBreakpoint ($tabletPortraitBreakpoint - 1);
+//100-767px
+$mobileOnly                     : $minWidthBreakpoint ($tabletPortraitBreakpoint - 1);
 
-@mixin containerMaxWidth($breakpoint) {
-  width: ($breakpoint - 30)
-}
 
 
 //OldMediaVars

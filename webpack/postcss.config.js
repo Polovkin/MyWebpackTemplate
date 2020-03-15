@@ -16,7 +16,7 @@ module.exports = {
         },
       ],
     }),
-    require('colorguard'),
+    //require('colorguard'),
     // require('doiuse')({
     //   ignore: ['rem'],
     //   ignoreFiles: ['**/normalize.css'],

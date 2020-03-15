@@ -174,7 +174,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               sourceMap: true,
-              config: {path: `./postcss.config.js`},
+              config: {path: `${PATHS.webpack}/postcss.config.js`},
             },
           },
         ],

@@ -36,47 +36,44 @@ section,
 
   overflow: hidden;
 
-  padding: 3rem 0;
 
-  @include breakpoint($tabletLandscapeOnly) {
+  @include breakpoint($tabletBreakpoint) {
+    padding: 3rem 0;
+  }
+  @include breakpoint($tabletLandscapeBreakpoint) {
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
-  @include breakpoint($tabletPortraitOnly) {
+  @include breakpoint($tabletPortraitBreakpoint) {
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
 
 }
 
-.container {
+.container-base {
   position: relative;
 
   flex: 0 0 auto;
   margin: 0 auto;
   padding: 0 15px;
-  @include breakpoint($desktopFullBreakpoint) {
-    @include containerMaxWidth($desktopFullBreakpoint);
+  width: 100%;
+
+  @include breakpoint($tabletBreakpoint) {
+    max-width: 1140px;
   }
-  @include breakpoint($desktopOnly) {
-    @include containerMaxWidth($desktopOnly)
+  @include breakpoint($tabletLandscapeBreakpoint) {
+    max-width: 960px;
   }
-  @include breakpoint($tabletLandscapeOnly) {
-    @include containerMaxWidth($tabletLandscapeBreakpoint)
+  @include breakpoint($tabletPortraitBreakpoint) {
+    max-width: 720px;
   }
-  @include breakpoint($tabletPortraitOnly) {
-    width: $mobileBreakpoint;
+  @include breakpoint($mobileBreakpoint) {
+    max-width: 540px;
   }
-  @include breakpoint($mobileLargeOnly) {
-    max-width: $mobileLargeBreakpoint
-  }
-  @include breakpoint($mobileMinOnly) {
-    max-width: $minWidthBreakpoint;
-  }
+}
+@mixin content($var) {
+  content: 'width #{$var}';
 }
 
 
-p
-{
-
-}

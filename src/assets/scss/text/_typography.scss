@@ -1,26 +1,26 @@
+@import '../vendors/breakpoint-2.x.x/stylesheets/breakpoint';
 
-
-$font-line-height       : auto;
-$font-size              : 18px;
+$font-line-height: auto;
+$font-size: 18px;
 //$font-color-main        : #000000;
-$font-family            : "Oswald", serif;
-$font-weight            : normal;
+$font-family: "Oswald", serif;
+$font-weight: normal;
 
 
 html {
   line-height: $font-line-height;
   font-size: $font-size;
-  //color: $font-color-main;
   height: 100%;
-  @media screen and (max-width: $tabletBreakpoint) {
+  @include breakpoint($tabletLandscapeBreakpoint) {
     font-size: 16px;
   }
-  @media screen and (max-width: $tabletPortraitBreakpoint) {
+  @include breakpoint($tabletPortraitBreakpoint) {
     font-size: 15px;
   }
-  @media screen and (max-width: $mobileLargeBreakpoint) {
+  @include breakpoint($mobileBreakpoint) {
     font-size: 14px;
   }
+
 }
 
 body {
@@ -60,8 +60,8 @@ p, a {
   font-size: rem(18);
 }
 
-input,textarea {
+input, textarea {
   font-family: $font-family;
-  font-size: rem($font-size );
+  font-size: rem($font-size);
 }
 
