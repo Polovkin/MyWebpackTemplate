@@ -10,9 +10,9 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     block head
     title #{title}
-
-    body
-      include ../includes/modules/header
-      main(id=mainId)
-        block main
-      include ../includes/modules/footer
+  body
+    include ../includes/modules/header
+    main(id=mainId)
+      block main
+    include ../includes/modules/footer
+    block bodyScripts

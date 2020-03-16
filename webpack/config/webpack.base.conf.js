@@ -13,7 +13,10 @@ const imageMinPngquant = require('imagemin-pngquant');
 // Main const. Feel free to change it
 const PATHS = {
   src: path.join(__dirname, '../../src'),
-  dist: path.join(__dirname, '../../dist'),
+  dist: path.join(__dirname, (process.env.NODE_ENV === 'production' ?
+    '../../public' :
+    '../../dist'),
+  ),
   webpack: path.join(__dirname, '../../webpack'),
   assets: 'assets/',
 };
