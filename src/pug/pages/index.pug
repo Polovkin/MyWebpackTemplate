@@ -13,8 +13,24 @@ block main
   .container-base
     h1 Test Bootstrap
   .container
-    h2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid amet assumenda cum deserunt dolor error hic modi officia perferendis quaerat quia quis ratione recusandae, similique tempore temporibus vel veniam voluptates.
+    - var formId = `formId`
+    form(id=`${formId}`, action='send.php')
+      -var formIdplaceholders = ['Имя', 'Пароль', 'Телефон', 'Разное']
+      -var n = 0;
+      each inputs,index in {name: 'text', password: 'password', phone: 'tel', data: 'text'}
+        label(for=`input__${index}`)
+          input(
+            id=`input__${index}`
+            form=`${formId}`,
+            name=`${index}`,
+            type=`${inputs}` ,
+            placeholder=`${formIdplaceholders[n]}`)
+        -n++
+      label(for=`textarea__${formId}`)
+        textarea(
+          id=`textarea__${formId}`,
+          name=`textarea__${formId}`,
+          placeholder=``)
+      button(id=`submit-${formId}`, form=`${formId}`, ) press
 
 
-block bodyScripts
-    script(src="/assets/js/test/js")

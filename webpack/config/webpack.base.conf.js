@@ -27,9 +27,9 @@ const PAGES_DIR = `${PATHS.src}/pug/pages`;
 const PAGES = fs
     .readdirSync(PAGES_DIR)
     .filter((fileName) => fileName.endsWith('.pug'));
-const PAGES_PHP = fs
-    .readdirSync(PATHS.src)
-    .filter((fileName) => fileName.endsWith('.php'));
+// const PAGES_PHP = fs
+//     .readdirSync(PATHS.src)
+//     .filter((fileName) => fileName.endsWith('.php'));
 module.exports = {
   externals: {
     paths: PATHS,
@@ -41,7 +41,7 @@ module.exports = {
   output: {
     filename: `${PATHS.assets}js/[name].js`,
     path: PATHS.dist,
-    publicPath: '/',
+    //publicPath: '/',
   },
   optimization: {
     splitChunks: {
@@ -117,26 +117,6 @@ module.exports = {
               publicPath: `/${PATHS.assets}img`,
             },
           },
-          // {
-          //   loader: 'image-webpack-loader',
-          //   options: {
-          //     mozjpeg: {
-          //       progressive: false,
-          //       quality: 65,
-          //     },
-          //     // optipng.enabled: false will disable optipng
-          //     optipng: {
-          //       enabled: false,
-          //     },
-          //     pngquant: {
-          //       quality: [0.65, 0.90],
-          //       speed: 4,
-          //     },
-          //     gifsicle: {
-          //       interlaced: false,
-          //     },
-          //   },
-          // },
         ],
 
       },
@@ -204,6 +184,7 @@ module.exports = {
       {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
       {from: `${PATHS.src}/${PATHS.assets}icons`, to: `${PATHS.assets}icons`},
       {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
+      {from: `${PATHS.src}/php`, to: ``},
       {from: `${PATHS.src}/static`, to: ''},
     ]),
     new ImageMinPlugin({
@@ -230,13 +211,13 @@ module.exports = {
             `${page.split('.')[0]}/${page.replace(/\.pug/, '.html')}`),
           }),
     ),
-    ...PAGES_PHP.map(
-        (page) =>
-          new HtmlWebpackPlugin({
-            template: `${PATHS.src}/${page}`,
-            filename: `${page}`,
-            inject: false,
-          }),
-    ),
+    // ...PAGES_PHP.map(
+    //     (page) =>
+    //       new HtmlWebpackPlugin({
+    //         template: `${PATHS.src}/${page}`,
+    //         filename: `${page}`,
+    //         inject: false,
+    //       }),
+    // ),
   ],
 };
