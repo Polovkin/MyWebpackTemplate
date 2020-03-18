@@ -7,9 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {VueLoaderPlugin} = require('vue-loader');
-const ImageMinPlugin = require('imagemin-webpack-plugin').default;
-const imageMinMozjpeg = require('imagemin-mozjpeg');
-const imageMinPngquant = require('imagemin-pngquant');
+
 // Main const. Feel free to change it
 const PATHS = {
   src: path.join(__dirname, '../../src'),
@@ -187,20 +185,7 @@ module.exports = {
       {from: `${PATHS.src}/php`, to: ``},
       {from: `${PATHS.src}/static`, to: ''},
     ]),
-    new ImageMinPlugin({
-      disable: (process.env.NODE_ENV || '').trim() !== 'production',
-      test: /\.(jpe?g|png|gif|svg)$/i,
-      plugins: [
-        imageMinMozjpeg({
-          progressive: false,
-          quality: 65,
-        }),
-        imageMinPngquant({
-          quality: [0.65, 0.90],
-          speed: 4,
-        }),
-      ],
-    }),
+
 
     ...PAGES.map(
         (page) =>
