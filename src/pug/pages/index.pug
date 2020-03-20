@@ -13,24 +13,39 @@ block main
   .container-base
     h1 Test Bootstrap
   .container
-    - var formId = `formId`
-    form(id=`${formId}`, action='send.php')
-      -var formIdplaceholders = ['Имя', 'Пароль', 'Телефон', 'Разное']
-      -var n = 0;
-      each inputs,index in {name: 'text', password: 'password', phone: 'tel', data: 'text'}
-        label(for=`input__${index}`)
+  - let formId = `formId`
+    form(id=formId)
+      -
+        let formData = [
+          {
+            name: 'name',
+            type: 'text',
+            placeholder: 'name'
+          },
+          {
+            name: 'pass',
+            type: 'password',
+            placeholder: 'password'
+          },
+          {
+            name: 'email',
+            type: 'email',
+            placeholder: 'email'
+          },
+          {
+            name: 'phone',
+            type: 'tel',
+            placeholder: 'telephone'
+          },
+        ];
+      each val in formData
+        label(for=`${formId}__${val.name}`)
           input(
-            id=`input__${index}`
-            form=`${formId}`,
-            name=`${index}`,
-            type=`${inputs}` ,
-            placeholder=`${formIdplaceholders[n]}`)
-        -n++
-      label(for=`textarea__${formId}`)
-        textarea(
-          id=`textarea__${formId}`,
-          name=`textarea__${formId}`,
-          placeholder=``)
-      button(id=`submit-${formId}`, form=`${formId}`, ) press
-
+            id=`${formId}__${val.name}`,
+            type=val.type ,
+            name=val.name,
+            placeholder=val.placeholder)
+      label(for=`${formId}__textarea`)
+        textarea(id=`${formId}__textarea`, placeholder='textarea')
+      button(type='submit') press
 

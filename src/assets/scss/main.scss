@@ -72,10 +72,18 @@ section,
     max-width: 540px;
   }
 }
+
 @mixin content($var) {
   content: 'width #{$var}';
 }
 
+$red: #FF0000;
 h1 {
-  color: red;
+  color: #000;
+  display: grid;
+  grid-template-columns: repeat(2, 1px);
+}
+
+.container-base {
+  color: black;
 }

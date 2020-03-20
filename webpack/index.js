@@ -9,7 +9,7 @@
 // import '../src/vue/vue-entry';
 
 // SCSS
-//import '../src/assets/scss/main.scss';
+import '../src/assets/scss/main.scss';
 
 // CSS
 // import 'bootstrap/dist/css/bootstrap.css';
