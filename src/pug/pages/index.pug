@@ -13,39 +13,4 @@ block main
   .container-base
     h1 Test Bootstrap
   .container
-  - let formId = `formId`
-    form(id=formId)
-      -
-        let formData = [
-          {
-            name: 'name',
-            type: 'text',
-            placeholder: 'name'
-          },
-          {
-            name: 'pass',
-            type: 'password',
-            placeholder: 'password'
-          },
-          {
-            name: 'email',
-            type: 'email',
-            placeholder: 'email'
-          },
-          {
-            name: 'phone',
-            type: 'tel',
-            placeholder: 'telephone'
-          },
-        ];
-      each val in formData
-        label(for=`${formId}__${val.name}`)
-          input(
-            id=`${formId}__${val.name}`,
-            type=val.type ,
-            name=val.name,
-            placeholder=val.placeholder)
-      label(for=`${formId}__textarea`)
-        textarea(id=`${formId}__textarea`, placeholder='textarea')
-      button(type='submit') press
-
+    #app

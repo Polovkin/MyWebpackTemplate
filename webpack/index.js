@@ -6,7 +6,7 @@
 // import 'bootstrap';
 
 // Vue.js
-// import '../src/vue/vue-entry';
+import '../src/vue/vue-entry';
 
 // SCSS
 import '../src/assets/scss/main.scss';

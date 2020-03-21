@@ -60,9 +60,15 @@ module.exports = {
         exclude: '/node_modules/',
       },
       {
-        // JavaScript
         test: /\.pug$/,
-        loader: 'pug-loader',
+        oneOf: [{
+          resourceQuery: /^\?vue/,
+          use: ['pug-plain-loader'],
+        }, {
+          use: [
+            'pug-loader',
+          ],
+        }],
       },
       {
         // Vue

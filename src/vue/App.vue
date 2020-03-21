@@ -1,9 +1,10 @@
-<template>
-  <div id="app">
+<template lang="pug">
 
-      <h1>Vue header</h1>
-
-  </div>
+  #app
+    .container-base
+      h1 Hello pug
+      p {{counter}}
+      button(@click="counterTest") press
 </template>
 
 <script>
@@ -14,8 +15,13 @@ export default {
   components: {},
   data() {
     return {
-      eblo: 1,
+      counter: 1,
     };
+  },
+  methods: {
+    counterTest() {
+      this.counter++;
+    },
   },
 };
 </script>
