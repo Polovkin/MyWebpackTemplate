@@ -4,6 +4,7 @@
     .container-base
       h1 Hello pug
       p {{counter}}
+      primary-button
       button(@click="counterTest") press
 </template>
 
