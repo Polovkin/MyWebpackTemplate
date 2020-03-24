@@ -2,29 +2,12 @@
 
   #app
     .container-base
-      h1 Hello pug
-      p {{counter}}
-      primary-button
-      button(@click="counterTest") press
+      router-view
 </template>
 
 <script>
 
 
-export default {
-  name: 'app',
-  components: {},
-  data() {
-    return {
-      counter: 1,
-    };
-  },
-  methods: {
-    counterTest() {
-      this.counter++;
-    },
-  },
-};
 </script>
 
 <style lang="scss">

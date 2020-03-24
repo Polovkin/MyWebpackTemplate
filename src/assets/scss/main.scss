@@ -77,13 +77,3 @@ section,
   content: 'width #{$var}';
 }
 
-$red: #FF0000;
-h1 {
-  color: #000;
-  display: grid;
-  grid-template-columns: repeat(2, 1px);
-}
-
-.container-base {
-  color: black;
-}
