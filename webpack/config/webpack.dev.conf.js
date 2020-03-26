@@ -7,7 +7,7 @@ const baseWebpackConfig = require('./webpack.base.conf');
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
-  devtool: 'inline-source-map',
+  devtool: 'cheap-source-map',
   devServer: {
     historyApiFallback: true,
     contentBase: baseWebpackConfig.externals.paths.dist,
