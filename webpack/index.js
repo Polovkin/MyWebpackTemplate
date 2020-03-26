@@ -12,6 +12,6 @@ import '../src/vue/vue-entry';
 import '../src/assets/scss/main.scss';
 
 // CSS
-// import 'bootstrap/dist/css/bootstrap.css';
+ import '@fortawesome/fontawesome-free/css/all.css';
 
 

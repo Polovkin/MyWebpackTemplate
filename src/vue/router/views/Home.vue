@@ -4,7 +4,7 @@
     p {{counter}}
     button(@click="counterTest") press
     router-link(to="/test") Test
-
+    i.fas.fa-address-book
 </template>
 
 <script>
