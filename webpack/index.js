@@ -1,7 +1,7 @@
 
 
 // JS
- import '../src/js/custom';
+ import '../src/js/custom.ts';
 // import '../src/js/base';
 // import 'bootstrap';
 

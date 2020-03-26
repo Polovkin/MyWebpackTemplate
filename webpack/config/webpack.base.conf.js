@@ -21,8 +21,8 @@ const PATHS = {
 // see more: https://github.com/vedees/webpack-template/blob/master/README.md#html-dir-folder
 const PAGES_DIR = `${PATHS.src}/pug/pages`;
 const PAGES = fs
-    .readdirSync(PAGES_DIR)
-    .filter((fileName) => fileName.endsWith('.pug'));
+  .readdirSync(PAGES_DIR)
+  .filter((fileName) => fileName.endsWith('.pug'));
 // const PAGES_PHP = fs
 //     .readdirSync(PATHS.src)
 //     .filter((fileName) => fileName.endsWith('.php'));
@@ -58,6 +58,11 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: '/node_modules/',
+      },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
       {
         test: /\.pug$/,
@@ -171,6 +176,7 @@ module.exports = {
       '~': PATHS.src,
       'vue$': 'vue/dist/vue.js',
     },
+    extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
     new VueLoaderPlugin(),
@@ -192,13 +198,13 @@ module.exports = {
 
 
     ...PAGES.map(
-        (page) =>
-          new HtmlWebpackPlugin({
-            template: `${PAGES_DIR}/${page}`,
-            filename: (page === 'index.pug' || page === '404.pug' ?
+      (page) =>
+        new HtmlWebpackPlugin({
+          template: `${PAGES_DIR}/${page}`,
+          filename: (page === 'index.pug' || page === '404.pug' ?
             page.replace(/\.pug/, '.html') :
             `${page.split('.')[0]}/${page.replace(/\.pug/, '.html')}`),
-          }),
+        }),
     ),
     // ...PAGES_PHP.map(
     //     (page) =>
