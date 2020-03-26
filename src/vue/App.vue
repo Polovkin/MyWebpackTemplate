@@ -2,14 +2,12 @@
 
   #app
     .container-base
-      h1 test
+      router-view
 </template>
 
 <script>
 
-export default {
 
-};
 </script>
 
 <style lang="scss">
