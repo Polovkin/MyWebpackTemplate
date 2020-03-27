@@ -90,7 +90,7 @@ module.exports = {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]',
+          name: `${PATHS.assets}/fonts/[name].[ext]`,
         },
       },
       // {
@@ -141,7 +141,17 @@ module.exports = {
           },
           {
             loader: 'sass-loader',
-            options: {sourceMap: true},
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: [
+                './src/assets/scss/vars.scss',
+              ],
+            },
           },
         ],
       },

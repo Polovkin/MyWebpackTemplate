@@ -1,12 +1,12 @@
 //@import "/assets/fonts/stylesheet.css";
-//Utils
-@import 'utils/variables';
-@import 'utils/mixins';
+//Vars
+@import "vars";
+
 //Base
 @import 'text/normalize';
 @import 'text/typography';
 @import 'text/fonts';
-@import 'vendors/breakpoint-2.x.x/stylesheets/breakpoint';
+
 @import 'animation/animation';
 //Layout
 @import 'modules/footer';
@@ -77,3 +77,6 @@ section,
   content: 'width #{$var}';
 }
 
+.pugHeader {
+  @include size(100px)
+}

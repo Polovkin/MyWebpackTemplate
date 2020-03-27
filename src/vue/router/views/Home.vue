@@ -1,6 +1,6 @@
 <template lang="pug">
   .container
-    h1 Hello pug
+    h1.test Hello pug
     p {{counter}}
     button(@click="counterTest") press
     //router-link(to="/test") Test
@@ -26,6 +26,12 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
+  .test {
+    @include size(20px);
+    @include breakpoint($desktopOnly) {
+      color: red;
+    }
+  }
 </style>
