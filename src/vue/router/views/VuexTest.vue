@@ -13,6 +13,9 @@ export default {
   name: 'VuexTest.vue',
   components: {Counter},
   computed: {
+    ...mapGetters([
+      'COUNTER_PLUS',
+    ]),
   },
   methods: {
     counterClick() {
