@@ -13,14 +13,8 @@ export default {
   name: 'VuexTest.vue',
   components: {Counter},
   computed: {
-    ...mapGetters([
-      'COUNTER_PLUS',
-    ]),
   },
   methods: {
-    ...mapActions([
-      'COUNTER_PLUS',
-    ]),
     counterClick() {
       // this.$store.commit('CHANGE_COUNTER'); //напрямую к мутации
       this.$store.dispatch('COUNTER_PLUS'); // асинхронно через action

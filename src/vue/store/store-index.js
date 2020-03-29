@@ -8,17 +8,17 @@ const store = new Vuex.Store({
   state: {
     counter: 0,
   },
-  mutations: { //Что изменить
+  mutations: { // Что изменить
     CHANGE_COUNTER: (state) => {
       state.counter++;
     },
   },
-  actions: { //Асинхронный вызов мутации
+  actions: { // Асинхронный вызов мутации
     COUNTER_PLUS({commit}) {
       commit('CHANGE_COUNTER');
     },
   },
-  getters: { //вернуть значение
+  getters: { // вернуть значение
     COUNTER_STATE(state) {
       return state.counter;
     },
