@@ -14,7 +14,11 @@ export default new Router({
     },
     {
       path: '/test',
-      component: Test,
+      component: () => import('./views/Test.vue'),
+    },
+    {
+      path: '/vuex',
+      component: () => import('./views/VuexTest.vue'),
     },
   ],
 });

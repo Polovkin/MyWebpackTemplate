@@ -5,6 +5,7 @@
     button(@click="counterTest") press
     //router-link(to="/test") Test
     a(href="/test") Test
+    a(href="/vuex") Vuex
     i.fas.fa-address-book
 </template>
 
@@ -28,10 +29,4 @@ export default {
 
 <style lang="scss" scoped>
 
-  .test {
-    @include size(20px);
-    @include breakpoint($desktopOnly) {
-      color: red;
-    }
-  }
 </style>
