@@ -2,12 +2,31 @@
 document.addEventListener('DOMContentLoaded', function() {
   let lazyLoadImages;
 
+  function pictureSrc(image) {
+    if (image.tagName === 'PICTURE') {
+      const imgTag = image.querySelector('img');
+      const sourceTag = image.querySelectorAll('source');
+
+      function setSrc(tag) {
+        tag.srcset = tag.dataset.srcset;
+        tag.dataset.srcset = '';
+      }
+
+      for (let i = 0; i < sourceTag.length; i++) {
+        setSrc(sourceTag[i]);
+      }
+
+      setSrc(imgTag);
+    }
+  }
+
   if ('IntersectionObserver' in window) {
     lazyLoadImages = document.querySelectorAll('.lazy');
     const imageObserver = new IntersectionObserver(function(entries, observer) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           const image = entry.target;
+          pictureSrc(image);
           image.src = image.dataset.src;
           image.classList.remove('lazy');
           imageObserver.unobserve(image);
@@ -31,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const scrollTop = window.pageYOffset;
         lazyLoadImages.forEach(function(img) {
           if (img.offsetTop < (window.innerHeight + scrollTop)) {
+            pictureSrc(img);
             img.src = img.dataset.src;
             img.classList.remove('lazy');
           }

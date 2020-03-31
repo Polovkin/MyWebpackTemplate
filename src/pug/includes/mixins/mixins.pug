@@ -1,5 +1,14 @@
 mixin button(btnClass,text)
   button(class=btnClass)=text
 
-mixin image(imgClass,name)
-  img(class=imgClass src=`${imgPath + name}` , alt=src)
+mixin imgPicture (imgName, alt, picClass )
+  picture(class=`lazy ${picClass}`)
+    -var fileName = imgName.split('.')[0]
+    source(data-srcset=`${imgPath}${fileName}.jxr`, type='image/vnd.ms-photo')
+    source(data-srcset=`${imgPath}${fileName}.jp2`, type='image/jp2')
+    source(data-srcset=`${imgPath}${fileName}.webp`, type='image/webp')
+    img(
+      data-srcset=`${imgPath}${imgName}`, alt=alt)
+
+
+
