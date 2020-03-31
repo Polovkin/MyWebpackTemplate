@@ -1,9 +1,11 @@
 extends ../layout/base
 
 block variables
-  - var title = 'Amemory title';
-  - var description = 'Amemory description';
-  - var mainId = 'id';
+  - let title = 'Amemory title';
+  - let description = 'Amemory description';
+  - let mainId = 'id';
+  - var imgPath = '/assets/img/test/'
+  - var iconsPath = '/assets/icons/'
 
 block head
   include ../includes/templates/headMetaTags
@@ -12,5 +14,32 @@ block head
 block main
   .container-base
     h1.pugHeader Test Bootstrap
-  .container
-    #app
+  .container-base#webp-test
+    h1 Picture tag
+      //.img-wrap
+      //  img(
+      //    data-src=`${imgPath}cloud1.png`,
+      //    class="lazy",
+      //    alt=`cloud`)
+      //  img(
+      //    data-src=`${imgPath}cloud1.jp2`,
+      //    class="lazy",
+      //    alt=`cloud`)
+      //  img(
+      //    data-src=`${imgPath}cloud1.jxr`,
+      //    class="lazy",
+      //    alt=`cloud`)
+      //  img(
+      //    data-src=`${imgPath}cloud1.webp`,
+      //    class="lazy",
+      //    alt=`cloud`)
+
+      picture
+        source(data-srcset=`${imgPath}cloud1.jxr`, type='image/vnd.ms-photo')
+        source(data-srcset=`${imgPath}cloud1.jp2`, type='image/jp2')
+        source(data-srcset=`${imgPath}cloud1.webp`, type='image/webp')
+        img(
+          class="lazy"
+          data-srcset=`${imgPath}cloud1.png`, alt='cloud1')
+
+
