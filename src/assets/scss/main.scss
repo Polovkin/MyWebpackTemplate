@@ -8,6 +8,7 @@
 @import 'text/fonts';
 
 @import 'animation/animation';
+@import 'components/shapes';
 //Layout
 @import 'modules/footer';
 @import 'modules/header';
@@ -76,9 +77,7 @@ section,
 @mixin content($var) {
   content: 'width #{$var}';
 }
-h1.pugHeader{
-  height:200vh;
-}
+
 #webp-test {
   img {
     height: 200px;

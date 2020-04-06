@@ -3,16 +3,18 @@
   #app
     .container-base
       router-view
+      h1 Vue
 
 </template>
 
 <script>
-
+export default {
+  name: 'App',
+}
 
 </script>
 
 <style lang="scss">
-
 
 
   //Base

@@ -7,6 +7,7 @@
     a(href="/test") Test
     a(href="/vuex") Vuex
     i.fas.fa-address-book
+    span#cross-test
 </template>
 
 <script>
@@ -28,5 +29,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  #cross-test {
+    @include cross(20px,12px,2px,black)
+  }
 </style>
