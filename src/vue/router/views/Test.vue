@@ -5,30 +5,22 @@
 </template>
 
 <script lang="ts">
-  import Component from "vue-class-component"
-  import { Prop } from "vue-property-decorator"
-  type ComplexObjectInterface = {
-    testProp: string
-    modelName: number
-  }
+  import {Component, Vue} from 'vue-property-decorator'
+
   @Component
-  export default ComponentName extends Component {
-  @Prop({
-    type: Object
-  })
-    propExample: ComplexObjectInterface
-
-    dataExample: string = "This Property Will Be Data"
-
-    get computedExample() {
-      return this.dataExample + this.propExample.testProp + "Computed Property Example";
-    }
-
-    methodExample() {
-      this.dataExample = "This is being done in a method"
-    }
+  export default class HelloWorld extends Vue {
+    private msg: string = "welcome to my app";
+    private list: Array<object> = [
+      {
+        name: 'Preetish',
+        age: '26'
+      },
+      {
+        name: 'John',
+        age: '30'
+      }
+    ]
   }
-
 </script>
 
 <style scoped>
