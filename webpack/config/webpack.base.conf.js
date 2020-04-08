@@ -7,7 +7,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {VueLoaderPlugin} = require('vue-loader');
-
 // Main const. Feel free to change it
 const PATHS = {
   src: path.join(__dirname, '../../src'),
@@ -17,17 +16,17 @@ const PATHS = {
   assets: 'assets/',
 };
 
-//PUG
+// PUG
 const PAGES_DIR = `${PATHS.src}/pug/pages`;
 const PAGES = fs
     .readdirSync(PAGES_DIR)
     .filter((fileName) => fileName.endsWith('.pug'));
-//HTML
+// HTML
 // const PAGES_DIR = `${PATHS.src}/pages`;
 // const PAGES = fs
 //   .readdirSync(PAGES_DIR)
 //   .filter((fileName) => fileName.endsWith('.html'));
-//PHP
+// PHP
 // const PAGES_PHP = fs
 //     .readdirSync(PATHS.src)
 //     .filter((fileName) => fileName.endsWith('.php'));
@@ -58,6 +57,15 @@ module.exports = {
   },
   module: {
     rules: [
+      // TypeScript
+      {
+        test: /\.ts$/,
+        exclude: /node_modules|vue\/src/,
+        loader: 'ts-loader',
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        },
+      },
       {
         // JavaScript
         test: /\.js$/,
@@ -186,7 +194,9 @@ module.exports = {
       '~': PATHS.src,
       'vue$': 'vue/dist/vue.js',
     },
+    extensions: ['.tsx', '.ts', '.js'],
   },
+
   plugins: [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
@@ -205,7 +215,6 @@ module.exports = {
       {from: `${PATHS.src}/static`, to: ''},
     ]),
 
-
     ...PAGES.map(
         (page) =>
           new HtmlWebpackPlugin({
@@ -215,7 +224,7 @@ module.exports = {
             `${page.split('.')[0]}/${page.replace(/\.pug/, '.html')}`),
           }),
     ),
-    //PHP
+    // PHP
     // ...PAGES_PHP.map(
     //     (page) =>
     //       new HtmlWebpackPlugin({
