@@ -59,7 +59,7 @@ section,
   margin: 0 auto;
   padding: 0 15px;
   width: 100%;
-
+  max-width: $desktopWidthHD;
   @include breakpoint($tabletBreakpoint) {
     max-width: 1140px;
   }

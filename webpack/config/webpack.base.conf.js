@@ -17,17 +17,17 @@ const PATHS = {
   assets: 'assets/',
 };
 
-//PUG
+// PUG
 const PAGES_DIR = `${PATHS.src}/pug/pages`;
 const PAGES = fs
     .readdirSync(PAGES_DIR)
     .filter((fileName) => fileName.endsWith('.pug'));
-//HTML
+// HTML
 // const PAGES_DIR = `${PATHS.src}/pages`;
 // const PAGES = fs
 //   .readdirSync(PAGES_DIR)
 //   .filter((fileName) => fileName.endsWith('.html'));
-//PHP
+// PHP
 // const PAGES_PHP = fs
 //     .readdirSync(PATHS.src)
 //     .filter((fileName) => fileName.endsWith('.php'));
@@ -205,7 +205,20 @@ module.exports = {
       {from: `${PATHS.src}/static`, to: ''},
     ]),
 
-
+    new ImageMinPlugin({
+      disable: (process.env.NODE_ENV || '').trim() !== 'production',
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      plugins: [
+        imageMinMozjpeg({
+          progressive: false,
+          quality: 65,
+        }),
+        imageMinPngquant({
+          quality: [0.65, 0.90],
+          speed: 4,
+        }),
+      ],
+    }),
     ...PAGES.map(
         (page) =>
           new HtmlWebpackPlugin({
@@ -215,7 +228,7 @@ module.exports = {
             `${page.split('.')[0]}/${page.replace(/\.pug/, '.html')}`),
           }),
     ),
-    //PHP
+    // PHP
     // ...PAGES_PHP.map(
     //     (page) =>
     //       new HtmlWebpackPlugin({
