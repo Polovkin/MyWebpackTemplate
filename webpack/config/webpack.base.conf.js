@@ -61,6 +61,15 @@ module.exports = {
   },
   module: {
     rules: [
+      // TypeScript
+      {
+        test: /\.ts$/,
+        exclude: /node_modules|vue\/src/,
+        loader: 'ts-loader',
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        },
+      },
       {
         // JavaScript
         test: /\.js$/,
@@ -189,7 +198,9 @@ module.exports = {
       '~': PATHS.src,
       'vue$': 'vue/dist/vue.js',
     },
+    extensions: ['.tsx', '.ts', '.js'],
   },
+
   plugins: [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({

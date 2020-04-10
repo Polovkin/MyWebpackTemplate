@@ -8,7 +8,8 @@ import '../src/js/utils/base';
 import '../src/js/utils/lazyloading';
 import 'bootstrap';
 
-
+//TS
+import '../src/ts/main'
 // SCSS
 import '../src/assets/scss/main.scss';
 // Vue.js

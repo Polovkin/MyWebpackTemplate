@@ -4,7 +4,7 @@
     p {{counter}}
     button(@click="counterTest") press
     //router-link(to="/test") Test
-    router-link(to="/test") Test
+    router-link(to="/test") TypeScript
     router-link(to="/vuex") Vuex
     i.fas.fa-address-book
     span#cross-test
