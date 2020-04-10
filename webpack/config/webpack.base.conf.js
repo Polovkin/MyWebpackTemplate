@@ -7,6 +7,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {VueLoaderPlugin} = require('vue-loader');
+const ImageMinPlugin = require('imagemin-webpack-plugin').default;
+const imageMinMozjpeg = require('imagemin-mozjpeg');
+const imageMinPngquant = require('imagemin-pngquant');
 
 // Main const. Feel free to change it
 const PATHS = {
@@ -18,15 +21,15 @@ const PATHS = {
 };
 
 // PUG
-const PAGES_DIR = `${PATHS.src}/pug/pages`;
+// const PAGES_DIR = `${PATHS.src}/pug/pages`;
+// const PAGES = fs
+//     .readdirSync(PAGES_DIR)
+//     .filter((fileName) => fileName.endsWith('.pug'));
+// HTML
+const PAGES_DIR = `${PATHS.src}/pages`;
 const PAGES = fs
     .readdirSync(PAGES_DIR)
-    .filter((fileName) => fileName.endsWith('.pug'));
-// HTML
-// const PAGES_DIR = `${PATHS.src}/pages`;
-// const PAGES = fs
-//   .readdirSync(PAGES_DIR)
-//   .filter((fileName) => fileName.endsWith('.html'));
+    .filter((fileName) => fileName.endsWith('.html'));
 // PHP
 // const PAGES_PHP = fs
 //     .readdirSync(PATHS.src)
@@ -219,15 +222,15 @@ module.exports = {
         }),
       ],
     }),
-    ...PAGES.map(
-        (page) =>
-          new HtmlWebpackPlugin({
-            template: `${PAGES_DIR}/${page}`,
-            filename: (page === 'index.pug' || page === '404.pug' ?
-            page.replace(/\.pug/, '.html') :
-            `${page.split('.')[0]}/${page.replace(/\.pug/, '.html')}`),
-          }),
-    ),
+    // ...PAGES.map(
+    //     (page) =>
+    //       new HtmlWebpackPlugin({
+    //         template: `${PAGES_DIR}/${page}`,
+    //         filename: (page === 'index.pug' || page === '404.pug' ?
+    //         page.replace(/\.pug/, '.html') :
+    //         `${page.split('.')[0]}/${page.replace(/\.pug/, '.html')}`),
+    //       }),
+    // ),
     // PHP
     // ...PAGES_PHP.map(
     //     (page) =>
@@ -237,13 +240,13 @@ module.exports = {
     //         inject: false,
     //       }),
     // ),
-    // HTML
-    // ...PAGES.map(
-    //   (page) =>
-    //     new HtmlWebpackPlugin({
-    //       template: `${PAGES_DIR}/${page}`,
-    //       filename: page
-    //     }),
-    // ),
+    //HTML
+    ...PAGES.map(
+      (page) =>
+        new HtmlWebpackPlugin({
+          template: `${PAGES_DIR}/${page}`,
+          filename: page
+        }),
+    ),
   ],
 };
