@@ -21,15 +21,15 @@ const PATHS = {
 };
 
 // PUG
-// const PAGES_DIR = `${PATHS.src}/pug/pages`;
-// const PAGES = fs
-//     .readdirSync(PAGES_DIR)
-//     .filter((fileName) => fileName.endsWith('.pug'));
-// HTML
-const PAGES_DIR = `${PATHS.src}/pages`;
+const PAGES_DIR = `${PATHS.src}/pug/pages`;
 const PAGES = fs
     .readdirSync(PAGES_DIR)
-    .filter((fileName) => fileName.endsWith('.html'));
+    .filter((fileName) => fileName.endsWith('.pug'));
+// HTML
+// const PAGES_DIR = `${PATHS.src}/pages`;
+// const PAGES = fs
+//     .readdirSync(PAGES_DIR)
+//     .filter((fileName) => fileName.endsWith('.html'));
 // PHP
 // const PAGES_PHP = fs
 //     .readdirSync(PATHS.src)
@@ -233,15 +233,15 @@ module.exports = {
         }),
       ],
     }),
-    // ...PAGES.map(
-    //     (page) =>
-    //       new HtmlWebpackPlugin({
-    //         template: `${PAGES_DIR}/${page}`,
-    //         filename: (page === 'index.pug' || page === '404.pug' ?
-    //         page.replace(/\.pug/, '.html') :
-    //         `${page.split('.')[0]}/${page.replace(/\.pug/, '.html')}`),
-    //       }),
-    // ),
+    ...PAGES.map(
+        (page) =>
+          new HtmlWebpackPlugin({
+            template: `${PAGES_DIR}/${page}`,
+            filename: (page === 'index.pug' || page === '404.pug' ?
+            page.replace(/\.pug/, '.html') :
+            `${page.split('.')[0]}/${page.replace(/\.pug/, '.html')}`),
+          }),
+    ),
     // PHP
     // ...PAGES_PHP.map(
     //     (page) =>
@@ -251,13 +251,13 @@ module.exports = {
     //         inject: false,
     //       }),
     // ),
-    //HTML
-    ...PAGES.map(
-      (page) =>
-        new HtmlWebpackPlugin({
-          template: `${PAGES_DIR}/${page}`,
-          filename: page
-        }),
-    ),
+    // HTML
+    // ...PAGES.map(
+    //     (page) =>
+    //       new HtmlWebpackPlugin({
+    //         template: `${PAGES_DIR}/${page}`,
+    //         filename: page,
+    //       }),
+    // ),
   ],
 };

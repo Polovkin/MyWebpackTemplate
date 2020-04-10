@@ -1,17 +1,15 @@
-
 include ../includes/mixins/mixins
 block variables
 
 doctype html
 html(lang='en')
   head
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
     block head
     title #{title}
-  body
-    include ../includes/modules/header
-    main(id=mainId)
-      block main
-    include ../includes/modules/footer
+  body.overflow-xhidden(
+    data-spy="scroll",
+    data-target=".mainmenu-area" ,
+    data-offset="90")
+
+    block main
     block bodyScripts

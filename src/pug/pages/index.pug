@@ -1,16 +1,24 @@
 extends ../layout/base
 
 block variables
-  - let title = 'Amemory title';
-  - let description = 'Amemory description';
-  - let mainId = 'id';
-  - var imgPath = '/assets/img/test/'
-  - var iconsPath = '/assets/icons/'
+  - let title = 'Сервис JoinChat Group позволяет автоматизировать получение, обработки заявки в кафе и ресторанах';
+  - let description = '';
+  - let imgPath = 'assets/img/'
 
 block head
   include ../includes/templates/headMetaTags
+  include ../includes/templates/headLinks
   include ../includes/templates/headScripts
+
 
 block main
   .container-base
-    include ../includes/
+    -
+     let listData = [
+      {text: 'home', link: '/index'},
+      {text: 'about', link: '/about'},
+      {text: 'contact', link: '/contact'},
+      ]
+    each item,index in listData
+      li(class = index === 0 ? 'active' : '')
+        a(href = item.link)=item.text
