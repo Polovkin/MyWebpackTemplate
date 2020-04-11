@@ -1,11 +1,11 @@
 /* Build config:
    ========================================================================== */
-
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
 const ImageMinPlugin = require('imagemin-webpack-plugin').default;
 const imageMinMozjpeg = require('imagemin-mozjpeg');
 const imageMinPngquant = require('imagemin-pngquant');
+
 
 const buildWebpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
