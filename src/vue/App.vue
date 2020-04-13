@@ -1,9 +1,7 @@
 <template lang="pug">
 
   #app
-    .container-base
-      router-view
-      h1 Vue
+    router-view
 
 </template>
 
