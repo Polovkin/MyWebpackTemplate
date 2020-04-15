@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {VueLoaderPlugin} = require('vue-loader');
-
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 // Main const. Feel free to change it
 const PATHS = {
   src: path.join(__dirname, '../../src'),
@@ -39,9 +39,10 @@ module.exports = {
     // module: `${PATHS.src}/your-module.js`,
   },
   output: {
-    filename: `${PATHS.assets}js/[name].js`,
+    filename: `${PATHS.assets}js/[name].[contenthash].js`,
     path: PATHS.dist,
     publicPath: '',
+
   },
   optimization: {
     splitChunks: {
@@ -200,7 +201,7 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: `${PATHS.assets}css/[name].css`,
+      filename: `${PATHS.assets}css/[name].[contenthash].css`,
     }),
     new webpack.ProvidePlugin({
       '$': 'jquery',
@@ -214,6 +215,7 @@ module.exports = {
       {from: `${PATHS.src}/php`, to: ``},
       {from: `${PATHS.src}/static`, to: ''},
     ]),
+    new CleanWebpackPlugin(),
     ...PAGES.map(
         (page) =>
           new HtmlWebpackPlugin({
