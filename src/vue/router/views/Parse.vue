@@ -60,6 +60,7 @@ export default {
     async addUser() {
       const newUser = await this.$store.dispatch('CREATE_USER');
       this.data.push(newUser);
+      console.log(1)
     },
   },
   computed: {
