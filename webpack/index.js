@@ -13,8 +13,9 @@ import '../src/js/components/accordion';
 // SCSS
 import '../src/assets/scss/main.scss';
 // Vue.js
- //import '../src/vue/vue-entry';
+import '../src/vue/vue-entry';
 // CSS
 import '@fortawesome/fontawesome-free/css/all.css';
+import 'normalize.css';
 
 
