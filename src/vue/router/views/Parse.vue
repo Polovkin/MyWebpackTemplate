@@ -2,6 +2,7 @@
   .container
     h1.test Hello pug
     router-link(to="/") return
+    button(@click="alertTest(123)") press
     .carts-container
       nav
         li
@@ -45,6 +46,9 @@ export default {
     };
   },
   methods: {
+    alertTest() {
+      console.log(1123)
+    },
     counterTest() {
       this.counter++;
     },

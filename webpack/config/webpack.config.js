@@ -10,11 +10,13 @@ const {VueLoaderPlugin} = require('vue-loader');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 // Main const. Feel free to change it
 
-const isDev = process.env.NODE_ENV === 'development'
+const isDev = process.env.NODE_ENV === 'development';
+const isProd = !isDev;
+const fileName = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
 
 const PATHS = {
   src: path.join(__dirname, '../../src'),
-  dist: path.join(__dirname, (!isDev ? '../../public' : '../../dist')),
+  dist: path.join(__dirname, (isProd ? '../../public' : '../../dist')),
   webpack: path.join(__dirname, '../../webpack'),
   assets: 'assets/',
 };
@@ -38,11 +40,11 @@ module.exports = {
     paths: PATHS,
   },
   entry: {
-    app: PATHS.webpack,
+    app: ['@babel/polyfill',PATHS.webpack]
     // module: `${PATHS.src}/your-module.js`,
   },
   output: {
-    filename: `${PATHS.assets}js/[name].[contenthash].js`,
+    filename: `${PATHS.assets}js/${fileName('js')}`,
     path: PATHS.dist,
     publicPath: '',
 
@@ -59,6 +61,7 @@ module.exports = {
       },
     },
   },
+  devtool: isDev ? 'source-map' : '',
   module: {
     rules: [
       // TypeScript
@@ -70,12 +73,16 @@ module.exports = {
           appendTsSuffixTo: [/\.vue$/],
         },
       },
-      // {
-      //   // JavaScript
-      //   test: /\.js$/,
-      //   loader: 'babel-loader',
-      //   exclude: '/node_modules/',
-      // },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            '@babel/preset-env'
+          ]
+        }
+      },
       {
         test: /\.pug$/,
         oneOf: [{
@@ -205,7 +212,7 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: `${PATHS.assets}css/[name].[contenthash].css`,
+      filename: `${PATHS.assets}css/${fileName('css')}`,
     }),
     new webpack.ProvidePlugin({
       '$': 'jquery',

@@ -7,7 +7,7 @@ const baseWebpackConfig = require('./webpack.config');
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
-  devtool: 'eval',
+
   devServer: {
     historyApiFallback: true,
     contentBase: baseWebpackConfig.externals.paths.dist,
@@ -17,12 +17,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       errors: true,
     },
   },
-  plugins: [
-    new webpack.SourceMapDevToolPlugin({
-      filename: 'sourcemaps/[file].map[query]',
-      exclude: ['vendor.js'],
-    }),
-  ],
 });
 
 module.exports = new Promise((resolve, reject) => {
