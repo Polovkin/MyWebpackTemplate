@@ -7,8 +7,8 @@ const imageMinMozjpeg = require('imagemin-mozjpeg');
 const imageMinPngquant = require('imagemin-pngquant');
 
 
+
 const buildWebpackConfig = merge(baseWebpackConfig, {
-  mode: 'production',
   plugins: [
     new ImageMinPlugin({
 
