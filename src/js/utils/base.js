@@ -8,7 +8,7 @@ $('a[href*="#"]').click(function() {
   }, 500);
   return false;
 });
-let a = 42;
+
 // Click on header mobile size)
 $(document).mouseup(function(e) {
   const container = $('#header');
