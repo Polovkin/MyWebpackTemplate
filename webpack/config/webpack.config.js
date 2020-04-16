@@ -194,6 +194,7 @@ module.exports = {
     alias: {
       '~': PATHS.src,
       'vue$': 'vue/dist/vue.js',
+      '@': path.resolve(__dirname, '../../src'),
     },
     extensions: ['.tsx', '.ts', '.js'],
   },
