@@ -8,11 +8,63 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {VueLoaderPlugin} = require('vue-loader');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // Main const. Feel free to change it
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
 const fileName = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
+const plugins = () => {
+  const base = [
+    new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({
+      filename: `${PATHS.assets}css/${fileName('css')}`,
+    }),
+    new webpack.ProvidePlugin({
+      '$': 'jquery',
+      'jQuery': 'jquery',
+      'window.jQuery': 'jquery',
+    }),
+    new CopyWebpackPlugin([
+      {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
+      {from: `${PATHS.src}/${PATHS.assets}icons`, to: `${PATHS.assets}icons`},
+      {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
+      {from: `${PATHS.src}/php`, to: ``},
+      {from: `${PATHS.src}/static`, to: ''},
+    ]),
+    new CleanWebpackPlugin(),
+    ...PAGES.map(
+      (page) =>
+        new HtmlWebpackPlugin({
+          template: `${PAGES_DIR}/${page}`,
+          filename: (page === 'index.pug' || page === '404.pug' ?
+            page.replace(/\.pug/, '.html') :
+            `${page.split('.')[0]}/${page.replace(/\.pug/, '.html')}`),
+        }),
+    ),
+    // PHP
+    // ...PAGES_PHP.map(
+    //     (page) =>
+    //       new HtmlWebpackPlugin({
+    //         template: `${PATHS.src}/${page}`,
+    //         filename: `${page}`,
+    //         inject: false,
+    //       }),
+    // ),
+    // HTML
+    // ...PAGES.map(
+    //     (page) =>
+    //       new HtmlWebpackPlugin({
+    //         template: `${PAGES_DIR}/${page}`,
+    //         filename: page,
+    //       }),
+    // ),
+  ]
+  if (isProd) {
+    base.push(new BundleAnalyzerPlugin())
+  }
+  return base
+}
 
 const PATHS = {
   src: path.join(__dirname, '../../src'),
@@ -209,49 +261,5 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
   },
 
-  plugins: [
-    new VueLoaderPlugin(),
-    new MiniCssExtractPlugin({
-      filename: `${PATHS.assets}css/${fileName('css')}`,
-    }),
-    new webpack.ProvidePlugin({
-      '$': 'jquery',
-      'jQuery': 'jquery',
-      'window.jQuery': 'jquery',
-    }),
-    new CopyWebpackPlugin([
-      {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
-      {from: `${PATHS.src}/${PATHS.assets}icons`, to: `${PATHS.assets}icons`},
-      {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
-      {from: `${PATHS.src}/php`, to: ``},
-      {from: `${PATHS.src}/static`, to: ''},
-    ]),
-    new CleanWebpackPlugin(),
-    ...PAGES.map(
-        (page) =>
-          new HtmlWebpackPlugin({
-            template: `${PAGES_DIR}/${page}`,
-            filename: (page === 'index.pug' || page === '404.pug' ?
-            page.replace(/\.pug/, '.html') :
-            `${page.split('.')[0]}/${page.replace(/\.pug/, '.html')}`),
-          }),
-    ),
-    // PHP
-    // ...PAGES_PHP.map(
-    //     (page) =>
-    //       new HtmlWebpackPlugin({
-    //         template: `${PATHS.src}/${page}`,
-    //         filename: `${page}`,
-    //         inject: false,
-    //       }),
-    // ),
-    // HTML
-    // ...PAGES.map(
-    //     (page) =>
-    //       new HtmlWebpackPlugin({
-    //         template: `${PAGES_DIR}/${page}`,
-    //         filename: page,
-    //       }),
-    // ),
-  ],
+  plugins: plugins(),
 };
