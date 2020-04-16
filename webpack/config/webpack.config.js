@@ -10,11 +10,17 @@ const {VueLoaderPlugin} = require('vue-loader');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // Main const. Feel free to change it
-
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
+const PATHS = {
+  src: path.join(__dirname, '../../src'),
+  dist: path.join(__dirname, (isProd ? '../../public' : '../../dist')),
+  webpack: path.join(__dirname, '../../webpack'),
+  assets: 'assets/',
+};
+
 const fileName = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
-const plugins = () => {
+const plugins = (type) => {
   const base = [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
@@ -33,66 +39,70 @@ const plugins = () => {
       {from: `${PATHS.src}/static`, to: ''},
     ]),
     new CleanWebpackPlugin(),
-    ...PAGES.map(
+  ];
+  switch (type) {
+    case 'html': {
+      const PAGES_DIR = `${PATHS.src}/pages`;
+      const PAGES = fs
+        .readdirSync(PAGES_DIR)
+        .filter((fileName) => fileName.endsWith('.html'));
+      base.push(
+        ...PAGES.map(
+        (page) =>
+          new HtmlWebpackPlugin({
+            template: `${PAGES_DIR}/${page}`,
+            filename: page,
+          }),
+      ),);
+      break;
+    }
+
+    case 'pug': {
+      const PAGES_DIR = `${PATHS.src}/pug/pages`;
+      const PAGES = fs
+        .readdirSync(PAGES_DIR)
+        .filter((fileName) => fileName.endsWith('.pug'));
+      base.push(
+        ...PAGES.map(
+        (page) =>
+          new HtmlWebpackPlugin({
+            template: `${PAGES_DIR}/${page}`,
+            filename: (page === 'index.pug' || page === '404.pug' ?
+              page.replace(/\.pug/, '.html') :
+              `${page.split('.')[0]}/${page.replace(/\.pug/, '.html')}`),
+          }),
+      ),);
+      break;
+    }
+  }
+  const PAGES_PHP = fs
+    .readdirSync(PATHS.src)
+    .filter((fileName) => fileName.endsWith('.php'));
+  base.push(
+    ...PAGES_PHP.map(
       (page) =>
         new HtmlWebpackPlugin({
-          template: `${PAGES_DIR}/${page}`,
-          filename: (page === 'index.pug' || page === '404.pug' ?
-            page.replace(/\.pug/, '.html') :
-            `${page.split('.')[0]}/${page.replace(/\.pug/, '.html')}`),
+          template: `${PATHS.src}/${page}`,
+          filename: `${page}`,
+          inject: false,
         }),
-    ),
-    // PHP
-    // ...PAGES_PHP.map(
-    //     (page) =>
-    //       new HtmlWebpackPlugin({
-    //         template: `${PATHS.src}/${page}`,
-    //         filename: `${page}`,
-    //         inject: false,
-    //       }),
-    // ),
-    // HTML
-    // ...PAGES.map(
-    //     (page) =>
-    //       new HtmlWebpackPlugin({
-    //         template: `${PAGES_DIR}/${page}`,
-    //         filename: page,
-    //       }),
-    // ),
-  ]
-  if (isProd) {
-    base.push(new BundleAnalyzerPlugin())
-  }
+    ),)
+
+  // if (isProd) {
+  //   base.push(new BundleAnalyzerPlugin())
+  // }
   return base
 }
 
-const PATHS = {
-  src: path.join(__dirname, '../../src'),
-  dist: path.join(__dirname, (isProd ? '../../public' : '../../dist')),
-  webpack: path.join(__dirname, '../../webpack'),
-  assets: 'assets/',
-};
 
-// PUG
-const PAGES_DIR = `${PATHS.src}/pug/pages`;
-const PAGES = fs
-    .readdirSync(PAGES_DIR)
-    .filter((fileName) => fileName.endsWith('.pug'));
-// HTML
-// const PAGES_DIR = `${PATHS.src}/pages`;
-// const PAGES = fs
-//     .readdirSync(PAGES_DIR)
-//     .filter((fileName) => fileName.endsWith('.html'));
-// PHP
-// const PAGES_PHP = fs
-//     .readdirSync(PATHS.src)
-//     .filter((fileName) => fileName.endsWith('.php'));
+
+
 module.exports = {
   externals: {
     paths: PATHS,
   },
   entry: {
-    app: ['@babel/polyfill',PATHS.webpack]
+    app: ['@babel/polyfill', PATHS.webpack]
     // module: `${PATHS.src}/your-module.js`,
   },
   output: {
@@ -261,5 +271,5 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
   },
 
-  plugins: plugins(),
+  plugins: plugins('pug'),
 };
