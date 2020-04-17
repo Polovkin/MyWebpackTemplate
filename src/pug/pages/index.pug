@@ -12,6 +12,11 @@ block head
 
 
 block main
-  .container-base
-    h2 asd
-    #app
+  div#test
+    input(type="checkbox")#check
+    label(for="check") Чекбокс
+  .container
+    h1 Pug
+      +Img('pic-lazy','test/cloud1.png','')
+
+
