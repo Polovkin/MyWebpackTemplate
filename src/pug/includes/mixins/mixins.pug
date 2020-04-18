@@ -1,27 +1,28 @@
 mixin Img(type,path,imgClass, alt)
-  -
-    alt = alt !== undefined ? alt : path.split('/')[path.split('/').length -1].split('.')[0]
-    imgClass = imgClass !== undefined ? imgClass : ''
-    let fileName = path.split('.')[0]
-  case type
-    when 'lazy'
-      img(data-src=imgPath + path, class="lazy " +imgClass, alt=alt)
-    when 'pic'
-      picture(class=imgClass)
-        source(src=`${imgPath + fileName}.jxr`, type='image/vnd.ms-photo')
-        source(src=`${imgPath + fileName}.jp2`, type='image/jp2')
-        source(src=`${imgPath + fileName}.webp`, type='image/webp')
-        img(
-          src=imgPath + path, alt=alt)
-    when 'pic-lazy'
-      picture(class='lazy '+imgClass)
-        source(data-srcset=`${imgPath + fileName}.jxr`, type='image/vnd.ms-photo')
-        source(data-srcset=`${imgPath + fileName}.jp2`, type='image/jp2')
-        source(data-srcset=`${imgPath + fileName}.webp`, type='image/webp')
-        img(
-          data-srcset=imgPath + path, alt=alt)
-    default
-      img(src=imgPath + path, class=imgClass, alt=alt)
+  - imgClass = imgClass !== undefined ? imgClass : ''
+  div(class=imgClass).img-wrap
+    -
+      alt = alt !== undefined ? alt : path.split('/')[path.split('/').length -1].split('.')[0]
+      let fileName = path.split('.')[0]
+    case type
+      when 'lazy'
+        img(data-src=imgPath + path, class="lazy", alt=alt)
+      when 'pic'
+        picture
+          source(src=`${imgPath + fileName}.jxr`, type='image/vnd.ms-photo')
+          source(src=`${imgPath + fileName}.jp2`, type='image/jp2')
+          source(src=`${imgPath + fileName}.webp`, type='image/webp')
+          img(
+            src=imgPath + path, alt=alt)
+      when 'pic-lazy'
+        picture(class='lazy')
+          source(data-srcset=`${imgPath + fileName}.jxr`, type='image/vnd.ms-photo')
+          source(data-srcset=`${imgPath + fileName}.jp2`, type='image/jp2')
+          source(data-srcset=`${imgPath + fileName}.webp`, type='image/webp')
+          img(
+            data-srcset=imgPath + path, alt=alt)
+      default
+        img(src=imgPath + path, alt=alt)
 
 
 
