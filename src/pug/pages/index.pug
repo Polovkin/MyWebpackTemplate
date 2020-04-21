@@ -16,7 +16,9 @@ block main
     input(type="checkbox")#check
     label(for="check") Чекбокс
   .container
-    h1 Pug
+    h1 resizeSensor
       +Img('pic-lazy', 'test/cloud1.png','')
-
-
+      -
+        let a = ['cloass','polova','test']
+        a.push('dno')
+      p(class=a) polova
