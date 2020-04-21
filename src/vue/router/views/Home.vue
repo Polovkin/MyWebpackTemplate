@@ -3,6 +3,7 @@
     h1.test Hello pug
     .links
       router-link(to="/parse") Parse JSON
+      router-link(to="/parse2") Parse comments
 </template>
 
 <script>

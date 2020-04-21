@@ -2,73 +2,67 @@
   .container
     h1.test Hello pug
     router-link(to="/") return
-    button.btn.btn-primary(@click="alertTest(123)") press
+    button.btn.btn-primary(@click="setPages()") press
     .carts-container
       nav
         li
           label.form-group Filter
-            select#filter.form-control(v-model="sortOption")
+            select#filter.form-control(v-model="sortOption", @change="sort")
               option(v-for="sort in sortValues") {{sort}}
-            button.btn.btn-primary(@click="sort") Sort
         li
           label.form-group Search
             input#search.form-control(v-model='searchData')
           p {{searchData}}
         li
-           button.btn.btn-primary(@click="addUser") add user
+          button.btn.btn-primary(@click="addUser") add user
       div.cart(v-for="user in filteredData")
-        h4 {{user.name}}
-        p id :{{user.id}}
-        details.cart__body
-          summary More info
-          .data
-            p Full name: {{user.name}}
-            p.mail Mail: {{user.email}}
-          .address
-            p City: {{user.address.city}}
-            p Street: {{user.address.street}}
-            p Suite: {{user.address.suite}}
-            p Zipcode: {{user.address.zipcode}}
+        h4 name: {{user.name}}
+        p email: {{user.email}}
+
+        .data
+          span postID: {{user.id}}
+          p {{user.body}}
 </template>
 
 <script>
 
-export default {
-  name: 'Parse',
-  components: {},
-  data() {
-    return {
-      counter: 1,
-      data: '',
-      searchData: '',
-      sortValues: ['id', 'name', 'data'],
-      sortOption: '',
-    };
-  },
-  methods: {
-    alertTest() {
-      console.log(1123)
+  export default {
+    name: 'Parse',
+    components: {},
+    data() {
+      return {
+        counter: 1,
+        data: '',
+        searchData: '',
+        sortValues: ['id', 'name', 'data'],
+        sortOption: '',
+        pages: [],
+        perPage: 9,
+      };
     },
-    counterTest() {
-      this.counter++;
+    methods: {
+      alertTest(data) {
+        console.log(data)
+      },
+      counterTest() {
+        this.counter++;
+      },
+
+      async addUser() {
+        const newUser = await this.$store.dispatch('CREATE_USER');
+        this.data.push(newUser);
+      },
     },
-    sort() {
-      switch (this.sortOption) {
-        case 'id':
-          this.data = this.data.sort((a, b) => a.id - b.id);
-          break;
-        case 'name':
-          this.data = this.data.sort((a, b) => a.name.localeCompare(b.name));
+    setPages () {
+      let numberOfPages = Math.ceil(this.data.length / this.perPage);
+      for (let index = 1; index <= numberOfPages; index++) {
+        this.pages.push(index);
       }
+      console.log(this.pages)
     },
-    async addUser() {
-      const newUser = await this.$store.dispatch('CREATE_USER');
-      this.data.push(newUser);
-    },
-  },
-  computed: {
-    filteredData() {
-      return this.searchData === '' ? this.data :
+    computed: {
+      filteredData() {
+        return this.searchData === '' ? this.data :
           Object.values(this.data).filter((user) => {
             const userName = user.name.split()[0].toLowerCase();
             const userId = user.id;
@@ -78,13 +72,20 @@ export default {
               return user;
             }
           });
+      },
+      sort() {
+        switch (this.sortOption) {
+          case 'id':
+           return  this.data = this.data.sort((a, b) => a.id - b.id);
+          case 'name':
+           return  this.data = this.data.sort((a, b) => a.name.localeCompare(b.name));
+        }
+      },
     },
-
-  },
-  async mounted() {
-    this.data = await this.$store.dispatch('GET_TODO');
-  },
-};
+    async mounted() {
+      this.data = await this.$store.dispatch('GET_COMMENTS');
+    },
+  };
 </script>
 
 <style lang="scss"
@@ -108,7 +109,7 @@ export default {
 
       .data {
         display: flex;
-
+flex-direction: column;
         p {
           margin-right: 10px;
         }

@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 const key = 'http://jsonplaceholder.typicode.com/users';
+const key2 = 'http://jsonplaceholder.typicode.com/comments';
 const store = new Vuex.Store({
   state: {
     counter: 0,
@@ -19,6 +20,14 @@ const store = new Vuex.Store({
     GET_TODO: async () => {
       try {
         const response = await fetch(key);
+        return await response.json();
+      } catch (e) {
+        console.error(e);
+      }
+    },
+    GET_COMMENTS: async () => {
+      try {
+        const response = await fetch(key2);
         return await response.json();
       } catch (e) {
         console.error(e);

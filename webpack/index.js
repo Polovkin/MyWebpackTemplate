@@ -1,5 +1,3 @@
-
-
 // JS
 import '@/js/scripts/custom';
 
@@ -13,10 +11,9 @@ import 'bootstrap';
 // SCSS
 import '@/assets/scss/main.scss';
 // Vue.js
-//import '@/vue/vue-entry';
+import '@/vue/vue-entry';
 // CSS
 import '@fortawesome/fontawesome-free/css/all.css';
 import 'normalize.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 

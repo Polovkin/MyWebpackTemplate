@@ -16,6 +16,10 @@ export default new Router({
       component: () => import('./views/Parse.vue'),
     },
     {
+      path: '/parse2',
+      component: () => import('./views/Parse2.vue'),
+    },
+    {
       path: '/vuex',
       component: () => import('./views/VuexTest.vue'),
     },
