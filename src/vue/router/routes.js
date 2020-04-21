@@ -20,6 +20,10 @@ export default new Router({
       component: () => import('./views/Parse2.vue'),
     },
     {
+      path: '/pagination',
+      component: () => import('./views/pagination.vue'),
+    },
+    {
       path: '/vuex',
       component: () => import('./views/VuexTest.vue'),
     },

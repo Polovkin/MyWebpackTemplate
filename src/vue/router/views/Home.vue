@@ -4,6 +4,7 @@
     .links
       router-link(to="/parse") Parse JSON
       router-link(to="/parse2") Parse comments
+      router-link(to="/pagination") pagination
 </template>
 
 <script>

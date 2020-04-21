@@ -2,7 +2,7 @@
   .container
     h1.test Hello pug
     router-link(to="/") return
-    button.btn.btn-primary(@click="setPages()") press
+    button.btn.btn-primary(@click="alertTest(this.perPage)") press
     .carts-container
       nav
         li
@@ -18,10 +18,12 @@
       div.cart(v-for="user in filteredData")
         h4 name: {{user.name}}
         p email: {{user.email}}
-
         .data
           span postID: {{user.id}}
           p {{user.body}}
+
+
+
 </template>
 
 <script>
@@ -38,6 +40,7 @@
         sortOption: '',
         pages: [],
         perPage: 9,
+        numberOfPages: 1,
       };
     },
     methods: {
@@ -47,19 +50,12 @@
       counterTest() {
         this.counter++;
       },
-
       async addUser() {
         const newUser = await this.$store.dispatch('CREATE_USER');
         this.data.push(newUser);
       },
     },
-    setPages () {
-      let numberOfPages = Math.ceil(this.data.length / this.perPage);
-      for (let index = 1; index <= numberOfPages; index++) {
-        this.pages.push(index);
-      }
-      console.log(this.pages)
-    },
+
     computed: {
       filteredData() {
         return this.searchData === '' ? this.data :
@@ -76,15 +72,19 @@
       sort() {
         switch (this.sortOption) {
           case 'id':
-           return  this.data = this.data.sort((a, b) => a.id - b.id);
+            return this.data = this.data.sort((a, b) => a.id - b.id);
           case 'name':
-           return  this.data = this.data.sort((a, b) => a.name.localeCompare(b.name));
+            return this.data = this.data.sort((a, b) => a.name.localeCompare(b.name));
         }
       },
     },
     async mounted() {
       this.data = await this.$store.dispatch('GET_COMMENTS');
+      this.numberOfPages = Math.ceil(this.data.length / this.perPage);
+      console.log( this.numberOfPages)
     },
+    watch: {
+    }
   };
 </script>
 
@@ -109,7 +109,8 @@
 
       .data {
         display: flex;
-flex-direction: column;
+        flex-direction: column;
+
         p {
           margin-right: 10px;
         }
