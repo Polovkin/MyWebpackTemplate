@@ -2,27 +2,29 @@
   .container
     h1.test Hello pug
     router-link(to="/") return
-    button.btn.btn-primary(@click="alertTest(this.perPage)") press
+    button.btn.btn-primary(@click="setPages()") press
     .carts-container
       nav
         li
           label.form-group Filter
             select#filter.form-control(v-model="sortOption", @change="sort")
-              option(v-for="sort in sortValues") {{sort}}
+              option(v-for="selects in sortValues") {{selects}}
         li
           label.form-group Search
             input#search.form-control(v-model='searchData')
           p {{searchData}}
         li
-          button.btn.btn-primary(@click="addUser") add user
       div.cart(v-for="user in filteredData")
         h4 name: {{user.name}}
         p email: {{user.email}}
+
         .data
           span postID: {{user.id}}
           p {{user.body}}
-
-
+      .clearfix.btn-group.col-md-2.offset-md-5
+        button.btn.btn-sm.btn-outline-secondary(type='button', v-if='page !== 1', @click='page--')  <<
+        button.btn.btn-sm.btn-outline-secondary(type='button', v-for='pageNumber in pages.slice(page-1, page+5)', @click='page = pageNumber')  {{pageNumber}}
+        button.btn.btn-sm.btn-outline-secondary(type='button', @click='page++', v-if='page < pages.length')  >>
 
 </template>
 
@@ -38,53 +40,54 @@
         searchData: '',
         sortValues: ['id', 'name', 'data'],
         sortOption: '',
+        //pagination
+        page: 1,
+        perPage: 5,
         pages: [],
-        perPage: 9,
-        numberOfPages: 1,
       };
     },
     methods: {
       alertTest(data) {
         console.log(data)
       },
-      counterTest() {
-        this.counter++;
-      },
-      async addUser() {
-        const newUser = await this.$store.dispatch('CREATE_USER');
-        this.data.push(newUser);
-      },
-    },
-
-    computed: {
-      filteredData() {
-        return this.searchData === '' ? this.data :
-          Object.values(this.data).filter((user) => {
-            const userName = user.name.split()[0].toLowerCase();
-            const userId = user.id;
-            if (Number(this.searchData) === userId) {
-              return user;
-            } else if (userName.indexOf((this.searchData.toLowerCase())) + 1) {
-              return user;
-            }
-          });
-      },
       sort() {
         switch (this.sortOption) {
           case 'id':
             return this.data = this.data.sort((a, b) => a.id - b.id);
           case 'name':
-            return this.data = this.data.sort((a, b) => a.name.localeCompare(b.name));
+            return this.data= this.data.sort((a, b) => a.name.localeCompare(b.name));
         }
       },
+      paginate(posts) {
+        let page = this.page;
+        let perPage = this.perPage;
+        let from = (page * perPage) - perPage;
+        let to = (page * perPage);
+        return posts.slice(from, to);
+      }
+    },
+    computed: {
+      filteredData() {
+        let test = Object.values(this.data).filter((user) => {
+          const userName = user.name.split()[0].toLowerCase();
+          const userId = user.id;
+          if (Number(this.searchData) === userId || userName.indexOf((this.searchData.toLowerCase())) + 1) {
+            return user;
+          }
+        });
+        return this.paginate(test);
+      },
+      displayedPosts() {
+        return this.paginate(this.data);
+      }
     },
     async mounted() {
       this.data = await this.$store.dispatch('GET_COMMENTS');
-      this.numberOfPages = Math.ceil(this.data.length / this.perPage);
-      console.log( this.numberOfPages)
+      let numberOfPages = Math.ceil(this.data.length / this.perPage);
+      for (let index = 1; index <= numberOfPages; index++) {
+        this.pages.push(index);
+      }
     },
-    watch: {
-    }
   };
 </script>
 
@@ -110,7 +113,6 @@
       .data {
         display: flex;
         flex-direction: column;
-
         p {
           margin-right: 10px;
         }
