@@ -16,5 +16,5 @@ import '@/assets/css/responsive.css';
 // CSS
 // import '@fortawesome/fontawesome-free/css/all.css';
  import 'normalize.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+ import 'bootstrap/dist/css/bootstrap.min.css';
 

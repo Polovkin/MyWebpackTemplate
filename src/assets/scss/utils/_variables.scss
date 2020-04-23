@@ -1,32 +1,20 @@
 //Bloks color theme
-$color-main              : #01579B; // основной цвет
-$color-main-dark         : darken($color-main,15%);
-$color-main-light        : lighten($color-main,30%);
-
-$color-secondary         : #FFEB3B; // дополнительный цвет
-$color-secondary-dark    : darken($color-secondary,15%);
-$color-secondary-light   : lighten($color-secondary,30%);
-$color-secondary-hover   : #FFEB3B; // дополнительный цвет
-
-$color-gray              : gray;
-$color-gray-dark         : darken($color-gray,15%);
-$color-gray-light        : lighten($color-gray,30%);
-
-
-$color-danger            : #D41131; // цвет ошибки, опасного действия
-$color-success           : #3FD411; // цвет подтверждения, удачного завершения операции
-$color-warning           : #D8AE1C; // цвет информационного сообщения
+$color-main              : #01579B;
+$color-secondary         : #FFEB3B;
 
 //Font
+$font-color-main        : #334150;
 $font-color-secondary   : #334150;
 
 // Border Color
-$border-base             : #DCDFE6;
-$border-light            : #E4E7ED;
-$border-lighter          : #EBEEF5;
+$border-main            : #334150;
 
+
+$font-line-height: auto;
+$font-size: 18px;
+$font-family: "Oswald", serif;
+$font-weight: normal;
 //Breakpoints
-
 //Bootstrap xl
 $tabletBreakpoint               : 1200px;
 // LG
@@ -35,35 +23,31 @@ $tabletLandscapeBreakpoint      : 992px;
 $tabletPortraitBreakpoint       : 768px;
 //SM
 $mobileBreakpoint               : 576px;
-$minWidthBreakpoint             : 100px;
+//XS
+$phoneWidth                     : 320px;
+//320<
+$smPhoneWidth                   : 200px;
 
-//Only
 //1200 min (XL)
 $desktopOnly                    : $tabletBreakpoint;
-//768-1199px
-$tabletOnly                     : $tabletPortraitBreakpoint ($tabletBreakpoint - 1);
+//100-1199px
+$allMobileDevice                : $smPhoneWidth ($tabletBreakpoint - 1);
+//768-991px (MD)
+$toTablet                       : $smPhoneWidth ($tabletBreakpoint - 1);
+//100-767px (SM)
+$toMobile                       : $smPhoneWidth ($tabletPortraitBreakpoint - 1);
+
+
 //992-1199px (LG)
 $tabletLandscapeOnly            : $tabletLandscapeBreakpoint ($tabletBreakpoint - 1);
 //768-991px (MD)
 $tabletPortraitOnly             : $tabletPortraitBreakpoint ($tabletLandscapeBreakpoint - 1);
-//576-767px (SM)
-$mobileLargeOnly                : $mobileBreakpoint ($tabletPortraitBreakpoint - 1);
+
 //100-767px
-$mobileOnly                     : $minWidthBreakpoint ($tabletPortraitBreakpoint - 1);
-//100-1199px
-$allMobileDevice                : $minWidthBreakpoint ($tabletBreakpoint - 1);
+$mobileOnly                     : $smPhoneWidth ($tabletPortraitBreakpoint - 1);
 
 
-//OldMediaVars
-$desktopWidthHD          : 1440px;
-$desktopWidth            : 1180px;
-$smDesktopWidth          : 992px;
-$tableWidth              : 768px;
-$phoneWidth              : 480px;
-$smPhoneWidth            : 320px;
 
-$font-line-height: auto;
-$font-size: 18px;
-//$font-color-main        : #000000;
-$font-family: "Oswald", serif;
-$font-weight: normal;
+
+
+
