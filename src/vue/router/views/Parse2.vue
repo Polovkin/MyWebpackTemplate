@@ -25,7 +25,27 @@
         button.btn.btn-sm.btn-outline-secondary(type='button', v-if='page !== 1', @click='page--')  <<
         button.btn.btn-sm.btn-outline-secondary(type='button', v-for='pageNumber in pages.slice(page-1, page+5)', @click='page = pageNumber')  {{pageNumber}}
         button.btn.btn-sm.btn-outline-secondary(type='button', @click='page++', v-if='page < pages.length')  >>
+      div.cart(v-for="user in data")
+        h4 name: {{user.name}}
+        p email: {{user.email}}
 
+        .data
+          span postID: {{user.id}}
+          p {{user.body}}
+      div.cart(v-for="user in data")
+        h4 name: {{user.name}}
+        p email: {{user.email}}
+
+        .data
+          span postID: {{user.id}}
+          p {{user.body}}
+      div.cart(v-for="user in data")
+        h4 name: {{user.name}}
+        p email: {{user.email}}
+
+        .data
+          span postID: {{user.id}}
+          p {{user.body}}
 </template>
 
 <script>
@@ -77,9 +97,6 @@
         });
         return this.paginate(test);
       },
-      displayedPosts() {
-        return this.paginate(this.data);
-      }
     },
     async mounted() {
       this.data = await this.$store.dispatch('GET_COMMENTS');

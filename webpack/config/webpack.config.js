@@ -120,7 +120,20 @@ module.exports = {
           chunks: 'all',
           enforce: true,
         },
+        // css: {
+        //   name: 'css',
+        //   test: /\.css$/,
+        //   chunks: 'all',
+        //   enforce: true,
+        // },
+        // scss: {
+        //   name: 'scss',
+        //   test: /\.scss$/,
+        //   chunks: 'all',
+        //   enforce: true,
+        // },
       },
+
     },
   },
   devtool: isDev ? 'source-map' : '',
