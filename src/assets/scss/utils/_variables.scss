@@ -1,20 +1,18 @@
 //Bloks color theme
-$color-main              : #01579B;
-$color-secondary         : #FFEB3B;
+$color-main              : #01579B; // основной цвет
 
-//Font
-$font-color-main        : #334150;
-$font-color-secondary   : #334150;
 
-// Border Color
-$border-main            : #334150;
+$color-secondary         : #FFEB3B; // дополнительный цвет
 
 
 $font-line-height: auto;
 $font-size: 18px;
+//$font-color-main        : #000000;
 $font-family: "Oswald", serif;
 $font-weight: normal;
+
 //Breakpoints
+$desktopWidthHD                 : 1440px;
 //Bootstrap xl
 $tabletBreakpoint               : 1200px;
 // LG
@@ -23,31 +21,25 @@ $tabletLandscapeBreakpoint      : 992px;
 $tabletPortraitBreakpoint       : 768px;
 //SM
 $mobileBreakpoint               : 576px;
-//XS
-$phoneWidth                     : 320px;
-//320<
-$smPhoneWidth                   : 200px;
+$minWidthBreakpoint             : 100px;
 
-//1200 min (XL)
-$desktopOnly                    : $tabletBreakpoint;
-//100-1199px
-$allMobileDevice                : $smPhoneWidth ($tabletBreakpoint - 1);
-//768-991px (MD)
-$toTablet                       : $smPhoneWidth ($tabletBreakpoint - 1);
-//100-767px (SM)
-$toMobile                       : $smPhoneWidth ($tabletPortraitBreakpoint - 1);
+//Only
+
+$desktopOnly                    : $tabletBreakpoint; //1200 min (XL)
+$tabletOnly                     : $tabletPortraitBreakpoint ($tabletBreakpoint - 1); //768-1199px
+$tabletLandscapeOnly            : $tabletLandscapeBreakpoint ($tabletBreakpoint - 1); //992-1199px (LG)
+$tabletPortraitOnly             : $tabletPortraitBreakpoint ($tabletLandscapeBreakpoint - 1); //768-991px (MD)
+$mobileLargeOnly                : $mobileBreakpoint ($tabletPortraitBreakpoint - 1); //576-767px (SM)
+$mobileOnly                     : $minWidthBreakpoint ($tabletPortraitBreakpoint - 1); //100-767px
+$allMobileDevice                : $minWidthBreakpoint ($tabletBreakpoint - 1); //100-1199px
 
 
-//992-1199px (LG)
-$tabletLandscapeOnly            : $tabletLandscapeBreakpoint ($tabletBreakpoint - 1);
-//768-991px (MD)
-$tabletPortraitOnly             : $tabletPortraitBreakpoint ($tabletLandscapeBreakpoint - 1);
+//OldMediaVars
 
-//100-767px
-$mobileOnly                     : $smPhoneWidth ($tabletPortraitBreakpoint - 1);
-
-
-
-
+$desktopWidth            : 1180px;
+$smDesktopWidth          : 992px;
+$tableWidth              : 768px;
+$phoneWidth              : 480px;
+$smPhoneWidth            : 320px;
 
 

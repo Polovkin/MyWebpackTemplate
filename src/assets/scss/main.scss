@@ -84,9 +84,9 @@ h1 {
   &:after {
     content: 'desktopOnly';
     color: rebeccapurple;
-    @include breakpoint($tabletOnly) {
-      color: red;
-    }
+    @include breakpoint ($mobileOnly) {
+        
+     }
   }
 
 }
