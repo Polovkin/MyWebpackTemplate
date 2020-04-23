@@ -85,11 +85,11 @@ section,
     height: 200px;
   }
 }
-#test {
+
   #check {
     display: none;
     &:checked + label {
       color: red;
     }
   }
-}
+

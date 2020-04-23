@@ -69,7 +69,7 @@ const plugins = (type) => {
             template: `${PAGES_DIR}/${page}`,
             filename: (page === 'index.pug' || page === '404.pug' ?
               page.replace(/\.pug/, '.html') :
-              `${page.split('.')[0]}/${page.replace(/\.pug/, '.html')}`),
+              `${page.split('.')[0]}/index.html`),
           }),
       ),);
       break;

@@ -1,6 +1,7 @@
 <template lang="pug">
   .container
     h1.test Hello pug
+    button(@click="log(123)") Press
     .links
       router-link(to="/parse") Parse JSON
       router-link(to="/parse2") Parse comments
@@ -17,6 +18,11 @@ export default {
       counter: 1,
     };
   },
+  methods: {
+    log(data) {
+      console.log(data)
+    }
+  },
 };
 </script>
 
@@ -28,6 +34,9 @@ export default {
     flex-direction: column;
     a {
       color: blue;
+    }
+    .eblo {
+      color: red
     }
   }
 

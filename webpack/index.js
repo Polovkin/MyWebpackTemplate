@@ -11,7 +11,6 @@ import 'bootstrap';
 // SCSS
 import '@/assets/scss/main.scss';
 import '@/assets/css/responsive.css';
-import '@/assets/css/test.css';
 // Vue.js
 //import '@/vue/vue-entry';
 // CSS
