@@ -3,17 +3,17 @@
 @import "vars";
 
 //Base
-
-@import 'text/typography';
 @import 'text/fonts';
+@import 'text/typography';
 
-@import 'animation/animation';
-@import 'components/shapes';
-@import 'components/forms';
-@import 'components/accordion';
-//Layout
-@import 'modules/footer';
-@import 'modules/header';
+
+//@import 'animation/animation';
+//@import 'components/shapes';
+//@import 'components/forms';
+//@import 'components/accordion';
+////Layout
+//@import 'modules/footer';
+//@import 'modules/header';
 
 //@import "/assets/fonts/fonts.css";
 
@@ -81,12 +81,28 @@ section,
 }
 
 h1 {
+  font-weight: bold;
   &:after {
-    content: 'desktopOnly';
-    color: rebeccapurple;
-    @include breakpoint ($mobileOnly) {
-        
-     }
+    @include breakpoint($tabletBreakpoint) {
+      content: 'desktopOnly';
+      color: rebeccapurple;
+    }
+    @include breakpoint($tabletAll) {
+      content: 'tabletAll';
+      color: lightcoral;
+    }
+    @include breakpoint($tabletLandscapeOnly) {
+      content: 'tabletLandscapeBreakpoint';
+      color: red;
+    }
+    //@include breakpoint($tabletPortraitOnly) {
+    //  content: 'tabletPortraitOnly';
+    //  color: green;
+    //}
+    @include breakpoint($mobileAll) {
+      content: 'mobileALL';
+      color: yellow;
+    }
   }
 
 }

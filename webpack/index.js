@@ -4,7 +4,7 @@ import '@/js/scripts/custom';
 import '@/js/utils/base';
 import '@/js/utils/lazyloading';
 import '@/js/components/accordion';
-import 'bootstrap';
+//import 'bootstrap';
 
 // TS
 
@@ -16,5 +16,6 @@ import '@/assets/css/responsive.css';
 // CSS
 // import '@fortawesome/fontawesome-free/css/all.css';
  import 'normalize.css';
- import 'bootstrap/dist/css/bootstrap.min.css';
+
+ //import 'bootstrap/dist/css/bootstrap.min.css';
 

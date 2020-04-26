@@ -48,12 +48,12 @@ const plugins = (type) => {
         .filter((fileName) => fileName.endsWith('.html'));
       base.push(
         ...PAGES.map(
-        (page) =>
-          new HtmlWebpackPlugin({
-            template: `${PAGES_DIR}/${page}`,
-            filename: page,
-          }),
-      ),);
+          (page) =>
+            new HtmlWebpackPlugin({
+              template: `${PAGES_DIR}/${page}`,
+              filename: page,
+            }),
+        ),);
       break;
     }
 
@@ -64,14 +64,14 @@ const plugins = (type) => {
         .filter((fileName) => fileName.endsWith('.pug'));
       base.push(
         ...PAGES.map(
-        (page) =>
-          new HtmlWebpackPlugin({
-            template: `${PAGES_DIR}/${page}`,
-            filename: (page === 'index.pug' || page === '404.pug' ?
-              page.replace(/\.pug/, '.html') :
-              `${page.split('.')[0]}/index.html`),
-          }),
-      ),);
+          (page) =>
+            new HtmlWebpackPlugin({
+              template: `${PAGES_DIR}/${page}`,
+              filename: (page === 'index.pug' || page === '404.pug' ?
+                page.replace(/\.pug/, '.html') :
+                `${page.split('.')[0]}/index.html`),
+            }),
+        ),);
       break;
     }
   }
@@ -93,8 +93,6 @@ const plugins = (type) => {
   // }
   return base
 }
-
-
 
 
 module.exports = {
@@ -189,7 +187,8 @@ module.exports = {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'file-loader',
         options: {
-          name: `${PATHS.assets}/fonts/[name].[ext]`,
+          name: `[name].[ext]`,
+          outputPath: '/assets/fonts/'
         },
       },
       // {
