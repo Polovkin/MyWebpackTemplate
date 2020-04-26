@@ -13,7 +13,6 @@ $fonts-types        :
     ('It',500,italic),
   );
 
-
 @each $name, $weight,$style in $fonts-types {
   @include font-face($font-family , $fontsPath+$name,$weight, $style, $fonts-ext);
 }
