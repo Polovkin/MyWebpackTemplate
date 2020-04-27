@@ -136,10 +136,10 @@ $z-indexes: (
   }
 }
 
-@mixin pseudoElement($width,$url: null) {
+@mixin pseudoElement($width,$url: null,$position: absolute) {
   content: '';
   display: block;
-  position: absolute;
+  position: $position;
   @include size($width);
   @if ($url != null) {
     background-image: url($url);
