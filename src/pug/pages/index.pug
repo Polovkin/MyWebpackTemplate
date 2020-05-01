@@ -12,8 +12,16 @@ block head
 
 
 block main
-  .container
+  .container(style="background-color: red; height: 100vh")
     div#home
       h1 Home page
         .div
-          i.fas.fa-star-half-alt
+          .lds-ring
+            .div
+            .div
+            .div
+            .div
+          .loader
+            .circle
+            .circle
+            .circle

@@ -142,7 +142,7 @@ $z-indexes: (
   position: $position;
   @include size($width);
   @if ($url != null) {
-    background-image: url($url);
+    background-image: url($iconsPath + $url);
     background-size: cover;
     background-repeat: no-repeat;
   }
