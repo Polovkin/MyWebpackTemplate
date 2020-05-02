@@ -20,6 +20,7 @@ body {
   font-family: $font-family;
   font-size: $font-size;
   font-weight: $font-weight;
+  color: $font-color-main;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -52,8 +53,8 @@ p, a {
 }
 
 img {
-  width: 100%;
   height: auto;
+  max-width: 100%;
 }
 
 /*--------------------------------------------------------------------------------------
@@ -94,11 +95,6 @@ a {
   }
 }
 
-
-img {
-  max-width: 100%;
-  height: auto;
-}
 
 
 

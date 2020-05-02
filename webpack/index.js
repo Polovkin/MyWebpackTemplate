@@ -3,6 +3,7 @@ import '@/js/scripts/custom';
 
 import '@/js/utils/base';
 import '@/js/utils/lazyloading';
+import '@/js/utils/animation';
 import '@/js/components/accordion';
 
 import 'bootstrap';
@@ -16,5 +17,6 @@ import '@/assets/scss/main.scss';
 // CSS
 import '@fortawesome/fontawesome-free/js/all.min'
 import 'normalize.css';
+import 'animate.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
