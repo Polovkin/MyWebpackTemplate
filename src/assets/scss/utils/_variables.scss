@@ -1,34 +1,36 @@
 //Bloks color theme
 $color-main              : #01579B; // основной цвет
 
-
 $color-secondary         : #FFEB3B; // дополнительный цвет
 
 
 //Breakpoints
-$desktopWidthHD                 : 1440px;
+$desktop_1440          : 1440px;
 //Bootstrap xl
-$tabletBreakpoint               : 1200px;
+$tablet_1200           : 1200px;
 // LG
-$tabletLandscapeBreakpoint      : 992px;
+$tablet_992            : 992px;
 //MD
-$tabletPortraitBreakpoint       : 768px;
+$tablet_768            : 768px;
 //SM
-$mobileBreakpoint               : 576px;
+$mobile_576            : 576px;
 //XS
-$mobileMinBreakpoint            : 320px;
+$mobile_320            : 320px;
 //Min
-$minBreakpoint                  : 100px;
+$min_100               : 100px;
 
 
-//only
-$allMobileDevice                 : $minBreakpoint             $tabletBreakpoint;          // min 100 - 1200
-$tabletAll                       : $tabletPortraitBreakpoint  $tabletBreakpoint;          // min 768 - 1200
-$tabletLandscapeOnly             : $tabletLandscapeBreakpoint $tabletBreakpoint;          // min 768 - 1200p
-$tabletPortraitOnly              : $tabletPortraitBreakpoint  $tabletLandscapeBreakpoint; // min 768 - 992
-$mobileAll                       : $minBreakpoint             $tabletPortraitBreakpoint;  // min 100 - 768
-$mobileLargeOnly                 : $mobileMinBreakpoint       $tabletPortraitBreakpoint;  // min 321 - 576
-$mobileSmallOnly                 : $minBreakpoint             $mobileMinBreakpoint;        // min 100 - 320
+//ALL
+$allMobile                  : $min_100      $tablet_1200;   // min 100 - 1200
+$allTablet                  : $tablet_768   $tablet_1200;   // min 768 - 1200
+$allPhone                   : $min_100      $tablet_768;    // min 100 - 768
+$allPhoneTablet             : $min_100      $tablet_992;    // min 100 - 992
+
+$onlyDesktop                : $tablet_1200; //min 1200
+$onlyTabletLandscape        : $tablet_992   $tablet_1200;   // min 992 - 1200px
+$onlyTabletPortrait         : $tablet_768   $tablet_992;    // min 768 - 992
+$onlyMobileSmall            : $mobile_320;                  // min 100 - 320
+
 
 
 $iconsPath: '/assets/img/icons';

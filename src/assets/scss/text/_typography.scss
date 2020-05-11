@@ -2,13 +2,13 @@ html {
   line-height: $font-line-height;
   font-size: $font-size;
   height: 100%;
-  @include breakpoint($tabletLandscapeBreakpoint) {
+  @include breakpoint($tablet_1200) {
     font-size: 16px;
   }
-  @include breakpoint($tabletPortraitBreakpoint) {
+  @include breakpoint($tablet_992) {
     font-size: 15px;
   }
-  @include breakpoint($mobileBreakpoint) {
+  @include breakpoint($tablet_768) {
     font-size: 14px;
   }
 
@@ -33,7 +33,7 @@ main {
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6,p {
+h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 }
 
@@ -96,8 +96,6 @@ a {
 }
 
 
-
-
 /* Remove Chrome Input Field's Unwanted Yellow Background Color */
 
 input:-webkit-autofill,
@@ -111,6 +109,7 @@ input:-webkit-autofill:hover {
 -----------------------*/
 .text {
   position: relative;
+
   &-left {
     text-align: left;
   }
@@ -584,32 +583,29 @@ p:last-of-type {
 ----------------------------------------*/
 
 
-
-
-
-
-
-
-
-
 /*----------------*/
 .section-padding {
   padding: 50px 0;
 }
+
 .padding-top {
   padding-top: 50px;
 }
+
 .padding-bottom {
   padding-bottom: 50px;
 }
+
 .padding-100-50 {
   padding-top: 50px;
   padding-bottom: 0;
 }
+
 .padding-100-70 {
   padding-top: 50px;
   padding-bottom: 20px;
 }
+
 .padding-100-30 {
   padding-top: 50px;
   padding-bottom: 0px;

@@ -51,7 +51,7 @@
     },
     watch: {
       posts() {
-        this.setPages();
+        console.log(1)
       }
     },
     async mounted() {

@@ -131,7 +131,6 @@ module.exports = {
         //   enforce: true,
         // },
       },
-
     },
   },
   devtool: isDev ? 'source-map' : '',

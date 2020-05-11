@@ -6,7 +6,6 @@
 @import 'text/fonts';
 @import 'text/typography';
 
-
 @import 'animation/animation';
 //@import 'components/shapes';
 //@import 'components/forms';
@@ -38,16 +37,14 @@ section,
   position: relative;
 
   overflow: hidden;
-
-
-  @include breakpoint($tabletBreakpoint) {
+  @include breakpoint($tablet_1200) {
     padding: 3rem 0;
   }
-  @include breakpoint($tabletLandscapeBreakpoint) {
+  @include breakpoint($tablet_992) {
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
-  @include breakpoint($tabletPortraitBreakpoint) {
+  @include breakpoint($tablet_768) {
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
@@ -61,17 +58,17 @@ section,
   margin: 0 auto;
   padding: 0 15px;
   width: 100%;
-  max-width: $desktopWidthHD;
-  @include breakpoint($tabletBreakpoint) {
+  max-width: $desktop_1440;
+  @include breakpoint($tablet_1200) {
     max-width: 1140px;
   }
-  @include breakpoint($tabletLandscapeBreakpoint) {
+  @include breakpoint($tablet_992) {
     max-width: 960px;
   }
-  @include breakpoint($tabletPortraitBreakpoint) {
+  @include breakpoint($tablet_768) {
     max-width: 720px;
   }
-  @include breakpoint($mobileBreakpoint) {
+  @include breakpoint($mobile_576) {
     max-width: 540px;
   }
 }
@@ -82,34 +79,26 @@ section,
 
 h1 {
   font-weight: bold;
+
   &:after {
-    @include breakpoint($tabletBreakpoint) {
-      content: 'desktopOnly';
-      color: rebeccapurple;
+    @include breakpoint($onlyDesktop) {
+      content: 'min 1200px';
+      color: aquamarine;
     }
-    @include breakpoint($tabletAll) {
-      content: 'tabletAll';
-      color: lightcoral;
-    }
-    @include breakpoint($tabletLandscapeOnly) {
-      content: 'tabletLandscapeBreakpoint';
+    @include breakpoint($onlyTabletLandscape) {
+      content: 'min 992 - 1200px';
       color: red;
     }
-    //@include breakpoint($tabletPortraitOnly) {
-    //  content: 'tabletPortraitOnly';
-    //  color: green;
-    //}
-    @include breakpoint($mobileAll) {
-      content: 'mobileALL';
-      color: yellow;
+    @include breakpoint($onlyTabletPortrait) {
+      content: 'min 768 - 992';
+      color: blue;
+    }
+    @include breakpoint($allPhone) {
+      content: 'min 100 - 768';
+      color: hotpink;
     }
   }
 
 }
-#home {
-  margin-top: 100vh;
-}
-.text {
-  height: 700px;
-  border: 1px solid black;
-}
+
+

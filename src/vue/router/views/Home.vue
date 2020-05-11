@@ -2,6 +2,8 @@
   .container
     h1.test Hello pug
     button(@click="log(123)") Press
+    p {{text}}
+    input(v-model.lazy="text")
     .links
       router-link(to="/parse") Parse JSON
       router-link(to="/parse2") Parse comments
@@ -16,6 +18,7 @@ export default {
   data() {
     return {
       counter: 1,
+      text: '',
     };
   },
   methods: {
