@@ -17,16 +17,16 @@ $mobile_576            : 576px;
 //XS
 $mobile_320            : 320px;
 //Min
-$min_100               : 100px;
+$minWidth               : 100px;
 
 
 //ALL
-$allMobile                  : $min_100      $tablet_1200;   // min 100 - 1200
 $allTablet                  : $tablet_768   $tablet_1200;   // min 768 - 1200
-$allPhone                   : $min_100      $tablet_768;    // min 100 - 768
-$allPhoneTablet             : $min_100      $tablet_992;    // min 100 - 992
+$allMobile                  : $minWidth      $tablet_1200;   // min 100 - 1200
+$allPhoneTablet             : $minWidth      $tablet_992;    // min 100 - 992
+$allPhone                   : $minWidth      $tablet_768;    // min 100 - 768
 
-$onlyDesktop                : $tablet_1200; //min 1200
+$onlyDesktop                : $tablet_1200;                 //min 1200
 $onlyTabletLandscape        : $tablet_992   $tablet_1200;   // min 992 - 1200px
 $onlyTabletPortrait         : $tablet_768   $tablet_992;    // min 768 - 992
 $onlyMobileSmall            : $mobile_320;                  // min 100 - 320
