@@ -40,6 +40,7 @@ export default {
     return {
       counter: 1,
       data: '',
+
       searchData: '',
       sortValues: ['id', 'name', 'data'],
       sortOption: '',
