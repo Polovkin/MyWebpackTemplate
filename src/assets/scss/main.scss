@@ -75,33 +75,8 @@ section,
   }
 }
 
-@mixin content($var) {
-  content: 'width #{$var}';
-}
 
-h1 {
-  font-weight: bold;
-  animation-name: bounce;
 
-  &:after {
-    @include breakpoint($onlyDesktop) {
-      content: 'min 1200px';
-      color: aquamarine;
-    }
-    @include breakpoint($onlyTabletLandscape) {
-      content: 'min 992 - 1200px';
-      color: red;
-    }
-    @include breakpoint($onlyTabletPortrait) {
-      content: 'min 768 - 992';
-      color: blue;
-    }
-    @include breakpoint($allPhone) {
-      content: 'min 100 - 768';
-      color: hotpink;
-    }
-  }
 
-}
 
 

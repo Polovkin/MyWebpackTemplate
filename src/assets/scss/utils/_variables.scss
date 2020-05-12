@@ -4,6 +4,7 @@ $color-main              : #01579B; // основной цвет
 $color-secondary         : #FFEB3B; // дополнительный цвет
 
 
+
 //Breakpoints
 $desktop_1600          : 1600px;
 //Bootstrap xl
@@ -21,7 +22,7 @@ $minWidth              : 100px;
 
 
 //ALL
-$allTablet                  : $tablet_768   $tablet_1200;   // min 768 - 1200
+$allTablet                  : $tablet_768    $tablet_1200;     // min 768 - 1200
 $allMobile                  : $minWidth      $tablet_1200;   // min 100 - 1200
 $allPhoneTablet             : $minWidth      $tablet_992;    // min 100 - 992
 $allPhone                   : $minWidth      $tablet_768;    // min 100 - 768
@@ -29,8 +30,7 @@ $allPhone                   : $minWidth      $tablet_768;    // min 100 - 768
 $onlyDesktop                : $tablet_1200;                 //min 1200
 $onlyTabletLandscape        : $tablet_992   $tablet_1200;   // min 992 - 1200px
 $onlyTabletPortrait         : $tablet_768   $tablet_992;    // min 768 - 992
-$onlyMobileSmall            : $mobile_320;                  // min 100 - 320
+$onlyMobileSmall            : $minWidth     $mobile_320;                  // min 100 - 320
 
-
-
-$iconsPath: '/assets/img/icons';
+$imgPath: '/assets/img/';
+$iconsPath: $imgPath +'icons/';

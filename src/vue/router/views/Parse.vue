@@ -1,8 +1,9 @@
 <template lang="pug">
   .container
     h1.test Hello pug
-    router-link(to="/") return
-    button.btn.btn-primary(@click="alertTest(123)") press
+      .wrap
+        router-link(to="/").btn-primary.btn return
+        button.btn.btn-primary(@click="alertTest(123)") press
     .carts-container
       nav
         li
@@ -15,61 +16,66 @@
             input#search.form-control(v-model='searchData')
           p {{searchData}}
         li
-           button.btn.btn-primary(@click="addUser") add user
-      div.cart(v-for="user in filteredData")
-        h4 {{user.name}}
-        p id :{{user.id}}
-        details.cart__body
-          summary More info
-          .data
-            p Full name: {{user.name}}
-            p.mail Mail: {{user.email}}
-          .address
-            p City: {{user.address.city}}
-            p Street: {{user.address.street}}
-            p Suite: {{user.address.suite}}
-            p Zipcode: {{user.address.zipcode}}
+          .form-group
+            button.btn.btn-primary(@click="addUser") add user
+      #grid-test
+        template(v-for="(items,index) in numbers")
+          div.cart(:class="`cart${index+1}`")
+            h1 {{index+1}}
+        //div.cart(v-for="user in filteredData")
+          h4 {{user.name}}
+          p id :{{user.id}}
+          details.cart__body
+            summary More info
+            .data
+              p Full name: {{user.name}}
+              p.mail Mail: {{user.email}}
+            .address
+              p City: {{user.address.city}}
+              p Street: {{user.address.street}}
+              p Suite: {{user.address.suite}}
+              p Zipcode: {{user.address.zipcode}}
 </template>
 
 <script>
 
-export default {
-  name: 'Parse',
-  components: {},
-  data() {
-    return {
-      counter: 1,
-      data: '',
-
-      searchData: '',
-      sortValues: ['id', 'name', 'data'],
-      sortOption: '',
-    };
-  },
-  methods: {
-    alertTest() {
-      console.log(1123)
+  export default {
+    name: 'Parse',
+    components: {},
+    data() {
+      return {
+        counter: 1,
+        data: '',
+        searchData: '',
+        numbers: [1, 2, 3, 4, 5, 6],
+        sortValues: ['id', 'name', 'data'],
+        sortOption: '',
+      };
     },
-    counterTest() {
-      this.counter++;
+    methods: {
+      alertTest() {
+        console.log(1123)
+      },
+      counterTest() {
+        this.counter++;
+      },
+      sort() {
+        switch (this.sortOption) {
+          case 'id':
+            this.data = this.data.sort((a, b) => a.id - b.id);
+            break;
+          case 'name':
+            this.data = this.data.sort((a, b) => a.name.localeCompare(b.name));
+        }
+      },
+      async addUser() {
+        const newUser = await this.$store.dispatch('CREATE_USER');
+        this.data.push(newUser);
+      },
     },
-    sort() {
-      switch (this.sortOption) {
-        case 'id':
-          this.data = this.data.sort((a, b) => a.id - b.id);
-          break;
-        case 'name':
-          this.data = this.data.sort((a, b) => a.name.localeCompare(b.name));
-      }
-    },
-    async addUser() {
-      const newUser = await this.$store.dispatch('CREATE_USER');
-      this.data.push(newUser);
-    },
-  },
-  computed: {
-    filteredData() {
-      return this.searchData === '' ? this.data :
+    computed: {
+      filteredData() {
+        return this.searchData === '' ? this.data :
           Object.values(this.data).filter((user) => {
             const userName = user.name.split()[0].toLowerCase();
             const userId = user.id;
@@ -79,65 +85,86 @@ export default {
               return user;
             }
           });
-    },
+      },
 
-  },
-  async mounted() {
-    this.data = await this.$store.dispatch('GET_TODO');
-  },
-};
+    },
+    async mounted() {
+      this.data = await this.$store.dispatch('GET_TODO');
+    },
+  };
 </script>
 
 <style lang="scss"
        scoped>
-  .carts-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-gap: 10px;
 
-    .cart {
-      border-radius: 10px;
-      padding: 20px 30px;
-      border: 1px solid lightgray;
+  .wrap {
+    .btn {
       margin: 10px;
-      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-
-      h4 {
-        color: red;
-      }
-
-      .data {
-        display: flex;
-
-        p {
-          margin-right: 10px;
-        }
-
-      }
-
-      .mail {
-        color: dodgerblue;
-      }
-
-      .address {
-        padding: 10px;
-        border: 1px solid lightgray;
-        display: grid;
-        grid-gap: 5px;
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    nav {
-      display: flex;
-
-      li {
-        margin: 20px;
-      }
-
-
     }
   }
 
+  nav {
+    display: flex;
+
+    li {
+      .form-group {
+        display: flex;
+        padding: 10px;
+        margin-bottom: 0;
+
+        input {
+          margin-right: 10px;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+
+  #grid-test {
+
+    // Regular grid CSS for modern browsers.
+    display: grid;
+    grid: repeat(2,auto)/repeat(3,1fr);
+    grid-gap: 30px;
+
+
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      @include grid-columns(30px, 1fr 1fr 1fr);
+      @include grid-rows(30px, auto auto);
+      @include grid-autoflow((autoflow: row, columns: 3, rows: 2, gap: both));
+    }
+
+
+    .cart {
+      width: 100%;
+      height: 100%;
+      border: 1px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+    }
+
+
+    .cart1 {
+      color: red;
+      grid-column: 1/2;
+      grid-row: 1/2;
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        grid-column: 3/4 !important;
+        grid-row: 3/4 !important;
+      }
+    }
+
+    .cart5 {
+      color: red;
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        grid-column: 1/2 !important;
+        grid-row: 1/2 !important;
+      }
+
+    }
+
+  }
 </style>

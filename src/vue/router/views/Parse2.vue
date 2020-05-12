@@ -45,10 +45,17 @@
       counterTest() {
         this.counter++;
       },
-
       async addUser() {
         const newUser = await this.$store.dispatch('CREATE_USER');
         this.data.push(newUser);
+      },
+      sort() {
+        switch (this.sortOption) {
+          case 'id':
+            return  this.data = this.data.sort((a, b) => a.id - b.id);
+          case 'name':
+            return  this.data = this.data.sort((a, b) => a.name.localeCompare(b.name));
+        }
       },
     },
     setPages () {
@@ -71,14 +78,7 @@
             }
           });
       },
-      sort() {
-        switch (this.sortOption) {
-          case 'id':
-           return  this.data = this.data.sort((a, b) => a.id - b.id);
-          case 'name':
-           return  this.data = this.data.sort((a, b) => a.name.localeCompare(b.name));
-        }
-      },
+
     },
     async mounted() {
       this.data = await this.$store.dispatch('GET_COMMENTS');
