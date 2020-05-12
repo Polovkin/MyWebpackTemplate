@@ -15,17 +15,17 @@ export default new Router({
       path: '/parse',
       component: () => import('./views/Parse.vue'),
     },
-    {
-      path: '/parse2',
-      component: () => import('./views/Parse2.vue'),
-    },
-    {
-      path: '/pagination',
-      component: () => import('./views/pagination.vue'),
-    },
-    {
-      path: '/vuex',
-      component: () => import('./views/VuexTest.vue'),
-    },
+    // {
+    //   path: '/parse2',
+    //   component: () => import('./views/Parse2.vue'),
+    // },
+    // {
+    //   path: '/pagination',
+    //   component: () => import('./views/pagination.vue'),
+    // },
+    // {
+    //   path: '/vuex',
+    //   component: () => import('./views/VuexTest.vue'),
+    // },
   ],
 });

@@ -33,7 +33,6 @@ const plugins = (type) => {
     }),
     new CopyWebpackPlugin([
       {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
-      {from: `${PATHS.src}/${PATHS.assets}icons`, to: `${PATHS.assets}icons`},
       {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
       {from: `${PATHS.src}/php`, to: ``},
       {from: `${PATHS.src}/static`, to: ''},
