@@ -121,50 +121,5 @@
   }
 
 
-  #grid-test {
 
-    // Regular grid CSS for modern browsers.
-    display: grid;
-    grid: repeat(2,auto)/repeat(3,1fr);
-    grid-gap: 30px;
-
-
-    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-      @include grid-columns(30px, 1fr 1fr 1fr);
-      @include grid-rows(30px, auto auto);
-      @include grid-autoflow((autoflow: row, columns: 3, rows: 2, gap: both));
-    }
-
-
-    .cart {
-      width: 100%;
-      height: 100%;
-      border: 1px solid black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-    }
-
-
-    .cart1 {
-      color: red;
-      grid-column: 1/2;
-      grid-row: 1/2;
-      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-        grid-column: 3/4 !important;
-        grid-row: 3/4 !important;
-      }
-    }
-
-    .cart5 {
-      color: red;
-      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-        grid-column: 1/2 !important;
-        grid-row: 1/2 !important;
-      }
-
-    }
-
-  }
 </style>
