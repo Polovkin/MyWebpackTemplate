@@ -1,29 +1,29 @@
 //Обычные плитки с перестановкой и разными размерами
-#grid-test {
-  display: grid;
-
-  grid-gap: 20px;
-  grid-template:
-    "f   f   c" 100px
-    "d   e   a" 100px
-    "b   b   b" 100px
-    /
-      1fr  1fr 1fr;
-
-  .cart {
-    border: 1px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-  }
-
-
-  $template-areas: (a,b,c,d,e,f);
-  @for $i from 1 through length($template-areas) {
-    $c: nth($template-areas, $i);
-    .cart#{$i} {
-      grid-area : $c;
-    }
-  }
-}
+//#grid-test {
+//  display: grid;
+//
+//  grid-gap: 20px;
+//  grid-template:
+//    "f   f   c" 100px
+//    "d   e   a" 100px
+//    "b   b   b" 100px
+//    /
+//      1fr  1fr 1fr;
+//
+//  .cart {
+//    border: 1px solid black;
+//    display: flex;
+//    align-items: center;
+//    justify-content: center;
+//    font-size: 30px;
+//  }
+//
+//
+//  $template-areas: (a,b,c,d,e,f);
+//  @for $i from 1 through length($template-areas) {
+//    $c: nth($template-areas, $i);
+//    .cart#{$i} {
+//      grid-area : $c;
+//    }
+//  }
+//}

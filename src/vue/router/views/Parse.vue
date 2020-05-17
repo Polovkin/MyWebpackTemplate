@@ -18,11 +18,10 @@
         li
           .form-group
             button.btn.btn-primary(@click="addUser") add user
-      #grid-test
-        template(v-for="(items,index) in numbers")
-          div.cart(:class="`cart${index+1}`")
-            h1 {{index+1}}
-        //div.cart(v-for="user in filteredData")
+
+      loader(v-if="loader")
+      #grid-test(v-else)
+        div.cart(v-for="user in filteredData")
           h4 {{user.name}}
           p id :{{user.id}}
           details.cart__body
@@ -35,13 +34,15 @@
               p Street: {{user.address.street}}
               p Suite: {{user.address.suite}}
               p Zipcode: {{user.address.zipcode}}
+
 </template>
 
 <script>
 
+  import Loader from "../../components/app/loader.vue";
   export default {
     name: 'Parse',
-    components: {},
+    components: {Loader},
     data() {
       return {
         counter: 1,
@@ -50,6 +51,14 @@
         numbers: [1, 2, 3, 4, 5, 6],
         sortValues: ['id', 'name', 'data'],
         sortOption: '',
+        loader: true,
+        //=========
+        animal: {
+          name: 'Animal',
+          age: 5,
+          hasTail: true,
+        }
+
       };
     },
     methods: {
@@ -72,6 +81,9 @@
         const newUser = await this.$store.dispatch('CREATE_USER');
         this.data.push(newUser);
       },
+      animalLog() {
+        console.log(this.animal);
+      }
     },
     computed: {
       filteredData() {
@@ -90,7 +102,10 @@
     },
     async mounted() {
       this.data = await this.$store.dispatch('GET_TODO');
+      this.loader = false;
+      this.animalLog()
     },
+
   };
 </script>
 
@@ -120,6 +135,23 @@
     }
   }
 
+  #grid-test {
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr;
+    grid-gap: 3em;
+    .cart {
+      height: fit-content;
+      border: 1px solid black;
+      padding: 20px;
+      border-radius: 20px;
+      transition: all .4s;
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
 
 
 </style>

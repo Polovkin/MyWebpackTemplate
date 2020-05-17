@@ -13,8 +13,9 @@
 ////Layout
 //@import 'modules/footer';
 //@import 'modules/header';
-
-//@import "/assets/fonts/fonts.css";
+@import "includes/components.scss";
+@import "includes/modules.scss";
+@import "includes/blocks";
 
 .wrapper {
   display: flex;
@@ -74,42 +75,4 @@ section,
     max-width: 540px;
   }
 }
-
-#grid-test {
-
-
-  display: grid;
-
-  grid-gap: 10px;
-  grid-template:
-    "f   b   c" 100px
-    "d   e   a" 100px /
-      1fr  1fr 1fr;
-
-
-  .cart {
-    border: 1px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-
-  }
-
-
-  $template-areas: (a,b,c,d,e,f);
-  @for $i from 1 through length($template-areas) {
-    $c: nth($template-areas, $i);
-    .cart#{$i} {
-      grid-area : $c;
-    }
-  }
-
-
-
-
-}
-
-
-
 

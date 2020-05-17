@@ -36,29 +36,6 @@ $z-indexes: (
   'site-footer'
 );
 
-//elements align
-@mixin align($v: true, $h: false, $position: relative) {
-  @if $position {
-    position: $position;
-  }
-  @if $v {
-    top: 50%;
-  }
-  @if $h {
-    left: 50%;
-  }
-
-  @if $v and $h {
-    transform: translateX(-50%) translateY(-50%);
-  } @else if $v {
-    transform: translateY(-50%);
-  } @else {
-    transform: translateX(-50%);
-  }
-}
-
-
-
 @function is-direction($value) {
   $is-keyword: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value);
   $is-angle: type-of($value) == 'number' and index('deg' 'grad' 'turn' 'rad', unit($value));
@@ -103,37 +80,6 @@ $z-indexes: (
   background: nth(nth($color-stops, 1), 1);
   background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
   background: linear-gradient($direction, $color-stops);
-}
-
-@mixin position($position, $t: null,$l: null, $r: null, $b: null ) {
-  @if ($position == a) {
-    position: absolute;
-  } @else if ($position == r) {
-    position: relative;
-  } @else if ($position == f) {
-    position: fixed;
-  } @else {
-    position: unset;
-  }
-  top: $t;
-  right: $r;
-  bottom: $b;
-  left: $l;
-}
-
-@mixin align($c: null,$h: null, $v: null,) {
-  position: absolute;
-  @if ($c) {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  } @else if ($h) {
-    left: 50%;
-    transform: translate(-50%, 0);
-  } @else if ($v) {
-    top: 50%;
-    transform: translate(0, -50%);
-  }
 }
 
 @mixin pseudoElement($width,$url: null,$position: absolute) {
@@ -190,9 +136,6 @@ $z-indexes: (
 
   @return $string;
 }
-
-
-
 
 @mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
   $src: null;
