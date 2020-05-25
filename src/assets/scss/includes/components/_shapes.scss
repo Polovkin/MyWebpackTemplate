@@ -39,10 +39,10 @@
 }
 
 @mixin cross($size,$width,$height,$color,$rotate: 45deg) {
-  position: relative;
+  display: block;
+  position: absolute;
   cursor: pointer;
   @include size($size);
-  transform: rotate($rotate);
   &:before {
     position: absolute;
     top: 50%;
@@ -52,7 +52,7 @@
     height: $height;
 
     content: '';
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotate($rotate);
 
     background-color: $color;
   }
@@ -65,8 +65,27 @@
     height: $width;
 
     content: '';
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotate($rotate);
 
     background-color: $color;
   }
+}
+
+@mixin semi-cross($size,$width,$height,$color,$rotate: 45deg) {
+  @include cross($size, $width, $height, $color, $rotate: 45deg);
+  transform: rotate($rotate);
+  &:after, &:before {
+    display: block;
+    transform: unset;
+    top: unset;
+    left: unset;
+    bottom: unset;
+    right: unset;
+  }
+}
+
+@mixin line($width,$height,$color) {
+  @include pseudoElement($width);
+  height: $height;
+  background-color: $color;
 }

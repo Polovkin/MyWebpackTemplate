@@ -2,8 +2,9 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 Vue.use(Vuex);
+const axios = require('axios').default;
 const key = 'http://jsonplaceholder.typicode.com/users';
-const key2 = 'http://jsonplaceholder.typicode.com/comments';
+const w8 = 'https://w8develop.amemory.pro/home/test-export-tickets-for-mikle';
 const store = new Vuex.Store({
   state: {
     counter: 0,
@@ -17,10 +18,10 @@ const store = new Vuex.Store({
     COUNTER_PLUS({commit}) {
       commit('CHANGE_COUNTER');
     },
-    GET_TODO: async () => {
+    GET_DATA: async () => {
       try {
-        const response = await fetch(key);
-        return await response.json();
+        const response = await axios.get(key)
+        return await response.data;
       } catch (e) {
         console.error(e);
       }

@@ -1,13 +1,10 @@
 <template lang="pug">
   .container
-    h1.test Hello pug
-    button(@click="log(123)") Press
-    p {{text}}
-    input(v-model.lazy="text")
+    p {{size}}
     .links
       router-link(to="/parse") Parse JSON
-      router-link(to="/parse2") Parse comments
-      router-link(to="/pagination") pagination
+      router-link(to="/breakpoint") braikpoints
+
 </template>
 
 <script>
@@ -19,13 +16,23 @@ export default {
     return {
       counter: 1,
       text: '',
+      size: ''
     };
   },
   methods: {
     log(data) {
       console.log(data)
+    },
+    windowSize() {
+      let w = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+      let h = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+      this.size = `${w} x ${h}`
     }
   },
+  mounted() {
+   this. windowSize();
+    window.addEventListener("resize",this.windowSize, false);
+  }
 };
 </script>
 

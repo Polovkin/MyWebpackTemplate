@@ -1,4 +1,4 @@
-extends ../includes/layout/base
+extends ../layout/base
 
 block variables
   - let title = 'Сервис JoinChat Group позволяет автоматизировать получение, обработки заявки в кафе и ресторанах';
@@ -6,14 +6,15 @@ block variables
   - let imgPath = 'assets/img/'
 
 block head
-  include ../includes/layout/links/headMetaTags
-  include ../includes/layout/links/headLinks
-  include ../includes/layout/links/headScripts
+  include ../layout/links/headMetaTags
+  include ../layout/links/headLinks
+  include ../layout/links/headScripts
 
 
 block main
   .container-base
-    div#galety
+    div#about
       h1 About page
       a(href='/') Home
-      img(src="https://i.picsum.photos/id/971/200/300.jpg")
+      input(type="checkbox")#check
+      label(for="check") Чекбокс

@@ -1,16 +1,14 @@
 <template lang="pug">
   .container
-    h1.test Hello pug
+    h1.test JSON parse filter
       .wrap
         router-link(to="/").btn-primary.btn return
-        button.btn.btn-primary(@click="alertTest(123)") press
     .carts-container
       nav
         li
           label.form-group Filter
-            select#filter.form-control(v-model="sortOption")
+            select#filter.form-control(v-model="sortOption", @change="sort")
               option(v-for="sort in sortValues") {{sort}}
-            button.btn.btn-primary(@click="sort") Sort
         li
           label.form-group Search
             input#search.form-control(v-model='searchData')
@@ -19,9 +17,10 @@
           .form-group
             button.btn.btn-primary(@click="addUser") add user
 
+
       loader(v-if="loader")
       #grid-test(v-else)
-        div.cart(v-for="user in filteredData")
+        div.cart(v-for="(user,index) in filteredData", :class="'cart-'+ (index + 1)")
           h4 {{user.name}}
           p id :{{user.id}}
           details.cart__body
@@ -40,6 +39,7 @@
 <script>
 
   import Loader from "../../components/app/loader.vue";
+
   export default {
     name: 'Parse',
     components: {Loader},
@@ -52,13 +52,6 @@
         sortValues: ['id', 'name', 'data'],
         sortOption: '',
         loader: true,
-        //=========
-        animal: {
-          name: 'Animal',
-          age: 5,
-          hasTail: true,
-        }
-
       };
     },
     methods: {
@@ -71,19 +64,15 @@
       sort() {
         switch (this.sortOption) {
           case 'id':
-            this.data = this.data.sort((a, b) => a.id - b.id);
-            break;
+            return this.data = this.data.sort((a, b) => a.id - b.id);
           case 'name':
-            this.data = this.data.sort((a, b) => a.name.localeCompare(b.name));
+            return this.data = this.data.sort((a, b) => a.name.localeCompare(b.name));
         }
       },
       async addUser() {
         const newUser = await this.$store.dispatch('CREATE_USER');
         this.data.push(newUser);
       },
-      animalLog() {
-        console.log(this.animal);
-      }
     },
     computed: {
       filteredData() {
@@ -101,7 +90,7 @@
 
     },
     async mounted() {
-      this.data = await this.$store.dispatch('GET_TODO');
+      this.data = await this.$store.dispatch('GET_DATA');
       this.loader = false;
       this.animalLog()
     },
@@ -136,20 +125,24 @@
   }
 
   #grid-test {
+    margin-top: 50px;
     width: 100%;
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: 1fr;
-    grid-gap: 3em;
+    //display: grid;
+    //grid-template: ;
+    /*grid-template-rows: auto;*/
+    /*grid-template-columns: 1fr;*/
+    /*grid-gap: 3em;*/
+    display: flex;
+    flex-direction: column;
+
     .cart {
       height: fit-content;
       border: 1px solid black;
       padding: 20px;
       border-radius: 20px;
       transition: all .4s;
-      &:hover {
-        transform: scale(1.02);
-      }
+      margin: 10px;
+
     }
   }
 

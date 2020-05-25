@@ -24,8 +24,8 @@ export default new Router({
       component: () => import('./views/pagination.vue'),
     },
     {
-      path: '/vuex',
-      component: () => import('./views/VuexTest.vue'),
+      path: '/breakpoint',
+      component: () => import('./views/breakpoint.vue'),
     },
   ],
 });

@@ -1,7 +1,8 @@
-//Bloks color theme
-$color-main              : #01579B; // основной цвет
 
-$color-secondary         : #FFEB3B; // дополнительный цвет
+//Bloks color theme
+$color-primary              : #ef5b4c; // основной цвет
+
+$color-secondary         : #007bff; // дополнительный цвет
 
 
 
@@ -25,7 +26,7 @@ $minWidth              : 100px;
 $allTablet                  : $tablet_768    $tablet_1200;     // min 768 - 1200
 $allMobile                  : $minWidth      $tablet_1200;   // min 100 - 1200
 $allPhoneTablet             : $minWidth      $tablet_992;    // min 100 - 992
-$allPhone                   : $minWidth      $tablet_768;    // min 100 - 768
+$allPhone                   : $minWidth      ($tablet_768 - 1);    // min 100 - 768
 
 $onlyDesktop                : $tablet_1200;                 //min 1200
 $onlyTabletLandscape        : $tablet_992   $tablet_1200;   // min 992 - 1200px
