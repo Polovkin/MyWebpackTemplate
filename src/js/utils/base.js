@@ -1,4 +1,8 @@
-
+// import Inputmask from "inputmask";
+// let selector = document.getElementById("main-form__phone");
+//
+// let im = new Inputmask("(999)-999-99-99");
+// im.mask(selector);
 
 // Smoth paga scroll
 const $page = $('html, body');
