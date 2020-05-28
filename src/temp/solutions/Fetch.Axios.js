@@ -13,13 +13,19 @@
       console.log(json);
 
 
-       await axios
-         .post(url, data, {
-         headers: {
-           'X-CSRF-Token': token,
-       },
-       })
-       .then(response => (console.log(response.data)))
-       .catch((error) => {
-         console.log(error);
-       });
+ const url = '/ru/base/ajax-viber-color/'
+      const data = {
+        action: 'get'
+      };
+      const token = document.querySelectorAll('meta')[4].content
+
+      try {
+        const response = await axios.post(url, data, {
+          headers: {
+            'X-CSRF-Token': token,
+          },
+        })
+        await console.log(response.data);
+      } catch (e) {
+        console.error(e);
+      }
