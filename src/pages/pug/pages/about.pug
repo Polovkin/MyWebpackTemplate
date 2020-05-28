@@ -2,8 +2,9 @@ extends ../layout/base
 
 block variables
   - let title = 'Сервис JoinChat Group позволяет автоматизировать получение, обработки заявки в кафе и ресторанах';
-  - let description = '';
-  - let imgPath = 'assets/img/'
+  - let description = 'Сервис JoinChat этого готовые чат-боты для создания чат-ботов за 2-а часа. Встроенная онлайн оплата в мессенджерах. Идеально подходит для интернеты-магазинов, ресторанов, кафе. Создай свой превосходный чат-бот.  ';
+
+
 
 block head
   include ../layout/links/headMetaTags
@@ -12,9 +13,7 @@ block head
 
 
 block main
-  .container-base
-    div#about
-      h1 About page
-      a(href='/') Home
-      input(type="checkbox")#check
-      label(for="check") Чекбокс
+  p about
+  a(href=basePath) link
+  +Img('lazy','logo.png')
+
