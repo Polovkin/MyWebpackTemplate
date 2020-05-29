@@ -1,28 +1,32 @@
-mixin Img(type,path,imgClass, alt)
-  - imgClass = imgClass !== undefined ? imgClass : ''
-  div(class=imgClass).img-wrap
-    -
-      alt = alt !== undefined ? alt : path.split('/')[path.split('/').length -1].split('.')[0]
-      let fileName = path.split('.')[0]
+mixin Img(path,type,alt)
+  -
+    alt = alt !== undefined ? alt : path.split('/')[path.split('/').length - 1].split('.')[0]
+    let fileName = path.split('.')[0]
+    let ext = [
+      'jxr', 'jp2', 'webp'
+    ]
+  div.img-wrap
     case type
       when 'lazy'
         img(data-src=imgPath + path, class="lazy", alt=alt)
       when 'pic'
         picture
-          source(src=`${imgPath + fileName}.jxr`, type='image/vnd.ms-photo')
-          source(src=`${imgPath + fileName}.jp2`, type='image/jp2')
-          source(src=`${imgPath + fileName}.webp`, type='image/webp')
-          img(
-            src=imgPath + path, alt=alt)
+          each pictures,index in ext
+            source(
+              src=imgPath + fileName + '.' + pictures,
+              type=index === 0 ? 'image/vnd.ms-photo':'image/' + pictures)
+          img(src=imgPath + path, alt=alt)
       when 'pic-lazy'
         picture(class='lazy')
-          source(data-srcset=`${imgPath + fileName}.jxr`, type='image/vnd.ms-photo')
-          source(data-srcset=`${imgPath + fileName}.jp2`, type='image/jp2')
-          source(data-srcset=`${imgPath + fileName}.webp`, type='image/webp')
-          img(
-            data-srcset=imgPath + path, alt=alt)
+          each pictures,index in ext
+            source(
+              data-srcset=imgPath + fileName + '.' + pictures,
+              type=index === 0 ? 'image/vnd.ms-photo':'image/' + pictures)
+          img(data-srcset=imgPath + path, alt=alt)
       default
         img(src=imgPath + path, alt=alt)
+
+
 
 
 
