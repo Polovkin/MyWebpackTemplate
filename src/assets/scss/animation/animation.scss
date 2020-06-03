@@ -8,6 +8,8 @@ $animation-slow          : .8s;
 $ring-color                : rebeccapurple;
 $ring-animation-duration   : 1.8s;
 $ring-weight               : 35px;
+
+@import "keyframes";
 .lds-ring {
 
   position: relative;
@@ -46,14 +48,7 @@ $ring-weight               : 35px;
     }
   }
 }
-@keyframes lds-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+
 
 
 //Pulse circles
@@ -91,16 +86,7 @@ $loader-color       : #FFA5AB;
       animation-delay: calc(#{$loader-duration} / -6);}
   }
 }
-@keyframes animate-circle {
-  from {
-    transform: scale(0);
-    opacity: 1;
-  }
-  to {
-    transform: scale(1);
-    opacity: 0;
-  }
-}
+
 .animate-btn {
   display: flex;
   justify-content: center;
