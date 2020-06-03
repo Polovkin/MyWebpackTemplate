@@ -11,9 +11,7 @@ html {
   @include breakpoint($allPhone) {
     font-size: 14px;
   }
-
 }
-
 
 body {
   margin: 0;
@@ -48,7 +46,6 @@ ul, li {
   list-style-type: none;
 }
 
-
 p, a {
   font-size: rem($font-size);
 }
@@ -56,30 +53,6 @@ p, a {
 img {
   height: auto;
   max-width: 100%;
-}
-
-/*--------------------------------------------------------------------------------------
-    TABLE OF CONTENT
-----------------------------------------------------------------------------------------
-========================================================================================
-    1. TEXT TYPOGRAPHY CSS
-    2. MARGIN CSS
-    3. PADDING CSS
-    4. BACKGROUND CSS
-    5. COLOR CSS
-    6. BORDER CSS
-    7. SHADOW CSS
-    8. BEFORE AFTER CSS
-----------------------------------------------------------------------------------------*/
-
-/*--------------------------
-    1. TEXT TYPOGRAPHY CSS
------------------------------*/
-
-
-.aligncenter {
-  display: block;
-  margin: 0 auto 20px;
 }
 
 a {
@@ -96,66 +69,15 @@ a {
   }
 }
 
-
-/* Remove Chrome Input Field's Unwanted Yellow Background Color */
-
 input:-webkit-autofill,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:hover {
   -webkit-box-shadow: 0 0 0 1000px white inset !important;
 }
 
-/*----------------------
-    ALIGN
------------------------*/
-.text {
-  position: relative;
-
-  &-left {
-    text-align: left;
-  }
-
-  &-right {
-    text-align: right;
-  }
-
-  &-center {
-    text-align: center;
-  }
-}
-
-
-/*-----------------------
-    FONTS
-------------------------*/
-
-.uppercase {
-  text-transform: uppercase;
-}
-
-.lowercase {
-  text-transform: lowercase;
-}
-
-.capitalize {
-  text-transform: capitalize;
-}
-
-
-
-
-/*-----------------------
-    DISPLAY
-------------------------*/
-
-
 p:last-of-type {
   margin-bottom: 0;
 }
-
-
-
-
 
 .wrapper {
   display: flex;
