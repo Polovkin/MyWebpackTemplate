@@ -1,4 +1,7 @@
 {
   "text-header" : "English header text",
-  "text-description" : "English description text"
+  "text-description" : "English description text",
+  "img": {
+    "13224": "cloud2.png"
+  }
 }
