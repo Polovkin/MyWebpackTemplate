@@ -27,7 +27,7 @@ mixin Img(path,type,alt)
       when 'locale'
         img(src=imgPath+localeData[locale].img[path], alt=alt)
       when 'locale-js'
-        img(src=imgPath, data-locale=alt,  alt=alt)
+        img(data-locale=alt,  alt=alt)
       default
         img(src=imgPath + path, alt=alt)
 

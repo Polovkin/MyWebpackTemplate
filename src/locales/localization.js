@@ -5,13 +5,12 @@ const locales = {
   'ru': ru,
   'en': en,
 }
-console.log(locales);
+
 
 function setLocale() {
   let currentLocale = localStorage.getItem('lang') ?
     JSON.parse(localStorage.getItem('lang')) :
     document.documentElement.lang
-
 
   $('[data-locale]').each(function () {
     const $this = $(this)
@@ -19,6 +18,7 @@ function setLocale() {
     if (this.nodeName !== 'IMG') {
       $this.text(locales[currentLocale][key]);
     } else {
+      console.log(locales[currentLocale].img[key]);
       $this.attr('src', '/assets/img/' + locales[currentLocale].img[key]);
     }
   })
@@ -26,7 +26,7 @@ function setLocale() {
 
 $(document).ready(function () {
   setLocale()
-  $('#lang button').click(function () {
+  $('#singlePage button').click(function () {
     document.documentElement.lang = $(this).text();
     localStorage.setItem('lang', JSON.stringify($(this).text()));
     setLocale();

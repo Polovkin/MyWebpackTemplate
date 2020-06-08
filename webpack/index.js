@@ -5,7 +5,7 @@ import '@/js/utils/base';
 import '@/js/utils/lazyloading';
 import '@/js/utils/animation';
 import '@/js/components/accordion';
-//import '@/locales/localization.js'
+import '@/locales/localization.js'
 
 
 // TS
