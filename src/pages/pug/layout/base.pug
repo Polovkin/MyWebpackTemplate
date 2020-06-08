@@ -1,23 +1,21 @@
 
 
 include ../utils/mixins
-- let locale = 'ru'
--
-  let localeData = {
-    en: require("../../../../locales/en.json"),
-    ru: require("../../../../locales/ru.json")
-  }
-- let test = 123222
+- let locale = 'en'
 - let basePath = '/'
 - let imgPath = basePath +'assets/img/'
 - let action = basePath+'send.php'
 - let phone = '+38 (063) 722-72-28'
 - let mail = 'hello@boto.agency'
-
+-
+  let localeData = {
+    en: require("../../../../locales/en.json"),
+    ru: require("../../../../locales/ru.json")
+  }
 block variables
 
 doctype html
-html(lang='ru')
+html(lang=locale)
   head
     block head
     title #{title}
