@@ -1,3 +1,4 @@
+
 mixin Img(path,type,alt)
   -
     alt = alt !== undefined ? alt : path.split('/')[path.split('/').length - 1].split('.')[0]
@@ -24,10 +25,11 @@ mixin Img(path,type,alt)
               type=index === 0 ? 'image/vnd.ms-photo':'image/' + pictures)
           img(data-srcset=imgPath + path, alt=alt)
       when 'locale'
+        img(src=imgPath+localeData[locale].img[path], alt=alt)
+      when 'locale-js'
         img(src=imgPath, data-locale=alt,  alt=alt)
       default
         img(src=imgPath + path, alt=alt)
-
 
 
 
