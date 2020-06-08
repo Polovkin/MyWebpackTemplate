@@ -57,7 +57,7 @@ const plugins = (type) => {
     }
 
     case 'pug': {
-      const PAGES_DIR = `${PATHS.src}/pages/pug/pages`;
+      const PAGES_DIR = `${PATHS.src}/pages/pug/includes/pages`;
       const PAGES = fs
         .readdirSync(PAGES_DIR)
         .filter((fileName) => fileName.endsWith('.pug'));
