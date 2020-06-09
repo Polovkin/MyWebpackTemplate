@@ -30,7 +30,7 @@ export default {
     }
   },
   mounted() {
-   this. windowSize();
+   this.windowSize();
     window.addEventListener("resize",this.windowSize, false);
   }
 };

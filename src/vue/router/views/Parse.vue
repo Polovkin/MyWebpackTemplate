@@ -92,7 +92,7 @@
     async mounted() {
       this.data = await this.$store.dispatch('GET_DATA');
       this.loader = false;
-      this.animalLog()
+
     },
 
   };

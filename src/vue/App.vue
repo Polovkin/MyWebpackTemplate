@@ -6,9 +6,19 @@
 </template>
 
 <script>
-export default {
-  name: 'App',
-};
+  export default {
+    name: 'App',
+    data() {
+      return {
+        //width: document.body.clientWidth,
+        //height: document.body.clientHeight,
+      }
+
+    },
+    computed: {
+
+    }
+  };
 
 </script>
 
@@ -16,12 +26,12 @@ export default {
 
 
   //Base
- // @import 'src/assets/scss/typography/normalize';
-//  @import 'src/assets/scss/typography/typography';
-//  @import 'src/assets/scss/typography/fonts';
-//  @import 'src/assets/scss/vendors/breakpoint-2.x.x/stylesheets/breakpoint';
-//  @import 'src/assets/scss/animation/animation';
+  // @import 'src/assets/scss/typography/normalize';
+  //  @import 'src/assets/scss/typography/typography';
+  //  @import 'src/assets/scss/typography/fonts';
+  //  @import 'src/assets/scss/vendors/breakpoint-2.x.x/stylesheets/breakpoint';
+  //  @import 'src/assets/scss/animation/animation';
   //Layout
-//  @import 'src/assets/scss/modules/footer';
-//  @import 'src/assets/scss/modules/header';
+  //  @import 'src/assets/scss/modules/footer';
+  //  @import 'src/assets/scss/modules/header';
 </style>
