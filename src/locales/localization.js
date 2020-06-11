@@ -6,7 +6,6 @@ const locales = {
   'en': en,
 }
 
-
 function setLocale() {
   let currentLocale = localStorage.getItem('lang') ?
     JSON.parse(localStorage.getItem('lang')) :

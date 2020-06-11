@@ -4,7 +4,7 @@ import '@/js/scripts/custom';
 import '@/js/utils/base';
 import '@/js/utils/lazyloading';
 import '@/js/utils/animation';
-import '@/js/components/accordion';
+import '@/js/widget/accordion';
 import '@/locales/localization.js'
 
 
@@ -14,7 +14,7 @@ import '@/locales/localization.js'
 import '@/assets/scss/main.scss';
 
 // Vue.js
-import '@/vue/vue-entry';
+//import '@/vue/vue-entry';
 // CSS
 
 

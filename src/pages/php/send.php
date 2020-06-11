@@ -15,7 +15,7 @@ function br2nl($input)
 }
 
 $headers = "MIME-Version: 1.0" . PHP_EOL .
-  "Content-Type: typography/html; charset=utf-8" . PHP_EOL .
+  "Content-Type: resources/html; charset=utf-8" . PHP_EOL .
   'From: ' . adopt("AmemoryPro") . ' <' . $admin_email . '>' . PHP_EOL .
   'Reply-To: ' . $admin_email . '' . PHP_EOL;
 

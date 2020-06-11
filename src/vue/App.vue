@@ -26,9 +26,9 @@
 
 
   //Base
-  // @import 'src/assets/scss/typography/normalize';
-  //  @import 'src/assets/scss/typography/typography';
-  //  @import 'src/assets/scss/typography/fonts';
+  // @import 'src/assets/scss/resources/normalize';
+  //  @import 'src/assets/scss/resources/resources';
+  //  @import 'src/assets/scss/resources/fonts';
   //  @import 'src/assets/scss/vendors/breakpoint-2.x.x/stylesheets/breakpoint';
   //  @import 'src/assets/scss/animation/animation';
   //Layout
