@@ -13,21 +13,4 @@ block head
 
 
 block main
-  #multiPage
-    h1=localeData[locale]['text-header']
-    p=localeData[locale]['text-description']
-    +Img('text-image','locale')
-  #singlePage
-    button.lang-ru ru
-    button.lang-en en
-  .text-test
-    h1(data-locale='text-header')
-    p(data-locale='text-description')
-  .flex-grow-test
-    .cart
-      p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aliquid aspernatur beatae doloremque dolorum eius eum rem rerum unde! Dolores eius fugiat itaque numquam officia praesentium temporibus ut, veritatis!
-    .cart
-      p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aliquid aspernatur beatae doloremque dolorum eius eum rem rerum unde! Dolores eius fugiat itaque numquam officia praesentium temporibus ut, veritatis!
-    .cart
-      p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aliquid aspernatur beatae doloremque dolorum eius eum rem rerum unde! Dolores eius fugiat itaque numquam officia praesentium temporibus ut, veritatis!
-
+  #app

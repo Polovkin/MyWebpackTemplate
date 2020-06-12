@@ -6,32 +6,88 @@
     div.bg
       .container
         .test
-
           span.width window width >
           span.container-width container width:
           span.title
+        .sizes
+          //template(v-for="item of arr" )
+            .cart
+              p   {{ item.width }}
+              p   {{ item.height }}
+              p   {{ item.fullSize }}
+              p   {{ item.percent }}
+
+
 </template>
 
 <script>
-
-
   export default {
-    name: 'Braikpoints.vue',
+    name: 'Breakpoint.vue',
     components: {},
-    computed: {},
-    methods: {},
+    data() {
+      return {
+        size: [
+          {'1366x768': 15.44},
+          {'360x640': 14.83},
+          {'1920x1080': 11.69},
+          {'375x667': 4.82},
+          {'360x720': 4.21},
+          {'1280x1024': 3.77},
+          {'1536x864': 3.50},
+          {'360x780': 3.25},
+          {'320x568': 2.33},
+          {'393x851': 2.28},
+          {'1440x900': 2.07},
+          {'1280x800': 1.91},
+          {'375x812': 1.77},
+          {'414x896': 1.70},
+          {'412x892': 1.67},
+          {'1280x720': 1.35},
+          {'414x736': 1.16},
+          {'1680x1050': 1.11},
+          {'768x1024': 1.10}
+        ],
+        arr: []
+      }
+    },
+    mounted() {
+      function Size(key, value) {
+        this.width = key.split('x')[0],
+          this.height = key.split('x')[1],
+          this.fullSize = key,
+          this.percent = value
+      }
+
+
+      // for (let i = 0; i < arr.length; i++) {
+      //   for (let key in arr[i]) {
+      //     this.arr.push(new Size(key, arr[i][key]))
+      //   }
+      // }
+      this.arr = this.size.map((currentValue, index, array) => {
+        for (let key in this.size) {
+          console.log(this.size[key]);
+        }
+        //console.log(currentValue['768x1024']);
+        return currentValue
+        })
+         console.log(this.arr);
+    },
+    methods: {}
+
   };
 </script>
 
 <style scoped
        lang="scss">
   .bg {
-    background-color: black;
+    //background-color: black;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     padding-top: 20px;
+
     & > .container {
     }
   }
@@ -52,9 +108,11 @@
 
       }
     }
+
     .title:after {
-     color: orange;
+      color: orange;
     }
+
     @include breakpoint($desktop_1600) {
       .width:after {
         color: red;
@@ -125,7 +183,7 @@
         content: 'Landscape phone,portrait tablet';
       }
     }
-    @include breakpoint($minWidth$mobile_576) {
+    @include breakpoint($minWidth $mobile_576) {
       .width:after {
         color: purple;
         content: '#{$mobile_320}';
@@ -139,5 +197,22 @@
         content: 'Mobile phone';
       }
     }
+  }
+
+  .sizes {
+    margin-top: 50px;
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: auto;
+
+    .cart {
+      justify-content: space-between;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid black;
+      display: flex;
+    }
+
   }
 </style>
