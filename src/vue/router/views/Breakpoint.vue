@@ -10,7 +10,7 @@
           span.container-width container width:
           span.title
         .sizes
-          //template(v-for="item of arr" )
+          template(v-for="item of arr" )
             .cart
               p   {{ item.width }}
               p   {{ item.height }}

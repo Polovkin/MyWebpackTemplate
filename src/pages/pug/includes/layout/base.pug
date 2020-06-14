@@ -1,17 +1,21 @@
-
-
 include ../../utils/mixins
-- let locale = 'ru'
-- let basePath = '/'
-- let imgPath = basePath +'assets/img/'
-- let action = basePath+'send.php'
-- let phone = '+38 (063) 722-72-28'
-- let mail = 'hello@boto.agency'
 -
   let localeData = {
-    en: require("../../../../locales/en.json"),
-    ru: require("../../../../locales/ru.json")
+    ua: require("@/locales/en.json"),
+    ru: require("@/locales/ru.json")
   }
+  locale = 'ru'
+  lcl = localeData[locale]
+  imgPath = '/assets/img/'
+  action = 'send.php'
+  phone = '+38 (063) 722-72-28'
+  phone2 = '+38 (098) 401-47-63'
+  mail = 'hello@boto.agency'
+  telegramLink = 'https://t.me/BotoAgencyBot'
+  viberLink = 'viber://pa?chatURI=botoagencybot'
+  basePath = locale === 'ua' ? '/' : `/${locale}/`
+
+
 block variables
 
 doctype html

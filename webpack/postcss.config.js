@@ -1,5 +1,4 @@
 const sortCSSmq = require('sort-css-media-queries');
-const colors = require('colors');
 
 module.exports = {
   plugins: [
@@ -11,7 +10,6 @@ module.exports = {
     require('css-mqpacker')({
       sort: sortCSSmq,
     }),
-    // require('colorguard'),
     require('cssnano')({
       preset: [
         'default', {

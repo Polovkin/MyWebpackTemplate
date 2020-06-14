@@ -31,12 +31,14 @@ const plugins = (type) => {
       'jQuery': 'jquery',
       'window.jQuery': 'jquery',
     }),
-    new CopyWebpackPlugin([
-      {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
-      {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
-      {from: `${PATHS.src}/php`, to: ``},
-      {from: `${PATHS.src}/static`, to: ''},
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
+        {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
+        {from: `${PATHS.src}/pages/php`, to: ``},
+        {from: `${PATHS.src}/static`, to: ''},
+      ]
+    }),
     new CleanWebpackPlugin(),
   ];
   switch (type) {
@@ -156,14 +158,19 @@ module.exports = {
       },
       {
         test: /\.pug$/,
-        oneOf: [{
-          resourceQuery: /^\?vue/,
-          use: ['pug-plain-loader'],
-        }, {
-          use: [
-            'pug-loader',
-          ],
-        }],
+        oneOf: [
+          {
+            resourceQuery: /^\?vue/,
+            use: ['pug-plain-loader'],
+          },
+          {
+            use: ['pug-loader'],
+
+          }
+        ],
+        options: {
+          root: path.resolve(__dirname, '../../src'),
+        }
       },
       {
         // Vue
@@ -282,4 +289,6 @@ module.exports = {
   },
 
   plugins: plugins('pug'),
+
+
 };
