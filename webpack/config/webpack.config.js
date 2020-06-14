@@ -168,9 +168,6 @@ module.exports = {
 
           }
         ],
-        options: {
-          root: path.resolve(__dirname, '../../src'),
-        }
       },
       {
         // Vue

@@ -12,10 +12,12 @@
         .sizes
           template(v-for="item of arr" )
             .cart
-              p   {{ item.width }}
-              p   {{ item.height }}
-              p   {{ item.fullSize }}
-              p   {{ item.percent }}
+              p {{item.percent}}
+              p {{item.fullSize}}
+              p {{item.width}}
+              p {{item.height}}
+
+
 
 
 </template>
@@ -52,28 +54,19 @@
     },
     mounted() {
       function Size(key, value) {
-        this.width = key.split('x')[0],
-          this.height = key.split('x')[1],
-          this.fullSize = key,
-          this.percent = value
+        this.width = key.split('x')[0];
+        this.height = key.split('x')[1];
+        this.fullSize = key;
+        this.percent = value;
       }
 
-
-      // for (let i = 0; i < arr.length; i++) {
-      //   for (let key in arr[i]) {
-      //     this.arr.push(new Size(key, arr[i][key]))
-      //   }
-      // }
-      this.arr = this.size.map((currentValue, index, array) => {
-        for (let key in this.size) {
-          console.log(this.size[key]);
+      for (let i = 0; i < this.size.length; i++) {
+        for (let key in this.size[i]) {
+          this.arr.push(new Size(key, this.size[i][key]))
         }
-        //console.log(currentValue['768x1024']);
-        return currentValue
-        })
-         console.log(this.arr);
+      }
     },
-    methods: {}
+    computed: {}
 
   };
 </script>
