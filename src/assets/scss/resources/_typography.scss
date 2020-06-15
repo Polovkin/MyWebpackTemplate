@@ -123,7 +123,7 @@ section,
   position: relative;
 
   overflow: hidden;
-  @include breakpoint($tablet_1200) {
+  @include breakpoint($tablet_1280) {
     padding: 3rem 0;
   }
   @include breakpoint($tablet_992) {
@@ -137,6 +137,7 @@ section,
 
 }
 
+
 .container {
   position: relative;
 
@@ -147,7 +148,7 @@ section,
   @include breakpoint($desktop_1600) {
     max-width: 1440px;
   }
-  @include breakpoint($tablet_1200) {
+  @include breakpoint($tablet_1280) {
     max-width: 1140px;
   }
   @include breakpoint($tablet_992) {

@@ -10,14 +10,21 @@
           span.container-width container width:
           span.title
         .sizes
-          template(v-for="item of arr" )
+          .values
+            button.size(@click="showBase()") ALL
+            button.size(@click="showByDevice(9999,1200)") Desktop
+            button.size(@click="showByDevice(1200,767)") Tablet
+            button.size(@click="showByDevice(768,0)") mobile
+          .sorting
+            button.size(@click="sortMethod = 'width'") По ширине
+            button.size(@click="sortMethod = 'height'") По высоте
+            button.size(@click="sortMethod = 'usage'") По использованию
+
+            //button.size(@click="showtLaptop") Laptop
+          template(v-for="item of sortingArr" )
             .cart
-              p {{item.percent}}
               p {{item.fullSize}}
-              p {{item.width}}
-              p {{item.height}}
-
-
+              p(:style="`background-color: ${item.percent > 10 ? 'green': 'red' } ;color: white`") {{item.percent}}
 
 
 </template>
@@ -49,7 +56,9 @@
           {'1680x1050': 1.11},
           {'768x1024': 1.10}
         ],
-        arr: []
+        arr: [],
+        sortMethod: '',
+        baseArr: '',
       }
     },
     mounted() {
@@ -65,9 +74,43 @@
           this.arr.push(new Size(key, this.size[i][key]))
         }
       }
+      this.baseArr = this.arr
     },
-    computed: {}
+    methods: {
+      showBase() {
+        this.arr = this.baseArr
+      },
+      showByDevice(max, min) {
+        this.arr = this.baseArr.filter((e) => {
+          return (e.width > min && e.width < max)
+        })
+      },
 
+    },
+    computed: {
+      sortingArr() {
+        switch (this.sortMethod) {
+          case "width":
+            this.arr.sort(function (a, b) {
+              return b.width - a.width
+            })
+            break
+          case "height":
+            this.arr.sort(function (a, b) {
+              return b.height - a.height
+            })
+            break
+          case "usage":
+            this.arr.sort(function (a, b) {
+              return b.percent - a.percent
+            })
+            break
+          default:
+            return this.arr
+        }
+        return this.arr
+      },
+    }
   };
 </script>
 
@@ -123,7 +166,7 @@
     @include breakpoint($onlyDesktop) {
       .width:after {
         color: green;
-        content: '#{$tablet_1200}';
+        content: '#{$tablet_1280}';
       }
 
       .container-width:after {
