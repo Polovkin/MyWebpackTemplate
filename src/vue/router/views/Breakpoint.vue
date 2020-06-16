@@ -21,10 +21,11 @@
             button.size(@click="sortMethod = 'usage'") По использованию
 
             //button.size(@click="showtLaptop") Laptop
+          .summ {{sumPercent}}%
           template(v-for="item of sortingArr" )
             .cart
               p {{item.fullSize}}
-              p(:style="`background-color: ${item.percent > 10 ? 'green': 'red' } ;color: white`") {{item.percent}}
+              p(:style="`background-color: ${item.percent > 5 ? 'green': 'red' } ;color: white`") {{item.percent}}
 
 
 </template>
@@ -36,38 +37,43 @@
     data() {
       return {
         size: [
-          {'1366x768': 15.44},
-          {'360x640': 14.83},
-          {'1920x1080': 11.69},
-          {'375x667': 4.82},
-          {'360x720': 4.21},
-          {'1280x1024': 3.77},
-          {'1536x864': 3.50},
-          {'360x780': 3.25},
-          {'320x568': 2.33},
-          {'393x851': 2.28},
-          {'1440x900': 2.07},
-          {'1280x800': 1.91},
-          {'375x812': 1.77},
-          {'414x896': 1.70},
-          {'412x892': 1.67},
-          {'1280x720': 1.35},
-          {'414x736': 1.16},
-          {'1680x1050': 1.11},
-          {'768x1024': 1.10}
+          {'360x640': 14.05},
+          {'1366x768': 8.94},
+          {'1920x1080': 8.12},
+          {'375x667': 4.51},
+          {'360x720': 3.05},
+          {'360x760': 2.75},
+          {'1440x900': 2.67},
+          {'1536x864': 2.67},
+          {'414x896': 2.52},
+          {'768x1024': 2.52},
+          {'360x780': 2.41},
+          {'414x736': 2.33},
+          {'375x812': 2.3},
+          {'412x846': 2.27},
+          {'360x740': 1.89},
+          {'1600x900': 1.77},
+          {'1280x720': 1.63},
+          {'1280x800': 1.61},
+          {'412x732': 1.31},
+          {'1024x768': 1.29}
         ],
+        //size:[],
         arr: [],
         sortMethod: '',
         baseArr: '',
+        file: ''
       }
     },
-    mounted() {
+    async mounted() {
+
       function Size(key, value) {
         this.width = key.split('x')[0];
         this.height = key.split('x')[1];
         this.fullSize = key;
         this.percent = value;
       }
+     // this.size = await this.$store.dispatch('GET_CSV')
 
       for (let i = 0; i < this.size.length; i++) {
         for (let key in this.size[i]) {
@@ -75,6 +81,9 @@
         }
       }
       this.baseArr = this.arr
+
+      //console.log(this.size[1]);
+      //console.log(this.size[1]["Market Share Perc. (May 2019 - May 2020)"]);
     },
     methods: {
       showBase() {
@@ -109,6 +118,13 @@
             return this.arr
         }
         return this.arr
+      },
+      sumPercent() {
+        let summ = 0;
+        this.arr.forEach((item) => {
+          summ += item.percent
+        })
+        return Math.round(summ)
       },
     }
   };
