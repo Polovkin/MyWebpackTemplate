@@ -15,6 +15,34 @@ const store = new Vuex.Store({
     },
   },
   actions: { // Асинхронный вызов мутации
+    GET_CSV: async () => {
+      try {
+        const response = await axios.get('https://gs.statcounter.com/screen-resolution-stats/all/chart.php?device=Desktop%20%26%20Mobile%20%26%20Tablet%20%26%20Console&device_hidden=desktop%2Bmobile%2Btablet%2Bconsole&multi-device=true&statType_hidden=resolution&region_hidden=UA&granularity=monthly&statType=Screen%20Resolution&region=Ukraine&fromInt=201905&toInt=202005&fromMonthYear=2019-05&toMonthYear=2020-05&csv=1')
+
+        function csvJSON(csv) {
+          const lines = csv.split('\n')
+          const result = []
+          const headers = lines[0].split(',')
+
+          for (let i = 1; i < lines.length; i++) {
+            if (!lines[i])
+              continue
+            const obj = {}
+            const currentline = lines[i].split(',')
+
+            for (let j = 0; j < headers.length; j++) {
+              obj[headers[j]] = currentline[j]
+            }
+            result.push(obj)
+          }
+          return result
+        }
+
+        return csvJSON(response.data);
+      } catch (e) {
+        console.error(e);
+      }
+    },
     COUNTER_PLUS({commit}) {
       commit('CHANGE_COUNTER');
     },
