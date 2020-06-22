@@ -9,7 +9,7 @@ $color-secondary         : #007bff; // дополнительный цвет
 //Breakpoints
 $desktop_1600          : 1600px;
 //Bootstrap xl
-$tablet_1280           : 1280px;
+$tablet_1200           : 1200px;
 // LG
 $tablet_992            : 992px;
 //MD
@@ -21,17 +21,20 @@ $mobile_320            : 320px;
 //Min
 $minWidth              : 100px;
 
+  //ALL
+$allTablet                  : $tablet_768    $tablet_1200;        // min 768 - 1200
+$allMobile                  : $minWidth      $tablet_1200;        // min 100 - 1200
+$allPhoneTablet             : $minWidth      $tablet_992;         // min 100 - 992
+$allPhone                   : $minWidth      ($tablet_768 - 1);   // min 100 - 768
 
-//ALL
-$allTablet                  : $tablet_768    $tablet_1280;     // min 768 - 1200
-$allMobile                  : $minWidth      $tablet_1280;   // min 100 - 1200
-$allPhoneTablet             : $minWidth      $tablet_992;    // min 100 - 992
-$allPhone                   : $minWidth      ($tablet_768 - 1);    // min 100 - 768
+$onlyDesktop                : $tablet_1200;                       //min 1200
+$onlyTabletLandscape        : $tablet_992 $tablet_1200 ;       // min 992 - 1200px
+$onlyTabletPortrait         : $tablet_768   $tablet_992;          // min 768 - 992
+$onlyMobileSmall            : $minWidth     $mobile_320;          // min 100 - 320
 
-$onlyDesktop                : $tablet_1280;                 //min 1200
-$onlyTabletLandscape        : $tablet_992   $tablet_1280;   // min 992 - 1200px
-$onlyTabletPortrait         : $tablet_768   $tablet_992;    // min 768 - 992
-$onlyMobileSmall            : $minWidth     $mobile_320;                  // min 100 - 320
+//adv
+$laptop                : ($tablet_1200 $desktop_1600) (max-height $tablet_768);
+$phoneLandscape        : $allPhoneTablet  (max-height 450px);
 
 $imgPath: '/assets/img/';
 $iconsPath: $imgPath +'icons/';

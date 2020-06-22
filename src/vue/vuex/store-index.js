@@ -2,9 +2,12 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 Vue.use(Vuex);
+
+
+
 const axios = require('axios').default;
 const key = 'http://jsonplaceholder.typicode.com/users';
-const w8 = 'https://w8develop.amemory.pro/home/test-export-tickets-for-mikle';
+const csv = 'https://gs.statcounter.com/screen-resolution-stats/all/chart.php?device=Desktop%20%26%20Mobile%20%26%20Tablet%20%26%20Console&device_hidden=desktop%2Bmobile%2Btablet%2Bconsole&multi-device=true&statType_hidden=resolution&region_hidden=UA&granularity=monthly&statType=Screen%20Resolution&region=Ukraine&fromInt=201905&toInt=202005&fromMonthYear=2019-05&toMonthYear=2020-05&csv=1';
 const store = new Vuex.Store({
   state: {
     counter: 0,
@@ -16,29 +19,39 @@ const store = new Vuex.Store({
   },
   actions: { // Асинхронный вызов мутации
     GET_CSV: async () => {
-      try {
-        const response = await axios.get('https://gs.statcounter.com/screen-resolution-stats/all/chart.php?device=Desktop%20%26%20Mobile%20%26%20Tablet%20%26%20Console&device_hidden=desktop%2Bmobile%2Btablet%2Bconsole&multi-device=true&statType_hidden=resolution&region_hidden=UA&granularity=monthly&statType=Screen%20Resolution&region=Ukraine&fromInt=201905&toInt=202005&fromMonthYear=2019-05&toMonthYear=2020-05&csv=1')
+      function csvJSON(csv) {
+        const lines = csv.split('\n')
+        const result = []
+        const headers = lines[0].split(',')
 
-        function csvJSON(csv) {
-          const lines = csv.split('\n')
-          const result = []
-          const headers = lines[0].split(',')
+        for (let i = 1; i < lines.length; i++) {
+          if (!lines[i])
+            continue
+          const obj = {}
+          const currentline = lines[i].split(',')
 
-          for (let i = 1; i < lines.length; i++) {
-            if (!lines[i])
-              continue
-            const obj = {}
-            const currentline = lines[i].split(',')
-
-            for (let j = 0; j < headers.length; j++) {
-              obj[headers[j]] = currentline[j]
-            }
-            result.push(obj)
+          for (let j = 0; j < headers.length; j++) {
+            obj[headers[j]] = currentline[j]
           }
-          return result
+          result.push(obj)
         }
+        return result
+      }
+      function Size(key, value) {
+        this.width = key.split('x')[0];
+        this.height = key.split('x')[1];
+        this.fullSize = key;
+        this.percent = value;
+      }
+      try {
+        const response = await axios.get(csv)
+        const data = csvJSON(response.data).map((e) => {
+          let value = ["\"Market Share Perc. (May 2019 - May 2020)\""];
+          let key = ["\"Screen Resolution\""];
+          return new Size(e[key].replace(/['"]+/g, ''), e[value].replace(/['"]+/g, ''))
+        })
 
-        return csvJSON(response.data);
+        return data;
       } catch (e) {
         console.error(e);
       }

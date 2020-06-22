@@ -9,7 +9,9 @@
           span.width window width >
           span.container-width container width:
           span.title
-        .sizes
+        Loader(v-if="!baseArr", :msg="'Запрос с сервера прийдет через 4-5сек'")
+
+        .sizes(v-else)
           .values
             button.size(@click="showBase()") ALL
             button.size(@click="showByDevice(9999,1200)") Desktop
@@ -21,69 +23,33 @@
             button.size(@click="sortMethod = 'usage'") По использованию
 
             //button.size(@click="showtLaptop") Laptop
-          .summ {{sumPercent}}%
-          template(v-for="item of sortingArr" )
-            .cart
-              p {{item.fullSize}}
-              p(:style="`background-color: ${item.percent > 5 ? 'green': 'red' } ;color: white`") {{item.percent}}
+          .summ
+            template(,v-for="item of sortingArr" )
+              .cart
+                p {{item.fullSize}}
+                p(:style="`background-color: ${item.percent > 5 ? 'green': 'red' } ;color: white`") {{item.percent}}
 
 
 </template>
 
 <script>
+  import Loader from "../../components/app/loader.vue";
+
   export default {
     name: 'Breakpoint.vue',
-    components: {},
+    components: {Loader},
     data() {
       return {
-        size: [
-          {'360x640': 14.05},
-          {'1366x768': 8.94},
-          {'1920x1080': 8.12},
-          {'375x667': 4.51},
-          {'360x720': 3.05},
-          {'360x760': 2.75},
-          {'1440x900': 2.67},
-          {'1536x864': 2.67},
-          {'414x896': 2.52},
-          {'768x1024': 2.52},
-          {'360x780': 2.41},
-          {'414x736': 2.33},
-          {'375x812': 2.3},
-          {'412x846': 2.27},
-          {'360x740': 1.89},
-          {'1600x900': 1.77},
-          {'1280x720': 1.63},
-          {'1280x800': 1.61},
-          {'412x732': 1.31},
-          {'1024x768': 1.29}
-        ],
-        //size:[],
         arr: [],
         sortMethod: '',
         baseArr: '',
-        file: ''
+        file: '',
       }
     },
     async mounted() {
+      this.baseArr = await this.$store.dispatch('GET_CSV')
+      this.arr = this.baseArr
 
-      function Size(key, value) {
-        this.width = key.split('x')[0];
-        this.height = key.split('x')[1];
-        this.fullSize = key;
-        this.percent = value;
-      }
-     // this.size = await this.$store.dispatch('GET_CSV')
-
-      for (let i = 0; i < this.size.length; i++) {
-        for (let key in this.size[i]) {
-          this.arr.push(new Size(key, this.size[i][key]))
-        }
-      }
-      this.baseArr = this.arr
-
-      //console.log(this.size[1]);
-      //console.log(this.size[1]["Market Share Perc. (May 2019 - May 2020)"]);
     },
     methods: {
       showBase() {
@@ -182,7 +148,7 @@
     @include breakpoint($onlyDesktop) {
       .width:after {
         color: green;
-        content: '#{$tablet_1280}';
+        content: '#{$tablet_1200}';
       }
 
       .container-width:after {
