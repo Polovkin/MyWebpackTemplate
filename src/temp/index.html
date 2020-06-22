@@ -1,14 +1,210 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible"
-        content="ie=edge">
-  <title>Document</title>
+  <link rel="stylesheet"
+        href="style.css">
+  <title>Testtask</title>
+  <!-- тут повинно бути посилання на шрифти. -->
+  <link href="https://fonts.google.com/"
+        rel="stylesheet">
 </head>
+
 <body>
+<header>
+  <nav class="navigation-bar">
+    <div class="logo">
+      TT
+    </div>
+    <p class="page-title">Testtask</p>
+    <ul>
+      <li><a href=#>About me</a></li>
+      <li><a href=#>Relationships</a></li>
+      <li><a href=#>Requirements</a></li>
+      <li><a href=#>Users</a></li>
+      <li><a href=#>Sign Up</a></li>
+    </ul>
+  </nav>
+  </div>
+</header>
+<div class="baner">
+  <div class="baner-text">
+    <h1 style="font-size:50px">Test assignment for Frontend Developer position</h1>
+    <p>We kindly remind you that your test assignment should be submitted as a link to github/bitbucket repository. Please be patient, we consider and respond to every application that meets minimum
+      requirements. We look forward to your submission. Good luck! The photo has to scale in the banner area on the different screens</p>
+    <button>Sign up now</button>
+  </div>
+</div>
+
+<div class="about-me">
+  <h2>Let's get acquainted</h2>
+  <img src="img/dev.png"
+       height="285"
+       width="340">
+  <h3>I am cool frontend developer</h3>
+  <span class="about-me-text">
+		<p>We will evaluate how clean your approach to writing CSS and Javascript code is. You can use any CSS and Javascript 3rd party libraries without any restriction.</p>
+
+	    <p>If 3rd party css/javascript libraries are added to the project via bower/npm/yarn you will get bonus points. If you use any task runner (gulp/webpack) you will get bonus points as well. Slice service directory page P​SD mockup​ into HTML5/CSS3.</p>
+	    </span>
+  <p style="color: #ef5b4c">Sign up now</p>
+</div>
+
+<div class="users">
+  <h2>Our cheerful users</h2>
+  <p class="sorting">Attention! Sorting users by registration date</p>
+
+  <ul class="container">
+    <li class="item">
+      <img src="img/maximillian.png"
+           width="74">
+      <div class="name">Maximillian</div>
+      <div class="desc">
+        <span class="job">Leading specialist of the Control Department</span>
+        <div class="email">controldepartment@gmail.com
+          <span class="emailfull">controldepartment@gmail.com</span></div>
+        <span class="phone">+380 50 678 03 24</span>
+      </div>
+    </li>
+
+    <li class="item">
+      <img src="img/adolph.png"
+           width="74">
+      <div class="name">Adolph Blaine Charles David Earl
+        Matthew Matthew
+      </div>
+      <div class="desc">
+        <span class="job">Contextual advertising specialist</span>
+        <span class="email">adolph.blainecharles@gmail.com</span>
+        <span class="phone">+380 50 678 03 24</span>
+      </div>
+    </li>
+    <li class="item">
+      <img src="img/elizabeth.png"
+           width="74">
+      <div class="name">Elizabeth</div>
+      <div class="desc">
+        <span class="job">Frontend developer</span>
+        <span class="email">elisabet.front@gmail.com</span>
+        <span class="phone">+380 50 678 03 24</span>
+      </div>
+    </li>
+    <li class="item">
+      <img src="img/alexander-jayden.png"
+           width="74">
+      <div class="name">Alexander Jayden</div>
+      <div class="desc">
+        <span class="job">Backend developer</span>
+        <span class="email">alexander.back@gmail.com</span>
+        <span class="phone">+380 50 678 03 24</span>
+      </div>
+    </li>
+
+    <li class="item">
+      <img src="img/noah.png"
+           width="74">
+      <div class="name">Noah</div>
+      <div class="desc">
+        <span class="job">QA</span>
+        <span class="email">noah1998@gmail.com</span>
+        <span class="phone">+380 50 678 03 24</span>
+      </div>
+    </li>
+
+    <li class="item">
+      <img src="img/smith-wiam.png"
+           width="70"
+           align="center">
+      <div class="name">Liamgrievescasey Smith Wiam</div>
+      <div class="desc">
+        <span class="job">Lead designer</span>
+        <span class="email">liamgrievescasey.smith@gmail.com</span>
+        <span class="phone">+380 50 678 03 24</span>
+      </div>
+    </li>
+  </ul>
+
+  <button>Show more</button>
+</div>
+
+<div class="registerform">
+  <h2>Register to get a work</h2>
+</div>
+
+<form action="../action_page.php"
+      method="post">
+  <span class="attention">Attention! After successful registration and alert, update the list of users in the block from the top</span><br>
+
+  <label for="name">Name</label>
+  <input type="text"
+         placeholder="Your name"
+         name="name"
+         required>
+
+
+  <label for="email">Email</label>
+  <input type="email"
+         placeholder="Your email"
+         name="email"
+         pattern="^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*(\.\w{2,})+$"
+         required>
+
+  <label for="phone">Phone number</label>
+  <input type="text"
+         placeholder="+380 XX XXX XX XX"
+         name="phone"
+         required>
+
+  <span class="comment">Еnter phone number in open format</span>
+</form>
+<form id="positions"
+      action="../action_page.php"
+      method="post">
+  <p>Select your position</p>
+  <input type="radio"
+         name="position"
+         id="positionChoice1"
+         checked><label for="radio">Frontend developer</label>
+  <br>
+  <input type="radio"
+         name="position"
+         id="positionChoice2"><label for="radio">Backend developer</label>
+  <br>
+  <label for="radio">
+  <input type="radio"
+         name="position"
+         id="positionChoice3">Designer</label>
+  <br>
+  <input type="radio"
+         name="position"
+         id="positionChoice4"><label for="radio">QA</label>
+</form>
+
+<form action="../action_page.php"
+      method="post">
+  Photo
+  <ul class="browsephoto">
+    <li class="placeholder">Upload your photo</li>
+    <li class="btn">
+      <label class="custom-file-upload">
+        <input type="file"
+               name="userphoto"
+               accept="image/jpeg,image/png"
+               required>
+        Browse
+      </label>
+    </li>
+  </ul>
+</form>
+
+<div class="signup">
+  <button>Sign up now</button>
+</div>
+
 
 </body>
+
+<footer>
+  <p>&copy;abz.agency specially for the test task</p>
+</footer>
 </html>

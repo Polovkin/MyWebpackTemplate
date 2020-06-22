@@ -1,9 +1,8 @@
 
 //Bloks color theme
-$color-primary              : #ef5b4c; // основной цвет
+$color-primary           : #ef5b4c; // основной цвет
 
 $color-secondary         : #007bff; // дополнительный цвет
-
 
 
 //Breakpoints
@@ -23,7 +22,7 @@ $minWidth              : 100px;
 
 
 //ALL
-$allTablet                  : $tablet_768    $tablet_1280;     // min 768 - 1200
+$allTablet                  : $tablet_768    $tablet_1280;   // min 768 - 1200
 $allMobile                  : $minWidth      $tablet_1280;   // min 100 - 1200
 $allPhoneTablet             : $minWidth      $tablet_992;    // min 100 - 992
 $allPhone                   : $minWidth      ($tablet_768 - 1);    // min 100 - 768
@@ -31,7 +30,7 @@ $allPhone                   : $minWidth      ($tablet_768 - 1);    // min 100 - 
 $onlyDesktop                : $tablet_1280;                 //min 1200
 $onlyTabletLandscape        : $tablet_992   $tablet_1280;   // min 992 - 1200px
 $onlyTabletPortrait         : $tablet_768   $tablet_992;    // min 768 - 992
-$onlyMobileSmall            : $minWidth     $mobile_320;                  // min 100 - 320
+$onlyMobileSmall            : $minWidth     $mobile_320;    // min 100 - 320
 
 $imgPath: '/assets/img/';
 $iconsPath: $imgPath +'icons/';
