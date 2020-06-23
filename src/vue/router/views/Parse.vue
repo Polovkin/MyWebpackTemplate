@@ -100,7 +100,29 @@
 
 <style lang="scss"
        scoped>
+  .test:after {
+    @include breakpoint($onlyDesktop) {
+      content: 'desktop';
+      background-color: green;
+    }
+    @include breakpoint($laptop) {
+      content: 'laptop';
+      background-color: rebeccapurple;
+    }
+    @include breakpoint($allTablet) {
+      content: 'allTablet';
+      background-color: red;
+    }
+    @include breakpoint($phoneLandscape) {
+      content: 'phoneLandscape';
+      background-color: blue;
+    }
 
+ @include breakpoint ($allPhone) {
+   content: 'phone';
+   background-color: teal;
+  }
+  }
   .wrap {
     .btn {
       margin: 10px;
@@ -122,6 +144,10 @@
         }
       }
     }
+    
+     @include breakpoint ($allPhone) {
+         flex-direction: column;
+      }
   }
 
   #grid-test {
