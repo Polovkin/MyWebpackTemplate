@@ -1,8 +1,4 @@
-
-//Bloks color theme
-$color-primary           : #ef5b4c; // основной цвет
-
-$color-secondary         : #007bff; // дополнительный цвет
+@import "~breakpoint-sass";
 
 
 //Breakpoints
@@ -37,3 +33,47 @@ $phoneLandscape        : $allPhoneTablet  (max-height 450px);
 
 $imgPath: '/assets/img/';
 $iconsPath: $imgPath +'icons/';
+
+section,
+.section {
+  position: relative;
+
+  overflow: hidden;
+  @include breakpoint($tablet_1200) {
+    padding: 3rem 0;
+  }
+  @include breakpoint($tablet_992) {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  @include breakpoint($tablet_768) {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+}
+
+
+.container {
+  position: relative;
+
+  flex: 0 0 auto;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
+  @include breakpoint($desktop_1600) {
+    max-width: 1440px;
+  }
+  @include breakpoint($tablet_1200) {
+    max-width: 1140px;
+  }
+  @include breakpoint($tablet_992) {
+    max-width: 960px;
+  }
+  @include breakpoint($tablet_768) {
+    max-width: 720px;
+  }
+  @include breakpoint($mobile_576) {
+    max-width: 540px;
+  }
+}

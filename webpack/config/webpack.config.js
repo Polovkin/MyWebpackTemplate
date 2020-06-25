@@ -249,7 +249,7 @@ module.exports = {
             loader: 'sass-resources-loader',
             options: {
               resources: [
-                './src/assets/scss/vars.scss',
+                './src/assets/scss/core/base.scss',
               ],
             },
           },

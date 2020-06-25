@@ -1,6 +1,5 @@
 $font-line-height   : auto;
 $font-size          : 18px;
-$font-color-main    : #000000;
 $font-weight        : normal;
 
 $font-family        : 'Source Code Pro';
@@ -42,7 +41,7 @@ body {
   font-family: $font-family;
   font-size: $font-size;
   font-weight: $font-weight;
-  color: $font-color-main;
+  color: $color__font--primary;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -85,12 +84,10 @@ img {
 }
 
 a {
-  color: #252525;
+  color: $color__font--primary;
   transition: 0.3s;
 
-  &:hover {
-    color: #5368fd;
-  }
+
 
   &:hover, &:focus {
     text-decoration: none;
@@ -108,63 +105,5 @@ p:last-of-type {
   margin-bottom: 0;
 }
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
 
-  min-height: 100vh;
-  margin: 0 auto;
-}
-
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-
-  margin: 0 auto;
-}
-
-section,
-.section {
-  position: relative;
-
-  overflow: hidden;
-  @include breakpoint($tablet_1200) {
-    padding: 3rem 0;
-  }
-  @include breakpoint($tablet_992) {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-  @include breakpoint($tablet_768) {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-
-}
-
-
-.container {
-  position: relative;
-
-  flex: 0 0 auto;
-  margin: 0 auto;
-  padding: 0 15px;
-  width: 100%;
-  @include breakpoint($desktop_1600) {
-    max-width: 1440px;
-  }
-  @include breakpoint($tablet_1200) {
-    max-width: 1140px;
-  }
-  @include breakpoint($tablet_992) {
-    max-width: 960px;
-  }
-  @include breakpoint($tablet_768) {
-    max-width: 720px;
-  }
-  @include breakpoint($mobile_576) {
-    max-width: 540px;
-  }
-}
 

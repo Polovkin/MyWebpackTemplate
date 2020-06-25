@@ -1,11 +1,15 @@
-@import "vars";
-@import 'resources/typography';
+@import "core/base";
+@import 'core/typography';
+@import 'core/animation/animation';
 
-@import "includes/modules";
-@import "includes/pages";
-@import "includes/components";
-
-@import 'animation/animation';
-
+@import "project/modules";
+@import "project/pages";
+@import "project/components";
+@import "project/fixes";
 
 
+
+
+h1 {
+  color: red;
+}
