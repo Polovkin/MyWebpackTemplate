@@ -77,3 +77,8 @@ input, textarea {
   font-size: rem($font__size);
   color: $color__font--primary;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
