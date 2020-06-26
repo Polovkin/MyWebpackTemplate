@@ -8,8 +8,47 @@
 @import "project/fixes";
 
 
+.test__break {
+  position: relative;
 
+  &:after {
 
-h1 {
-  color: red;
+    @include breakpoint($desktop__all) {
+      color: red;
+      content: 'desktop__all';
+    }
+    @include breakpoint($desktop__laptop) {
+      color: green;
+      content: 'desktop__laptop';
+    }
+     @include breakpoint ($desktop__laptop-min) {
+       color: orange;
+       content: 'desktop__laptop-min ';
+      }
+    @include breakpoint ($tablet__all) {
+      color: firebrick;
+      content: 'tablet__all';
+     }
+    @include breakpoint ($tablet__landscape) {
+      color: royalblue;
+      content: 'tablet__landscape';
+     }
+    @include breakpoint ($tablet__portrait) {
+      color: aqua;
+      content: 'tablet__portrait ';
+     }
+    @include breakpoint ($phone__all) {
+      color: saddlebrown;
+      content: 'phone__all';
+     }
+     @include breakpoint ($phone__landscape) {
+       color: seagreen;
+       content: 'phone__landscape';
+      }
+     @include breakpoint ($phone__small) {
+       color: slateblue;
+       content: 'phone__small';
+      }
+  }
+
 }

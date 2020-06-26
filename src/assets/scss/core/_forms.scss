@@ -73,7 +73,7 @@ input {
   box-shadow: none;
 }
 input, textarea {
-  font-family: $font-family;
-  font-size: rem($font-size);
+  font-family: $font__family;
+  font-size: rem($font__size);
   color: $color__font--primary;
 }

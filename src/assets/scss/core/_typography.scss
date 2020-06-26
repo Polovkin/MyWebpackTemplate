@@ -1,36 +1,33 @@
-$font-line-height   : auto;
-$font-size          : 18px;
-$font-weight        : normal;
+$font__line-height: auto;
+$font__size: 18px;
+$font__weight: normal;
 
-$font-family        : 'Source Code Pro';
-$font-file-name     : 'SourceCodePro-';
-$fontsPath          : '/assets/fonts/#{$font-file-name}';
-$fonts-ext          : (eot,woff,woff2);
-$fonts-types        :
-    (
-        ('Bold',bold,normal),
-        ('Regular',normal,normal),
-        ('It',500,italic),
-    );
+$font__family: 'Source Code Pro';
+$font__file-name: 'SourceCodePro-';
+$font__path: '/assets/fonts/#{$font__file-name}';
+$font__ext: (eot, woff, woff2);
+$font__types: (
+    ('Bold', bold, normal),
+    ('Regular', normal, normal),
+    ('It', 500, italic),
+);
 
-@each $name, $weight,$style in $fonts-types {
-  @include font-face($font-family , $fontsPath+$name,$weight, $style, $fonts-ext);
+@each $name, $weight, $style in $font__types {
+  @include font-face($font__family, $font__path+$name, $weight, $style, $font__ext);
 }
 
 
-
-
 html {
-  line-height: $font-line-height;
-  font-size: $font-size;
+  line-height: $font__line-height;
+  font-size: $font__size;
   height: 100%;
-  @include breakpoint($onlyTabletLandscape) {
+  @include breakpoint($tablet__landscape) {
     font-size: 16px;
   }
-  @include breakpoint($onlyTabletPortrait) {
+  @include breakpoint($tablet__portrait) {
     font-size: 15px;
   }
-  @include breakpoint($allPhone) {
+  @include breakpoint($phone__all) {
     font-size: 14px;
   }
 }
@@ -38,9 +35,9 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: $font-family;
-  font-size: $font-size;
-  font-weight: $font-weight;
+  font-family: $font__family;
+  font-size: $font__size;
+  font-weight: $font__weight;
   color: $color__font--primary;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -48,6 +45,15 @@ body {
 
 main {
   overflow: hidden;
+}
+
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 *, *:before, *:after {
@@ -68,8 +74,8 @@ ul, li {
   list-style-type: none;
 }
 
-p, a {
-  font-size: rem($font-size);
+p, a, b, span, li {
+  font-size: rem($font__size);
 }
 
 img {
@@ -86,7 +92,6 @@ img {
 a {
   color: $color__font--primary;
   transition: 0.3s;
-
 
 
   &:hover, &:focus {

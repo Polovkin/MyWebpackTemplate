@@ -2,34 +2,42 @@
 
 
 //Breakpoints
-$desktop_1600          : 1600px;
-//Bootstrap xl
-$tablet_1200           : 1200px;
+$width__desktop-hd            : 1920px;
+
+$width__desktop-hd-min        : 1600px;
+//XL
+$width__desktop-min           : 1200px;
 // LG
-$tablet_992            : 992px;
+$width__tablet-land           : 992px;
 //MD
-$tablet_768            : 768px;
+$width__tablet-port           : 768px;
 //SM
-$mobile_576            : 576px;
+$width__mobile-max            : 576px;
 //XS
-$mobile_320            : 320px;
+$width__mobile-min            : 320px;
 //Min
-$minWidth              : 100px;
+$width__min                   : 100px;
 
   //ALL
-$allTablet                  : $tablet_768    $tablet_1200;        // min 768 - 1200
-$allMobile                  : $minWidth      $tablet_1200;        // min 100 - 1200
-$allPhoneTablet             : $minWidth      $tablet_992;         // min 100 - 992
-$allPhone                   : $minWidth      ($tablet_768 - 1);   // min 100 - 768
+                             //min 1200
+$mobile__all                  : $width__min            $width__desktop-min;        // min 100 - 1200
+$portrait__all                : $width__min            $width__tablet-land;         // min 100 - 992
 
-$onlyDesktop                : $tablet_1200;                       //min 1200
-$onlyTabletLandscape        : $tablet_992 $tablet_1200 ;       // min 992 - 1200px
-$onlyTabletPortrait         : $tablet_768   $tablet_992;          // min 768 - 992
-$onlyMobileSmall            : $minWidth     $mobile_320;          // min 100 - 320
+$desktop__all                 : $width__desktop-min;
+$desktop__laptop              : $width__desktop-min    $width__desktop-hd-min;
+$desktop__laptop-min          : ($width__desktop-min   $width__desktop-hd-min) (max-height $width__tablet-port);
+
+$tablet__all                  : $width__tablet-port    $width__desktop-min;        // min 768 - 1200
+$tablet__landscape            : $width__tablet-land    $width__desktop-min ;       // min 992 - 1200px
+$tablet__portrait             : $width__tablet-port    $width__tablet-land;        // min 768 - 992
+
+$phone__all                   : $width__min            ($width__tablet-port - 1);   // min 100 - 768
+$phone__landscape             : $portrait__all         (max-height 450px);
+$phone__small                 : $width__min            $width__mobile-min;          // min 100 - 320
 
 //adv
-$laptop                : ($tablet_1200 $desktop_1600) (max-height $tablet_768);
-$phoneLandscape        : $allPhoneTablet  (max-height 450px);
+
+
 
 $imgPath: '/assets/img/';
 $iconsPath: $imgPath +'icons/';
@@ -39,14 +47,14 @@ section,
   position: relative;
 
   overflow: hidden;
-  @include breakpoint($tablet_1200) {
+  @include breakpoint($width__desktop-min) {
     padding: 3rem 0;
   }
-  @include breakpoint($tablet_992) {
+  @include breakpoint($width__tablet-land) {
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
-  @include breakpoint($tablet_768) {
+  @include breakpoint($width__tablet-port) {
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
@@ -61,19 +69,19 @@ section,
   margin: 0 auto;
   padding: 0 15px;
   width: 100%;
-  @include breakpoint($desktop_1600) {
+  @include breakpoint($width__desktop-hd-min) {
     max-width: 1440px;
   }
-  @include breakpoint($tablet_1200) {
+  @include breakpoint($width__desktop-min) {
     max-width: 1140px;
   }
-  @include breakpoint($tablet_992) {
+  @include breakpoint($width__tablet-land) {
     max-width: 960px;
   }
-  @include breakpoint($tablet_768) {
+  @include breakpoint($width__tablet-port) {
     max-width: 720px;
   }
-  @include breakpoint($mobile_576) {
+  @include breakpoint($width__mobile-max) {
     max-width: 540px;
   }
 }
