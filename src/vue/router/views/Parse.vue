@@ -18,7 +18,7 @@
             button.btn.btn-primary(@click="addUser") add user
 
 
-      loader(v-if="loader")
+      loader(v-if="loader",msg="test")
       #grid-test(v-else)
         div.cart(v-for="(user,index) in filteredData", :class="'cart-'+ (index + 1)")
           h4 {{user.name}}

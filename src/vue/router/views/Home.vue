@@ -8,32 +8,39 @@
 </template>
 
 <script>
-
-export default {
-  name: 'Home',
-  components: {},
-  data() {
-    return {
-      counter: 1,
-      text: '',
-      size: ''
-    };
-  },
-  methods: {
-    log(data) {
-      console.log(data)
+  let _ = require('lodash');
+  export default {
+    name: 'Home',
+    components: {},
+    data() {
+      return {
+        counter: 1,
+        text: '',
+        size: '',
+        test: ['a', 'b', 'c', 'd','a', 'b', 'c', 'd','a', 'b', 'c', 'd'],
+        test2: ''
+      };
     },
-    windowSize() {
-      let w = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-      let h = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-      this.size = `${w} x ${h}`
+    methods: {
+      log(data) {
+        console.log(data)
+      },
+      windowSize() {
+        let w = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        let h = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        this.size = `${w} x ${h}`
+      },
+      chunk() {
+
+        console.log(_.chunk(this.test, 3))
+      }
+    },
+    mounted() {
+      this.chunk()
+      this.windowSize();
+      window.addEventListener("resize", this.windowSize, false);
     }
-  },
-  mounted() {
-   this.windowSize();
-    window.addEventListener("resize",this.windowSize, false);
-  }
-};
+  };
 </script>
 
 <style lang="scss"
@@ -42,9 +49,11 @@ export default {
     padding: 20px;
     display: flex;
     flex-direction: column;
+
     a {
       color: blue;
     }
+
     .eblo {
       color: red
     }
