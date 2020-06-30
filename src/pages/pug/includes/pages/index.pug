@@ -7,14 +7,22 @@ block variables
 
 
 block head
-  include ../layout/templates/headMetaTags
-  include ../layout/templates/headLinks
-  include ../layout/templates/headScripts
+  include ../templates/headMetaTags
+  include ../templates/headLinks
+  include ../templates/headScripts
 
 
 block main
   .container
     h1 PUG localization test
-    .test__break
-    .test 1231
-  #app
+    // '@': path.resolve(__dirname, '../../src'),
+     '@img': path.resolve(__dirname, '../../src/assets/img/'),
+    - let fileName = '1-1.png'
+    - let basePath2 = '../../../../assets/'
+    - let aliasPath = '@/img/'
+    - let path2 = fileName+basePath2
+      img(src=require(`@/assets/img/${fileName}`))
+
+
+
+

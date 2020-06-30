@@ -150,4 +150,11 @@
     }
 
   }
+
+  button {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px;
+  }
 </style>

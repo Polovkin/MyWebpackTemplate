@@ -33,7 +33,7 @@ const plugins = (type) => {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
+        //{from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
         {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
         {from: `${PATHS.src}/pages/php`, to: ``},
         {from: `${PATHS.src}/static`, to: ''},
@@ -88,10 +88,6 @@ const plugins = (type) => {
           inject: false,
         }),
     ),)
-
-  // if (isProd) {
-  //   base.push(new BundleAnalyzerPlugin())
-  // }
   return base
 }
 
@@ -165,7 +161,6 @@ module.exports = {
           },
           {
             use: ['pug-loader'],
-
           }
         ],
       },
@@ -193,20 +188,6 @@ module.exports = {
           outputPath: '/assets/fonts/'
         },
       },
-      // {
-      //   test: /\.(html)$/,
-      //   use: [
-      //     {
-      //       loader: 'html-loader',
-      //       // options: {
-      //       //   minimize: {
-      //       //     removeComments: true,
-      //       //     collapseWhitespace: false,
-      //       //   },
-      //       // },
-      //     },
-      //   ],
-      // },
       {
         test: /\.(png|jpg|gif|svg)$/,
         use: [
@@ -214,9 +195,9 @@ module.exports = {
             loader: 'file-loader',
             options: {
               esModule: false,
-              name: '[name].[ext]',
+               name: '[name].[ext]',
               outputPath: `${PATHS.assets}/img`,
-              publicPath: `/${PATHS.assets}img`,
+             //publicPath: `/${PATHS.assets}img`,
             },
           },
         ],
@@ -274,6 +255,20 @@ module.exports = {
           },
         ],
       },
+      // {
+      //   test: /\.(html)$/,
+      //   use: [
+      //     {
+      //       loader: 'html-loader',
+      //       // options: {
+      //       //   minimize: {
+      //       //     removeComments: true,
+      //       //     collapseWhitespace: false,
+      //       //   },
+      //       // },
+      //     },
+      //   ],
+      // },
     ],
   },
   resolve: {
@@ -281,6 +276,7 @@ module.exports = {
       '~': PATHS.src,
       'vue$': 'vue/dist/vue.js',
       '@': path.resolve(__dirname, '../../src'),
+      '@img': path.resolve(__dirname, '../../src/assets/img/'),
     },
     extensions: ['.tsx', '.ts', '.js'],
   },
