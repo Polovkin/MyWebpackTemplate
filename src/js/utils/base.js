@@ -6,7 +6,7 @@
 
 // Smoth paga scroll
 const $page = $('html, body');
-$('a[href*="#"]').click(function() {
+$('a[href*="#"]').click(function () {
   $page.animate({
     scrollTop: $($.attr(this, 'href')).offset().top,
   }, 500);
@@ -14,7 +14,7 @@ $('a[href*="#"]').click(function() {
 });
 
 // Click on header mobile size)
-$(document).mouseup(function(e) {
+$(document).mouseup(function (e) {
   const container = $('#header');
   if (container.has(e.target).length === 0) {
     $('.header__nav').removeClass('show');
@@ -27,4 +27,9 @@ const width = iframe.width();
 iframe.css('height', width / 1.7777 + 'px');
 
 
+const Animal = function (options) {
+  this.name = options.name
+  this.color = options.color
+}
 
+const dog = new Animal({name: 'Rex',color:'#fff'})
