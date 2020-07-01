@@ -15,14 +15,13 @@ block head
 block main
   .container
     h1 PUG localization test
-    // '@': path.resolve(__dirname, '../../src'),
-     '@img': path.resolve(__dirname, '../../src/assets/img/'),
-    - let fileName = '1-1.png'
-    - let basePath2 = '../../../../assets/'
-    - let aliasPath = '@/img/'
-    - let path2 = fileName+basePath2
-      img(src=require(`@/assets/img/${fileName}`))
-
-
+      - let formId = `validate`
+      form#test
+        label(for="name")
+          #msg polova
+          input(id="name",type="text",name="name", placeholder="polova" required)
+        label(for="pass")
+          input(id="pass",type="pass", name="pass",placeholder="polova" required, minlength="3" )
+        button(type="submit") press
 
 

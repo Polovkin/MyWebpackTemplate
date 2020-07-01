@@ -1,34 +1,24 @@
-import Inputmask from 'inputmask';
-import Validate from 'jquery-validation';
+const input = document.getElementById('name');
+const form = document.getElementById('test');
+const elem = document.createElement('msg');
+elem.id = 'notify';
+elem.style.display = 'none';
+form.appendChild(elem);
 
+input.addEventListener('invalid', function (event) {
+  event.preventDefault();
+  console.log(1)
+  if (!event.target.validity.valid) {
+    elem.textContent = 'Username should only contain lowercase letters e.g. john';
+    elem.className = 'error';
+    elem.style.display = 'block';
 
-let phoneInput = document.getElementById('main-form__phone');
-let phoneInput2 = document.getElementById('pop-up__form__phone');
-
-let im = new Inputmask('(999)-999-99-99');
-
-im.mask(phoneInput);
-im.mask(phoneInput2);
-
-
-
-$('#main-form').validate({
-  rules: {
-    name: {
-      required: true,
-      minlength: 3
-    },
-    phone: {
-      required: true,
-    },
-  },
-  messages: {
-    name: {
-      required: "Введите имя",
-      minlength: ("Имя должно быть не короче {0} букв"),
-    },
-    phone: {
-      required: "Введите номер телефона",
-    },
+    input.className = 'invalid animated shake';
+  }
+});
+input.addEventListener('input', function(event){
+  if ( 'block' === elem.style.display ) {
+    input.className = '';
+    elem.style.display = 'none';
   }
 });

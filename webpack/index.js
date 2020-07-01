@@ -4,7 +4,10 @@ import '@/js/scripts/custom';
 import '@/js/utils/base';
 import '@/js/utils/lazyloading';
 import '@/js/widget/accordion';
+import '@/js/widget/forms';
 import '@/locales/localization.js'
+import '@/locales/localization.js'
+
 
 
 // TS
