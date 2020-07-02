@@ -9,9 +9,9 @@
           span.width window width >
           span.container-width container width:
           span.title
-        Loader(v-if="!baseArr", :msg="'Запрос с сервера прийдет через 4-5сек'")
+        //Loader(v-if="!baseArr", :msg="'Запрос с сервера прийдет через 4-5сек'")
 
-        .sizes(v-else)
+        .sizes()
           .values
             button.size(@click="showBase()") ALL
             button.size(@click="showByDevice(9999,1200)") Desktop
@@ -130,9 +130,93 @@
     .title:after {
       color: orange;
     }
+    @include breakpoint($width__desktop-hd-min  ) {
+      .width:after {
+        color: red;
+        content: '#{$width__desktop-hd-min }';
+      }
 
+      .container-width:after {
+        color: red;
+        content: '1440px';
+      }
+      .title:after {
+        content: 'Full HD';
+      }
+    }
+    @include breakpoint($desktop__all ) {
+      .width:after {
+        color: green;
+        content: '#{$width__desktop-min }';
+      }
 
+      .container-width:after {
+        color: green;
+        content: '1140px';
+      }
+      .title:after {
+        content: 'HD monitor, notebook';
+      }
+    }
+    @include breakpoint($tablet__landscape ) {
+      .width:after {
+        color: royalblue;
+        content: '#{$width__tablet-land}';
+
+      }
+      .title:after {
+        content: 'Landscape tablet , large tablet';
+      }
+      .container-width:after {
+        color: royalblue;
+        content: '960px';
+      }
+    }
+    @include breakpoint($width__tablet-port) {
+      .width:after {
+        color: violet;
+        content: '#{$width__tablet-port}';
+      }
+
+      .container-width:after {
+        color: violet;
+        content: '720px';
+      }
+      .title:after {
+        content: 'Portrait tablet , landscape phone';
+      }
+    }
+    @include breakpoint($width__mobile-max   $width__tablet-port ) {
+      .width:after {
+        color: blue;
+        content: '#{$width__mobile-max }';
+      }
+
+      .container-width:after {
+        color: blue;
+        content: '540px';
+      }
+      .title:after {
+        content: 'Landscape phone,portrait tablet';
+      }
+    }
+    @include breakpoint($phone__all  ) {
+      .width:after {
+        color: purple;
+        content: '#{$width__mobile-max}';
+      }
+
+      .container-width:after {
+        color: purple;
+        content: '100%';
+      }
+      .title:after {
+        content: 'Mobile phone';
+      }
+    }
   }
+
+
 
   .sizes {
     margin-top: 50px;
