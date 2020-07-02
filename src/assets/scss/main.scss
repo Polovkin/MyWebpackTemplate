@@ -8,3 +8,9 @@
 @import "project/fixes";
 
 
+#test {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
