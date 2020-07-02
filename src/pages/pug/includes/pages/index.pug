@@ -11,17 +11,34 @@ block head
   include ../templates/headLinks
   include ../templates/headScripts
 
-
 block main
   .container
     h1 PUG localization test
-      - let formId = `validate`
+      - let formId = `form1`
+      form(id=formId)
+        -
+          let formData = [
+            {name: 'name', type: 'text', placeholder: 'name', required: true, pattern: '^[a-zA-Z][a-zA-Z0-9-_\\.]{2,20}$'},
+            {name: 'pass', type: 'password', placeholder: 'password', required: true, pattern: false},
+            {name: 'email', type: 'email', placeholder: 'email', required: true, pattern: '[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'},
+            {name: 'phone', type: 'tel', placeholder: 'telephone', required: false, pattern: "[0-9]"},
+          ];
+        each val in formData
+          label(for=`${formId}__${val.name}`)
+            input(
+              id=`${formId}__${val.name}`,
+              type=val.type ,
+              name=val.name,
+              placeholder=val.placeholder
+              required=val.required,
+              pattern=val.pattern
+            )
+        label(for=`${formId}__textarea`)
+          textarea(id=`${formId}__textarea`, placeholder='textarea')
+        button(type='submit') press
       form#test
         label(for="name")
-          #msg polova
-          input(id="name",type="text",name="name", placeholder="polova" required)
+          input(id="name",type="text",name="name", placeholder="polova" required ,minlength="3" )
         label(for="pass")
-          input(id="pass",type="pass", name="pass",placeholder="polova" required, minlength="3" )
+          input(id="pass",type="pass", name="pass",placeholder="polova" required,)
         button(type="submit") press
-
-
