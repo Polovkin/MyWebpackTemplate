@@ -3,8 +3,8 @@ import '@/js/scripts/custom';
 
 import '@/js/utils/base';
 import '@/js/utils/lazyloading';
-import '@/js/widget/accordion';
-import '@/js/widget/forms';
+import '@/js/widgets/accordion';
+import '@/js/widgets/forms';
 import '@/locales/localization.js'
 import '@/locales/localization.js'
 
