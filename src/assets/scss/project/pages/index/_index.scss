@@ -1,0 +1,25 @@
+#main {
+
+
+  .block {
+
+    @include size(300px);
+    background-color: rebeccapurple;
+    @include breakpoint($tablet__landscape) {
+      background-color: red;
+
+    }
+    @include breakpoint($tablet__portrait) {
+      background-color: yellow;
+    }
+    @include breakpoint($phone__all) {
+      background-color: green;
+    }
+    @include breakpoint($desktop__laptop) {
+      background-color: deeppink;
+    }
+    @include breakpoint($desktop__laptop-min) {
+      background-color: blue;
+    }
+  }
+}

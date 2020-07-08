@@ -1,5 +1,7 @@
-mixin imgTest(name)
-  img(src=require(`@img/`+name))
+mixin Section(className)
+  section(class=className)
+    .container
+      block
 
 mixin Img(path,type,alt)
   -

@@ -130,7 +130,7 @@ module.exports = {
       },
     },
   },
-  devtool: isDev ? 'source-map' : 'eval',
+  devtool: isDev ? 'source-map' : '',
   module: {
     rules: [
       // TypeScript
