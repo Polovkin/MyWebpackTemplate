@@ -14,6 +14,10 @@ input.addEventListener('invalid', function (event) {
     elem.style.display = 'block';
 
     input.className = 'invalid animated shake';
+    setTimeout(function () {
+      elem.style.display = 'none';
+    },3000)
+
   }
 });
 
@@ -44,7 +48,7 @@ input.addEventListener('invalid', function (event) {
         if (this.value.length === 2) this.value = ""
       } else setCursorPosition(this.value.length, this)
     };
-    let input = document.querySelector("#form1__phone");
+    let input = document.querySelector("#phone");
     input.addEventListener("input", mask, false);
     input.addEventListener("focus", mask, false);
     input.addEventListener("blur", mask, false);
