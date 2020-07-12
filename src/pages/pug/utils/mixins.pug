@@ -29,13 +29,62 @@ mixin Img(path,type,alt)
               type=index === 0 ? 'image/vnd.ms-photo':'image/' + pictures)
           img(data-srcset=imgPath + path, alt=alt)
       when 'locale'
-        img(src=imgPath+localeData[locale].img[path], alt=alt)
+        img(src=imgPath + localeData[locale].img[path], alt=alt)
       when 'locale-js'
         img(data-locale=alt,  alt=alt)
       default
         img(src=imgPath + path, alt=alt)
 
+mixin formItem(type,iD)
+  -
+    let id = `${iD}__${type}`
+    inputData = {
+      name: {
+        pattern: '^[a-zA-Z][a-zA-Z0-9-_\.]{3,20}$',
+        placeholder: 'name placegolder',
+        errorMsg: 'name error',
+      },
+      password: {
+        pattern: '',
+        placeholder: 'password placegolder',
+        errorMsg: 'password error',
+      },
+      tel: {
+        pattern:'',
+        placeholder: 'tel placegolder',
+        errorMsg: 'tel error',
+      },
+      mail: {
+        pattern: '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$',
+        placeholder: 'mail placegolder',
+        errorMsg: 'mail error',
+      },
+      textarea: {
+        pattern: '',
+        placeholder: 'textarea placegolder'
+      },
+    }
+  if type !== 'textarea'
+    label(for=id)
+      input(
+        id=id,
+        form=iD,
+        type=type,
+        pattern=inputData[type].pattern,
+        placeholder=inputData[type].placeholder,
+        require)
+      span.error=inputData[type].errorMsg
+  else
+    label(for=id)
+      textarea(
+        id=id,
+        form=iD,
+        type=type,
+        placeholder=inputData[type].placeholder,)
 
-
-
+mixin FormGroup(id,items)
+  form(id=id, action='')
+    each item in items
+      +formItem(item,id)
+    button(type="submit") send
 

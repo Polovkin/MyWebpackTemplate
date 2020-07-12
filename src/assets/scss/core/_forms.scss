@@ -64,12 +64,28 @@ select {
 embed,
 iframe,
 object,
-textarea{
+textarea {
   width: 100%;
 }
 
 input {
   box-shadow: none;
+
+  &:valid:not(:placeholder-shown) {
+    color: green;
+    border: {
+      color: green;
+      style: solid;
+    }
+  }
+
+  &:invalid:not(:placeholder-shown) {
+    color: red;
+    border: {
+      color: red;
+      style: solid;
+    }
+  }
 
   &:-webkit-autofill,
   &:-webkit-autofill:focus,
@@ -78,17 +94,27 @@ input {
   }
 }
 
-input,
-textarea {
-  font-family: $font__family;
-  font-size: rem($font__size);
 
-  color: $color__font--primary;
-}
-input:valid:not(:placeholder-shown) {
-  border-color: green;
-}
+form > label {
+  width: 100%;
+  margin-bottom: 0;
 
-input:invalid:not(:placeholder-shown) {
-  border-color: red;
+  span.error {
+    transition: all .3s;
+    position: relative;
+    color: red;
+    font-size: 13px;
+    top: -7px;
+    left: 7px;
+    opacity: 0;
+  }
+
+  input, textarea {
+    width: inherit;
+    font-family: $font__family;
+    font-size: rem($font__size);
+
+    color: $color__font--primary;
+  }
+
 }
