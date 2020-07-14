@@ -1,18 +1,17 @@
 extends ../layout/base
 
 block variables
-  - let title = 'Сервис JoinChat Group позволяет автоматизировать получение, обработки заявки в кафе и ресторанах';
-  - let description = 'Сервис JoinChat этого готовые чат-боты для создания чат-ботов за 2-а часа. Встроенная онлайн оплата в мессенджерах. Идеально подходит для интернеты-магазинов, ресторанов, кафе. Создай свой превосходный чат-бот.  ';
-
+  - let title = 'test'
 
 
 block head
-  include ../templates/headMetaTags
-  include ../templates/headLinks
-  include ../templates/headScripts
+  script(src='/vendor/three.js')
+  script(src='/game.js')
 
 block main
   #main.container
-    include ../modules/validForm
+    //include ../modules/validForm
+    //include ../modules/vrealCase
+    div#test-text
 
-
+    button#test-btn press

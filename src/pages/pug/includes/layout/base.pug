@@ -1,19 +1,30 @@
 include ../../utils/mixins
+include ../../utils/variables
 -
-  let localeData = {
-    ua: require("@/locales/en.json"),
+  //Localization
+  locale = 'ru'
+  localeData = {
+    en: require("@/locales/en.json"),
     ru: require("@/locales/ru.json")
   }
-  locale = 'ru'
   lcl = localeData[locale]
+
+  //Path
   imgPath = '/assets/img/'
-  action = 'send.php'
-  phone = '+38 (063) 722-72-28'
-  phone2 = '+38 (098) 401-47-63'
-  mail = 'hello@boto.agency'
+  basePath = locale === 'ua' ? '/' : `/${locale}/`
+
+  //Links
   telegramLink = 'https://t.me/BotoAgencyBot'
   viberLink = 'viber://pa?chatURI=botoagencybot'
-  basePath = locale === 'ua' ? '/' : `/${locale}/`
+
+  //Data
+  contactData= {
+    action : 'send.php',
+    phone : '+38 (063) 722-72-28',
+    phone2 : '+38 (098) 401-47-63',
+    mail : 'hello@boto.agency',
+  }
+
 
 
 block variables
@@ -21,9 +32,11 @@ block variables
 doctype html
 html(lang=locale)
   head
+    include ../templates/baseHead
+    title=title
     block head
-    title #{title}
   body
+    include ../layout/header
     block main
-
+    include ../layout/header
 

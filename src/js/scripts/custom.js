@@ -14,3 +14,10 @@ function addOffsetAnimation(targetBlock,addClass) {
     }
   });
 }
+
+$(document).ready(function () {
+
+});
+$('#test-btn').click(function () {
+  $('#test-text').append( `<strong>Hello</strong>` ).append('b');
+});
