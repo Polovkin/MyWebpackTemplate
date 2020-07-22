@@ -8,8 +8,11 @@
 @import "project/fixes";
 
 
+.forms-wrap {
+  @extend %flex-row;
 
-#main-form {
- @extend %flex-column-center;
+  form {
+    padding: 20px;
+  }
 
 }

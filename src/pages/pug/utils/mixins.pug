@@ -19,14 +19,14 @@ mixin Img(path,type,alt)
           each pictures,index in ext
             source(
               src=imgPath + fileName + '.' + pictures,
-              type=index === 0 ? 'image/vnd.ms-photo':'image/' + pictures)
+              type=index === 0 ? 'image/vnd.ms-photo': 'image/' + pictures)
           img(src=imgPath + path, alt=alt)
       when 'pic-lazy'
         picture(class='lazy')
           each pictures,index in ext
             source(
               data-srcset=imgPath + fileName + '.' + pictures,
-              type=index === 0 ? 'image/vnd.ms-photo':'image/' + pictures)
+              type=index === 0 ? 'image/vnd.ms-photo': 'image/' + pictures)
           img(data-srcset=imgPath + path, alt=alt)
       when 'locale'
         img(src=imgPath + localeData[locale].img[path], alt=alt)
@@ -40,28 +40,28 @@ mixin formItem(type,iD)
     let id = `${iD}__${type}`
     inputData = {
       name: {
-        pattern: '^[a-zA-Z][a-zA-Z0-9-_\.]{3,20}$',
-        placeholder: 'name placegolder',
+        pattern: '^[a-zA-Z0-9-_\.]{3,20}$',
+        placeholder: 'name placeholder',
         errorMsg: 'name error',
       },
       password: {
-        pattern: '',
-        placeholder: 'password placegolder',
+        pattern: '[a-zA-Z0-9]{5,16}$',
+        placeholder: 'password placeholder',
         errorMsg: 'password error',
       },
       tel: {
-        pattern:'',
-        placeholder: 'tel placegolder',
+        pattern: '',
+        placeholder: 'tel placeholder',
         errorMsg: 'tel error',
       },
       mail: {
         pattern: '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$',
-        placeholder: 'mail placegolder',
+        placeholder: 'mail placeholder',
         errorMsg: 'mail error',
       },
       textarea: {
         pattern: '',
-        placeholder: 'textarea placegolder'
+        placeholder: 'textarea placeholder'
       },
     }
   if type !== 'textarea'
@@ -88,3 +88,14 @@ mixin FormGroup(id,items)
       +formItem(item,id)
     button(type="submit") send
 
+mixin Link(address,type,text,blank,linkClass)
+  case type
+    when 'mail'
+      a(href='mailto:'+address, class='link')
+        span=text
+    when 'phone'
+      a(href='tel:'+address, class='link')
+        span=text
+    default
+      a(href=address, class='link', target=blank !== undefined ? '_blank' : '')
+        span=text

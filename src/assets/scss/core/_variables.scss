@@ -20,7 +20,7 @@ $width__min                   : 100px;
 
 
                              //min 1200
-$mobile__all                  : $width__min            ($width__desktop-min - 1);        // min 100 - 1200
+$mobile__all                  : $width__min            ($width__desktop-min - 1);         // min 100 - 1200
 $portrait__all                : $width__min            ($width__tablet-land - 1);         // min 100 - 992
 
 $desktop__all                 : $width__desktop-min;
@@ -31,9 +31,9 @@ $tablet__all                  : $width__tablet-port    ($width__desktop-min - 1)
 $tablet__landscape            : $width__tablet-land    ($width__desktop-min - 1) ;       // min 992 - 1200px
 $tablet__portrait             : $width__tablet-port    ($width__tablet-land - 1);        // min 768 - 992
 
-$phone__all                   : $width__min            ($width__tablet-port - 1);   // min 100 - 768
+$phone__all                   : $width__min            ($width__tablet-port - 1);        // min 100 - 768
 $phone__landscape             : $portrait__all         (max-height 450px);
-$phone__small                 : $width__min            $width__mobile-min;          // min 100 - 320
+$phone__small                 : $width__min            $width__mobile-min;               // min 100 - 320
 
 //adv
 

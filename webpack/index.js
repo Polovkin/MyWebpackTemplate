@@ -3,7 +3,7 @@ import '@/js/scripts/custom';
 
 import '@/js/utils/base';
 import '@/js/utils/lazyloading';
-import '@/js/widget/forms';
+import '@/js/modules/forms';
 import '@/locales/localization.js'
 import '@/locales/localization.js'
 
