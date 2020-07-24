@@ -1,15 +1,8 @@
-mixin Section(className)
-  section(class=className)
-    .container
-      block
-
 mixin Img(path,type,alt)
   -
     alt = alt !== undefined ? alt : path.split('/')[path.split('/').length - 1].split('.')[0]
     let fileName = path.split('.')[0]
-    let ext = [
-      'jxr', 'jp2', 'webp'
-    ]
+    let ext = ['jxr', 'jp2', 'webp']
   div.img-wrap
     case type
       when 'lazy'

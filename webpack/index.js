@@ -3,7 +3,7 @@ import '@/js/scripts/custom';
 
 import '@/js/utils/base';
 import '@/js/utils/lazyloading';
-import '@/js/modules/forms';
+import '@/js/scripts/forms';
 import '@/locales/localization.js'
 import '@/locales/localization.js'
 
@@ -29,5 +29,5 @@ import 'normalize.css';
 
 //import 'imagehover.css/css/imagehover.css';
 
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap';
+//import 'bootstrap/dist/css/bootstrap.min.css';

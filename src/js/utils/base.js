@@ -27,9 +27,3 @@ const width = iframe.width();
 iframe.css('height', width / 1.7777 + 'px');
 
 
-const Animal = function (options) {
-  this.name = options.name
-  this.color = options.color
-}
-
-const dog = new Animal({name: 'Rex',color:'#fff'})
