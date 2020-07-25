@@ -65,6 +65,7 @@ mixin formItem(type,iD)
         type=type,
         pattern=inputData[type].pattern,
         placeholder=inputData[type].placeholder,
+        autocomplte="off"
         required)
       span.error=inputData[type].errorMsg
   else
