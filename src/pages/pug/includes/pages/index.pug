@@ -4,11 +4,7 @@ block variables
   - let title = 'test'
 
 
-block head
-  script(src='/vendor/three.js')
-  script(src='/game.js')
-
 block main
   #main.container
     include ../modules/validForm
-
+    +Link(basePath,'link','linkClass')

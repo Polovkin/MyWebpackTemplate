@@ -81,14 +81,17 @@ mixin FormGroup(id,items)
       +formItem(item,id)
     button(type="submit") send
 
-mixin Link(address,type,text,blank,linkClass)
+mixin Link(url,text,linkClass,blank,type)
   case type
     when 'mail'
-      a(href='mailto:'+address, class='link')
+      a(href='mailto:'+url, class='link '+linkClass)
         span=text
     when 'phone'
-      a(href='tel:'+address, class='link')
+      a(href='tel:'+url, class='link'+linkClass)
         span=text
     default
-      a(href=address, class='link', target=blank !== undefined ? '_blank' : '')
+      a(
+        href=url,
+        class='link '+linkClass,
+        target=blank !== undefined ? '_blank' : '')
         span=text

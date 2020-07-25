@@ -1,5 +1,6 @@
 
 (function () {
+
   function sendFormData (form) {
     let request = new XMLHttpRequest();
     request.open('POST', 'send.php', true)
@@ -8,10 +9,9 @@
     // Добавляем обработчик на событие `submit`
     form.addEventListener('submit', function(event) {
       event.preventDefault();
-
+      console.log('sendFormData')
       // Это простой способ подготавливить данные для отправки (все браузеры и IE > 9)
       let formData = new FormData(form);
-
       // Отправляем данные
       request.send(formData);
       console.log(formData);
@@ -57,12 +57,13 @@
 
   const forms = document.querySelectorAll('form')
   if  (forms.length) {
+
     for (let i = 0; i < forms.length; i++) {
       let label = forms[i].querySelectorAll('label')
       for (let i = 0; i < label.length; i++) {
         const errorMsg = label[i].querySelector('.error')
         const input = label[i].querySelector('input')
-        if (input.length) {
+        if (input) {
           input.addEventListener('invalid', function (event) {
             event.preventDefault();
             if (!event.target.validity.valid) {
