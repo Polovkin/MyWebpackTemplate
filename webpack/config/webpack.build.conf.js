@@ -1,6 +1,6 @@
 /* Build config:
    ========================================================================== */
-const merge = require('webpack-merge');
+const {merge} = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.config');
 const ImageMinPlugin = require('imagemin-webpack-plugin').default;
 const imageMinMozjpeg = require('imagemin-mozjpeg');
