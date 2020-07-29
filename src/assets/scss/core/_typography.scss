@@ -81,9 +81,6 @@ p {
   margin: 0;
 }
 
-a {
-  text-decoration: none;
-}
 
 ul,
 li {
@@ -115,7 +112,7 @@ img {
 
 a {
   transition: .3s;
-
+  text-decoration: none;
   color: $color__font--primary;
 
 
@@ -131,3 +128,89 @@ p:last-of-type {
   margin-bottom: 0;
 }
 
+h1 {
+  h2 {
+    font-size: 45px;
+    line-height: 60px;
+
+    @include breakpoint($tablet__all) {
+      font-size: 34px;
+      line-height: 46px;
+    }
+    @include breakpoint($phone__all) {
+      font-size: 30px;
+      line-height: 40px;
+    }
+
+    span {
+      font-size: 70px;
+      line-height: 94px;
+
+      @include breakpoint($tablet__all) {
+        font-size: 53px;
+        line-height: 70px;
+      }
+      @include breakpoint($phone__all) {
+        font-size: 45px;
+        line-height: 60px;
+      }
+    }
+  }
+
+  p {
+    font-size: 30px;
+    line-height: 40px;
+
+    @include breakpoint($tablet__all) {
+      font-size: 22px;
+      line-height: 30px;
+    }
+    @include breakpoint($phone__all) {
+      font-size: 20px;
+      line-height: 27px;
+    }
+  }
+}
+
+h2 {
+  font-size: 50px;
+  line-height: 67px;
+
+  @include breakpoint($tablet__all) {
+    font-size: 35px;
+    line-height: 47px;
+  }
+  @include breakpoint($phone__all) {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+
+h3 {
+  font-size: 30px;
+  line-height: 40px;
+
+  @include breakpoint($phone__all) {
+    font-size: 25px;
+    line-height: 33px;
+  }
+}
+
+p {
+  font-size: 20px;
+  line-height: 33px;
+
+  @include breakpoint($mobile__all) {
+    line-height: 27px;
+  }
+}
+
+a {
+  font-size: 20px;
+  line-height: 27px;
+
+  @include breakpoint($tablet__all) {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
