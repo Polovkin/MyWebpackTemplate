@@ -85,14 +85,17 @@ mixin FormGroup(id,items)
 mixin Link(url,text,linkClass,blank,type)
   case type
     when 'mail'
-      a(href='mailto:'+url, class='link '+linkClass)
+      a(href='mailto:' + url, class='link ' + linkClass)
         span=text
     when 'phone'
-      a(href='tel:'+url, class='link'+linkClass)
+      a(href='tel:' + url, class='link' + linkClass)
         span=text
     default
       a(
         href=url,
-        class='link '+linkClass,
+        class='link ' + linkClass,
         target=blank !== undefined ? '_blank' : '')
         span=text
+
+mixin Button(btnClass,text,type)
+  button(class=btnClass, type=type === undefined ? 'button' : type)=text
