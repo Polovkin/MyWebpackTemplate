@@ -1,12 +1,14 @@
 // JS
-import '@/js/scripts/custom';
+import '../src/js/utils/base';
+import '../src/js/utils/lazyloading';
 
-import '@/js/utils/base';
-import '@/js/utils/lazyloading';
-import '@/js/scripts/forms';
-import '@/js/components/test';
-import '@/locales/localization.js'
-import '@/locales/localization.js'
+import '../src/js/scripts/custom';
+import '../src/js/components/test';
+import '../src/js/project/widget/forms'
+
+
+import '../src/locales/localization.js'
+import '../src/locales/localization.js'
 
 
 

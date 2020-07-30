@@ -11,11 +11,13 @@ class PreLoader extends HTMLElement {
     //   this.removeAttribute('load');
     // }
   }
+
   connectedCallback() {
     this.classList.add('lds-ring')
     this.setAttribute('load', '');
-    for (let i = 0; i < 4; i++) {this.insertAdjacentHTML('beforeEnd', `<div></div>`)}
+    for (let i = 0; i < 4; i++) this.insertAdjacentHTML('beforeEnd', `<div></div>`)
   }
+
   constructor() {
     super();
     this.addEventListener('click', e => {
