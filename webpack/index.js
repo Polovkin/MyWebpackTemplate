@@ -4,6 +4,7 @@ import '@/js/scripts/custom';
 import '@/js/utils/base';
 import '@/js/utils/lazyloading';
 import '@/js/scripts/forms';
+import '@/js/components/test';
 import '@/locales/localization.js'
 import '@/locales/localization.js'
 
