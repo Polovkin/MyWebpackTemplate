@@ -104,5 +104,9 @@ mixin Link(url,text,linkClass,blank,type)
         target=blank !== undefined ? '_blank' : '')
         span=text
 
+mixin LinkImg(path,url,linkClass)
+  a(href=url, class=linkClass)
+    +Img(path,type)
+
 mixin Button(btnClass,text,type)
   button(class=btnClass, type=type === undefined ? 'button' : type)=text
