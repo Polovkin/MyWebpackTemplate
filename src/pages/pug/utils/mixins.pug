@@ -1,3 +1,9 @@
+-
+  function checkEmptyProp(prop) {
+    prop = prop === undefined ? '' : prop
+    return prop;
+  }
+
 mixin Img(path,type,alt)
   -
     alt = alt !== undefined ? alt : path.split('/')[path.split('/').length - 1].split('.')[0]
@@ -83,6 +89,7 @@ mixin FormGroup(id,items)
     button(type="submit") send
 
 mixin Link(url,text,linkClass,blank,type)
+  - linkClass = checkEmptyProp(linkClass)
   case type
     when 'mail'
       a(href='mailto:' + url, class='link ' + linkClass)
