@@ -1,0 +1,23 @@
+.header {
+  z-index: z(nav);
+  height: 100px;
+  width: 100%;
+  position: absolute;
+  .container {
+    position: unset;
+  }
+  &__list {
+    top: 0;
+    right: -100%;
+    position: absolute;
+    width: 500px;
+    height: 100vh;
+    background-color: rebeccapurple;
+    &.show {
+      right: 0;
+    }
+  }
+}
+#main {
+  padding-top: 200px;
+}

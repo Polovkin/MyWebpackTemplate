@@ -5,6 +5,7 @@ import '../src/js/utils/lazyloading';
 import '../src/js/scripts/custom';
 import '../src/js/components/test';
 import '../src/js/project/widget/forms'
+import '../src/js/project/layouts/header'
 
 
 import '../src/locales/localization.js'
