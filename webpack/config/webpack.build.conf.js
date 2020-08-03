@@ -5,7 +5,7 @@ const baseWebpackConfig = require('./webpack.config');
 const ImageMinPlugin = require('imagemin-webpack-plugin').default;
 const imageMinMozjpeg = require('imagemin-mozjpeg');
 const imageMinPngquant = require('imagemin-pngquant');
-
+const CompressionPlugin = require('compression-webpack-plugin');
 
 
 const buildWebpackConfig = merge(baseWebpackConfig, {
@@ -24,6 +24,7 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
         }),
       ],
     }),
+    //new CompressionPlugin()
   ],
 });
 

@@ -9,6 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {VueLoaderPlugin} = require('vue-loader');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 // Main const. Feel free to change it
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
@@ -40,6 +41,7 @@ const plugins = (type) => {
       ]
     }),
     new CleanWebpackPlugin(),
+   // new BundleAnalyzerPlugin()
   ];
   switch (type) {
     case 'html': {
