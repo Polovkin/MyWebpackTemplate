@@ -1,0 +1,8 @@
+.slider
+  ul.slider__wrap
+    - for(let i = 0; i < 6; i++)
+      li.slider__item(class=i === 1 ? 'show' : '')
+        img(src=`https://picsum.photos/id/23${i}/500/200`)
+  .slider__control
+    .slider__next next
+    .slider__prev prev

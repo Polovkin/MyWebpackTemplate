@@ -1,0 +1,25 @@
+.slider {
+
+  width: 500px;
+  height: 200px;
+  &__wrap {
+    position: relative;
+    width: inherit;
+  }
+
+  &__item {
+    transition: all $animation-slow;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    z-index: z(bg-content);
+    &.show {
+      opacity: 1;
+      position: relative;
+      z-index: z(content);
+    }
+  }
+}
