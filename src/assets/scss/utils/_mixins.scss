@@ -90,8 +90,9 @@ $z-indexes: (
   @include size($width);
   @if ($url != null) {
     background-image: url($iconsPath + $url);
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
+    position: center;
   }
 }
 
