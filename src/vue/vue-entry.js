@@ -2,7 +2,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router/routes';
-import store from './vuex/store';
+import store from './vuex/store-index';
 Vue.config.productionTip = false;
 
 // Vue.component('example-component', require('./widgets/Example.vue').default);

@@ -5,58 +5,88 @@
       router-link(to="/parse") Parse JSON
       router-link(to="/breakpoint") braikpoints
 
+    .grids
+      .card(v-for="(card,index) of cards")
+        img(:src="`https://picsum.photos/id/${200 + index}/200/100`")
+    button(@click="cards++") add cart
 </template>
 
 <script>
-  let _ = require('lodash');
-  export default {
-    name: 'Home',
-    components: {},
-    data() {
-      return {
-        counter: 1,
-        text: '',
-        size: '',
-        test: ['a', 'b', 'c', 'd','a', 'b', 'c', 'd','a', 'b', 'c', 'd'],
-        test2: ''
-      };
+let _ = require('lodash');
+export default {
+  name: 'Home',
+  components: {},
+  data() {
+    return {
+      counter: 1,
+      text: '',
+      size: '',
+      test: ['a', 'b', 'c', 'd', 'a', 'b', 'c', 'd', 'a', 'b', 'c', 'd'],
+      test2: '',
+      cards: 30,
+    };
+  },
+  methods: {
+    log(data) {
+      console.log(data)
     },
-    methods: {
-      log(data) {
-        console.log(data)
-      },
-      windowSize() {
-        let w = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-        let h = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-        this.size = `${w} x ${h}`
-      },
-      chunk() {
+    windowSize() {
+      let w = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+      let h = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+      this.size = `${w} x ${h}`
+    },
+    chunk() {
 
-        console.log(_.chunk(this.test, 3))
-      }
-    },
-    mounted() {
-      this.chunk()
-      this.windowSize();
-      window.addEventListener("resize", this.windowSize, false);
+      console.log(_.chunk(this.test, 3))
     }
-  };
+  },
+  mounted() {
+    this.chunk()
+    this.windowSize();
+    window.addEventListener("resize", this.windowSize, false);
+  }
+};
 </script>
 
 <style lang="scss"
        scoped>
-  .links {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
+.links {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
 
-    a {
-      color: blue;
-    }
+  a {
+    color: blue;
+  }
 
-    .eblo {
-      color: red
+
+}
+
+.grids {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(4,24%);
+}
+
+.card {
+  padding: 10px;
+  border: 1px solid blueviolet;
+
+  img {
+    width: 200px;
+    height: 100px;
+  }
+  @mixin grid-area($rows,$cols,$width,$height) {
+    display: grid;
+    grid-template:
+      'a1 a2' $height
+      /$width $width;
+  }
+  @for $i from 1 through 30 {
+    &:nth-of-type(#{$i}) {
+     grid-area: area#{$i};
     }
   }
+}
 
 </style>
