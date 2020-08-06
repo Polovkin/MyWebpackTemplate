@@ -23,7 +23,7 @@ export default {
       size: '',
       test: ['a', 'b', 'c', 'd', 'a', 'b', 'c', 'd', 'a', 'b', 'c', 'd'],
       test2: '',
-      cards: 30,
+      cards: 9,
     };
   },
   methods: {
@@ -61,11 +61,36 @@ export default {
 
 
 }
+@mixin grid-area($rows,$cols,$width,$height) {
+  display: grid;
+  grid-template:
+     'a1 a2 a3' auto
+     'a4 a5 a6' auto
+     'a7 a8 a9' auto
+     'a10 a11 a12' auto/
+    33% 33% 33%;
+
+}
 
 .grids {
+  //$var-areas: ("row1": 'a1 a2 a3' 'a4 a5 a6', "row2": 'a4 a5 a6');
+
+
   display: grid;
-  grid-gap: 5px;
-  grid-template-columns: repeat(4,24%);
+  grid: {
+    gap: 10px;
+    template: {
+      columns: repeat(3,33%);
+      rows: repeat(4,auto);
+      areas:  'a1 a2 a3' 'a4 a5 a6' 'a7 a8 a9';
+    };
+
+  }
+  @for $i from 1 through 9 {
+    .card:nth-of-type(#{$i}) {
+      grid-area: unquote("a" + $i);
+    }
+  }
 }
 
 .card {
@@ -76,17 +101,9 @@ export default {
     width: 200px;
     height: 100px;
   }
-  @mixin grid-area($rows,$cols,$width,$height) {
-    display: grid;
-    grid-template:
-      'a1 a2' $height
-      /$width $width;
-  }
-  @for $i from 1 through 30 {
-    &:nth-of-type(#{$i}) {
-     grid-area: area#{$i};
-    }
-  }
+
+
+
 }
 
 </style>
