@@ -20,7 +20,7 @@ import '../src/locales/localization.js'
 import '@/assets/scss/main.scss';
 
 // Vue.js
-import '@/vue/vue-entry';
+//import '@/vue/vue-entry';
 // CSS
 
 

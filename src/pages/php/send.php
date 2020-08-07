@@ -1,7 +1,7 @@
 <?php /** @noinspection ALL */
 
 
-$admin_email = '';
+$admin_email = 'zimboroda@gmail.com';
 
 $massage = '';
 function adopt($text)
@@ -40,5 +40,5 @@ if (isset($_POST)) {
 
 
 mail($admin_email, adopt($form_subject), $massage, $headers);
-header('Location: https://boto.agency/');
+header('Location: http://misha.amemory.pro/');
 exit;

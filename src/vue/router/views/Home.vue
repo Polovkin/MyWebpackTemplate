@@ -7,7 +7,7 @@
 
     .grids
       .card(v-for="(card,index) of cards")
-        img(:src="`https://picsum.photos/id/${200 + index}/200/100`")
+        img(:src="`https://picsum.photos/id/${1 + index}/1000/500`")
     button(@click="cards++") add cart
 </template>
 
@@ -23,7 +23,7 @@ export default {
       size: '',
       test: ['a', 'b', 'c', 'd', 'a', 'b', 'c', 'd', 'a', 'b', 'c', 'd'],
       test2: '',
-      cards: 30,
+      cards: 20,
     };
   },
   methods: {
@@ -63,9 +63,21 @@ export default {
 }
 
 .grids {
+  $rows: auto;
   display: grid;
-  grid-gap: 5px;
-  grid-template-columns: repeat(4,24%);
+  grid-gap: 15px;
+  grid-template:
+        'a1 a1 a2 a2 a3' $rows
+        'a1 a1 a4 a5 a6' $rows
+        'a7 a8 a9 a10 a13' $rows
+        'a11 a12 a14 a10 a15' $rows
+        'a16 a17 a18 a19 a20' $rows
+        'a21 a22 a23 a24 a25' $rows
+        'a26 a27 a28 a29 a30' #{$rows}
+        /
+        1fr 1fr 1fr 1fr 1fr;
+
+
 }
 
 .card {
@@ -73,18 +85,13 @@ export default {
   border: 1px solid blueviolet;
 
   img {
-    width: 200px;
-    height: 100px;
+    width: 100%;
+    height: auto;
   }
-  @mixin grid-area($rows,$cols,$width,$height) {
-    display: grid;
-    grid-template:
-      'a1 a2' $height
-      /$width $width;
-  }
+
   @for $i from 1 through 30 {
     &:nth-of-type(#{$i}) {
-     grid-area: area#{$i};
+      grid-area: a#{$i};
     }
   }
 }

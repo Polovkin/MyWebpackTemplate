@@ -9,12 +9,10 @@
     // Добавляем обработчик на событие `submit`
     form.addEventListener('submit', function(event) {
       event.preventDefault();
-      console.log('sendFormData')
       // Это простой способ подготавливить данные для отправки (все браузеры и IE > 9)
       let formData = new FormData(form);
       // Отправляем данные
       request.send(formData);
-      console.log(formData);
       // Функция для наблюдения изменения состояния request.readyState обновления statusMessage соответственно
       request.onreadystatechange = function () {
         // <4 =  ожидаем ответ от сервера
@@ -30,6 +28,8 @@
     });
 
   }
+
+  //MASK
   function setCursorPosition(pos, elem) {
     elem.focus();
     if (elem.setSelectionRange) elem.setSelectionRange(pos, pos);
@@ -75,11 +75,11 @@
               errorMsg.style.opacity = '0';
             }
           })
-          if (input.type === 'tel') {
-            input.addEventListener("input", mask, false);
-            input.addEventListener("focus", mask, false);
-            input.addEventListener("blur", mask, false);
-          }
+          // if (input.type === 'tel') {
+          //   input.addEventListener("input", mask, false);
+          //   input.addEventListener("focus", mask, false);
+          //   input.addEventListener("blur", mask, false);
+          // }
         }
       }
       sendFormData(forms[i])

@@ -20,7 +20,7 @@ const PATHS = {
   assets: 'assets/',
 };
 
-const fileName = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
+const fileName = ext => isDev ? `[name].${ext}` : `[name].${ext}`
 const plugins = (type) => {
   const base = [
     new VueLoaderPlugin(),
@@ -105,7 +105,7 @@ module.exports = {
   output: {
     filename: `${PATHS.assets}js/${fileName('js')}`,
     path: PATHS.dist,
-    publicPath: isDev ? '/' : '/',
+    publicPath: isDev ? '/' : '',
 
   },
   optimization: {
