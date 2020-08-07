@@ -27,11 +27,11 @@ const plugins = (type) => {
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/${fileName('css')}`,
     }),
-    new webpack.ProvidePlugin({
-      '$': 'jquery',
-      'jQuery': 'jquery',
-      'window.jQuery': 'jquery',
-    }),
+    // new webpack.ProvidePlugin({
+    //   '$': 'jquery',
+    //   'jQuery': 'jquery',
+    //   'window.jQuery': 'jquery',
+    // }),
     new CopyWebpackPlugin({
       patterns: [
         {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
@@ -41,7 +41,7 @@ const plugins = (type) => {
       ]
     }),
     new CleanWebpackPlugin(),
-   // new BundleAnalyzerPlugin()
+    new BundleAnalyzerPlugin()
   ];
   switch (type) {
     case 'html': {

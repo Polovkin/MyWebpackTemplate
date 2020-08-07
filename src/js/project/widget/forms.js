@@ -1,30 +1,58 @@
-
+import axios from 'axios'
 (function () {
 
-  function sendFormData (form) {
-    let request = new XMLHttpRequest();
-    request.open('POST', 'send.php', true)
-    request.setRequestHeader('accept', 'application/json');
+  function sendFormData(form) {
+    // let request = new XMLHttpRequest();
+    // request.open('POST', '/send.php', true)
+    // request.setRequestHeader('accept', 'application/json');
 
     // Добавляем обработчик на событие `submit`
-    form.addEventListener('submit', function(event) {
+    form.addEventListener('submit', function (event) {
       event.preventDefault();
-      // Это простой способ подготавливить данные для отправки (все браузеры и IE > 9)
+      //console.log('submit')
+
+
+// заполним FormData данными из формы
       let formData = new FormData(form);
-      // Отправляем данные
-      request.send(formData);
-      // Функция для наблюдения изменения состояния request.readyState обновления statusMessage соответственно
-      request.onreadystatechange = function () {
-        // <4 =  ожидаем ответ от сервера
-        if (request.readyState < 4)
-          console.log('Ответ от сервера полностью загружен')
-        else if (request.readyState === 4) {
-          if (request.status === 200 && request.status < 300)
-            console.log('200 - 299 = успешная отправка данных!')
-          else
-            console.log('что-то пошло не так')
-        }
-      }
+      axios({
+        method: 'post',
+        url: '/send.php',
+        data: formData,
+        headers: {'Content-Type': 'multipart/form-data' }
+      })
+        .then(function (response) {
+          //handle success
+          console.log(response);
+        })
+        .catch(function (response) {
+          //handle error
+          console.log(response);
+        });
+
+      // отправим данные
+      // let xhr = new XMLHttpRequest();
+      // xhr.open("POST", "/send.php");
+      // xhr.send(formData);
+      //
+      // xhr.onload = () => alert(xhr.response);
+
+      // // Это простой способ подготавливить данные для отправки (все браузеры и IE > 9)
+      // let formData = new FormData(form);
+      // // Отправляем данные
+      // console.log(formData);
+      // request.send(formData);
+      // // Функция для наблюдения изменения состояния request.readyState обновления statusMessage соответственно
+      // request.onreadystatechange = function () {
+      //   // <4 =  ожидаем ответ от сервера
+      //   if (request.readyState < 4)
+      //     console.log('Ответ от сервера полностью загружен')
+      //   else if (request.readyState === 4) {
+      //     if (request.status === 200 && request.status < 300)
+      //       console.log('200 - 299 = успешная отправка данных!')
+      //     else
+      //       console.log('что-то пошло не так')
+      //   }
+      // }
     });
 
   }
@@ -41,6 +69,7 @@
       range.select()
     }
   }
+
   function mask(event) {
     let matrix = "+38(___)-___-____",
       i = 0,
@@ -56,7 +85,7 @@
   }
 
   const forms = document.querySelectorAll('form')
-  if  (forms.length) {
+  if (forms.length) {
 
     for (let i = 0; i < forms.length; i++) {
       let label = forms[i].querySelectorAll('label')
