@@ -9,11 +9,4 @@
 @import "project/fixes";
 
 
-.forms-wrap {
-  @extend %flex-row;
 
-  form {
-    padding: 20px;
-  }
-
-}

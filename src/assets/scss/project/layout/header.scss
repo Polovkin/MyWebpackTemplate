@@ -1,22 +1,25 @@
 .header {
-  display: none;
   z-index: z(nav);
   height: 100px;
   width: 100%;
   position: absolute;
   .container {
     position: unset;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  &__list {
-    top: 0;
-    right: -100%;
-    position: absolute;
-    width: 500px;
-    height: 100vh;
-    background-color: rebeccapurple;
-    &.show {
-      right: 0;
-    }
+&__list {
+  display: flex;
+  justify-content: space-between;
+  &-item {
+
   }
+  &-link {
+    color: rebeccapurple;
+    margin: 10px;
+  }
+}
+
 }
 

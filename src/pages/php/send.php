@@ -1,9 +1,13 @@
 <?php /** @noinspection ALL */
 
 
+//$admin_email = 'hello@boto.agency';
 $admin_email = 'zimboroda@gmail.com';
 
+
 $massage = '';
+
+
 function adopt($text)
 {
   return '=?UTF-8?B?' . Base64_encode($text) . '?=';
@@ -15,30 +19,37 @@ function br2nl($input)
 }
 
 $headers = "MIME-Version: 1.0" . PHP_EOL .
-  "Content-Type: resources/html; charset=utf-8" . PHP_EOL .
+  "Content-Type: text/html; charset=utf-8" . PHP_EOL .
   'From: ' . adopt("AmemoryPro") . ' <' . $admin_email . '>' . PHP_EOL .
   'Reply-To: ' . $admin_email . '' . PHP_EOL;
 
 
 if (isset($_POST)) {
   $name = $_POST['name'];
-  $email = $_POST['email'];
-  $phone = $_POST['tel'];
-  $description = $_POST['message'];
+  $pass = $_POST['password'];
+  $phone = str_replace(['(', ')', ' ', '-'], '', $_POST['phone']);
+  $text = $_POST['textarea'];
+  $filename = '';
 
-  $massage =
-    'Номер телефона: ' . $phone . '<br>';
-  if (isset($_POST['email'])) {
-    $massage .=
-      'От: ' . $name . '<br>' .
-      'EMail: ' . $email . '<br>' .
-      'Описание: ' . $description . '<br>';
+  if (isset($_FILES)) {
+    $filename = 'uploads/' . str_replace(' ','',$_FILES['file']['name']) ;
+    move_uploaded_file($_FILES['file']['tmp_name'], $filename);
+    $filename = 'https://' . $_SERVER['HTTP_HOST'] . '/form/' . $filename ;
   }
+  $massage =
+
+    'Имя: ' . $name . '<br>' .
+    'Номер телефона: ' . $phone . '<br>' .
+    'Пароль: ' . $pass . '<br>' .
+    'Сообщение: ' . $text . '<br>' .
+    'Файл:' . $filename;
+
+
 } else {
   return 'Error';
 }
 
+$name = isset($name) ? $name : 'Аноним';
+
 
 mail($admin_email, adopt($form_subject), $massage, $headers);
-header('Location: http://misha.amemory.pro/');
-exit;

@@ -1,7 +1,4 @@
-const acordions = document.querySelectorAll('.accordion');
-// for (let i = 0; i <acordions.length ; i++) {
-//
-// }
+
 
 const accordions = document.querySelectorAll('.accordion__content');
 for (let i = 0; i < accordions.length; i++) {

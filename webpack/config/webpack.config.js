@@ -27,11 +27,6 @@ const plugins = (type) => {
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/${fileName('css')}`,
     }),
-    // new webpack.ProvidePlugin({
-    //   '$': 'jquery',
-    //   'jQuery': 'jquery',
-    //   'window.jQuery': 'jquery',
-    // }),
     new CopyWebpackPlugin({
       patterns: [
         {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
@@ -41,7 +36,7 @@ const plugins = (type) => {
       ]
     }),
     new CleanWebpackPlugin(),
-    new BundleAnalyzerPlugin()
+    //new BundleAnalyzerPlugin()
   ];
   switch (type) {
     case 'html': {
@@ -99,7 +94,7 @@ module.exports = {
     paths: PATHS,
   },
   entry: {
-    app: ['@babel/polyfill', PATHS.webpack]
+    app: isDev ? PATHS.webpack : ['@babel/polyfill', PATHS.webpack]
     // module: `${PATHS.src}/your-module.js`,
   },
   output: {
@@ -197,9 +192,9 @@ module.exports = {
             loader: 'file-loader',
             options: {
               esModule: false,
-               name: '[name].[ext]',
+              name: '[name].[ext]',
               outputPath: `${PATHS.assets}/img`,
-             //publicPath: `/${PATHS.assets}img`,
+              //publicPath: `/${PATHS.assets}img`,
             },
           },
         ],

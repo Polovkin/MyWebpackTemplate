@@ -1,58 +1,30 @@
-import axios from 'axios'
+
+
 (function () {
+  const send = '/form/send.php'
 
-  function sendFormData(form) {
-    // let request = new XMLHttpRequest();
-    // request.open('POST', '/send.php', true)
-    // request.setRequestHeader('accept', 'application/json');
+  function sendFormDataXMLHttp(form) {
+    let request = new XMLHttpRequest();
+    request.open('POST', '/form/send.php', true)
+    request.setRequestHeader('accept', 'application/json');
 
-    // Добавляем обработчик на событие `submit`
     form.addEventListener('submit', function (event) {
       event.preventDefault();
-      //console.log('submit')
-
-
-// заполним FormData данными из формы
       let formData = new FormData(form);
-      axios({
-        method: 'post',
-        url: '/send.php',
-        data: formData,
-        headers: {'Content-Type': 'multipart/form-data' }
-      })
-        .then(function (response) {
-          //handle success
-          console.log(response);
-        })
-        .catch(function (response) {
-          //handle error
-          console.log(response);
-        });
+      request.send(formData);
 
-      // отправим данные
-      // let xhr = new XMLHttpRequest();
-      // xhr.open("POST", "/send.php");
-      // xhr.send(formData);
-      //
-      // xhr.onload = () => alert(xhr.response);
-
-      // // Это простой способ подготавливить данные для отправки (все браузеры и IE > 9)
-      // let formData = new FormData(form);
-      // // Отправляем данные
-      // console.log(formData);
-      // request.send(formData);
-      // // Функция для наблюдения изменения состояния request.readyState обновления statusMessage соответственно
-      // request.onreadystatechange = function () {
-      //   // <4 =  ожидаем ответ от сервера
-      //   if (request.readyState < 4)
-      //     console.log('Ответ от сервера полностью загружен')
-      //   else if (request.readyState === 4) {
-      //     if (request.status === 200 && request.status < 300)
-      //       console.log('200 - 299 = успешная отправка данных!')
-      //     else
-      //       console.log('что-то пошло не так')
-      //   }
-      // }
+      request.onreadystatechange = function () {
+        if (request.readyState < 4)
+          console.log('Ответ от сервера полностью загружен')
+        else if (request.readyState === 4) {
+          if (request.status === 200 && request.status < 300) {
+            console.log('200 - 299 = успешная отправка данных!')
+            window.location.href = `http://misha.amemory.pro/`;
+          } else {
+            console.log('что-то пошло не так')
+          }
+        }
+      }
     });
 
   }
@@ -111,10 +83,24 @@ import axios from 'axios'
           // }
         }
       }
-      sendFormData(forms[i])
+      sendFormDataXMLHttp(forms[i])
     }
   }
 }());
 
 
-
+//
+// axios({
+//   method: 'post',
+//   url: '/form/send.php',
+//   data: formData,
+//   config: {headers: {'Content-Type': 'multipart/form-data'}}
+// })
+//   .then(function (response) {
+//     //handle success
+//     //window.location.href = `http://misha.amemory.pro/`;
+//   })
+//   .catch(function (response) {
+//     //handle error
+//     // console.log(response);
+//   });

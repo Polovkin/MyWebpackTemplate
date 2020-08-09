@@ -62,6 +62,10 @@ mixin formItem(type,iD)
         pattern: '',
         placeholder: 'textarea placeholder'
       },
+      file: {
+        pattern: '',
+        placeholder: ''
+      },
     }
   if type !== 'textarea'
     label(for=id)
@@ -69,10 +73,11 @@ mixin formItem(type,iD)
         id=id,
         form=iD,
         type=type,
+        name=type,
         pattern=inputData[type].pattern,
         placeholder=inputData[type].placeholder,
         autocomplte="off"
-        required)
+        )
       span.error=inputData[type].errorMsg
   else
     label(for=id)
@@ -80,6 +85,7 @@ mixin formItem(type,iD)
         id=id,
         form=iD,
         type=type,
+        name=type,
         placeholder=inputData[type].placeholder)
 
 mixin FormGroup(id,items)
