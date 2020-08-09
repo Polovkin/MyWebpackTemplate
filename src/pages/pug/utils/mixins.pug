@@ -39,12 +39,12 @@ mixin formItem(type,iD)
     let id = `${iD}__${type}`
     inputData = {
       name: {
-        pattern: '^[a-zA-Z0-9-_\.]{3,20}$',
+        pattern: '[A-Za-zА-Яа-яЁё]{3,20}$',
         placeholder: 'name placeholder',
         errorMsg: 'name error',
       },
       password: {
-        pattern: '[a-zA-Z0-9]{5,16}$',
+        pattern: '.{6,12}',
         placeholder: 'password placeholder',
         errorMsg: 'password error',
       },
@@ -76,7 +76,8 @@ mixin formItem(type,iD)
         name=type,
         pattern=inputData[type].pattern,
         placeholder=inputData[type].placeholder,
-        autocomplte="off"
+        autocomplte="off",
+        required=type !== 'file'
         )
       span.error=inputData[type].errorMsg
   else

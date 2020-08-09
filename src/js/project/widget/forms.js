@@ -1,7 +1,5 @@
-
-
 (function () {
-  const send = '/form/send.php'
+  const send = '/form/send.php';
 
   function sendFormDataXMLHttp(form) {
     let request = new XMLHttpRequest();
