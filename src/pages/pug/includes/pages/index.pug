@@ -5,6 +5,13 @@ block variables
 
 
 block main
- .main.container
+  .main.container
+    .grid-generator
+      label cols
+        input.cols(type="number", maxlength=50)
+      label rows
+        input.rows(type="number", maxlength=50)
+      button.generate generate
+      p.result asd
     include ../modules/validForm
 
