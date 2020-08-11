@@ -17,6 +17,28 @@ const store = new Vuex.Store({
     },
   },
   actions: { // Асинхронный вызов мутации
+    GET_NODE_USERS: async () => {
+      // return await fetch('http://localhost:3000/api/users', {
+      //   method: 'get',
+      //   mode: 'no-cors',
+      // })
+      //   .then((response) => {
+      //     return  response.json();
+      //   })
+      //   .then((data) => {
+      //     console.log(data);
+      //   });
+
+      // const response = await axios.get('http://localhost:3000/api/users', {
+      //   headers: {
+      //     'Content-type': 'text/json'
+      //   },
+      //   mode: 'no-cors',
+      // })
+      // console.log(response.data);
+      // return response.data
+
+    },
     GET_CSV: async () => {
       function csvJSON(csv) {
         const lines = csv.split('\n')
