@@ -1,23 +1,16 @@
-function addOffsetAnimation(targetBlock,addClass) {
-  let target = $(targetBlock);
-  let winHeight = $(window).height();
-  let targetPos = target.offset().top;
-  let scrollToElem = targetPos -(winHeight + 50);
-
-  $(window).scroll(function(){
-    let winScrollTop = $(this).scrollTop();
-    if(winScrollTop > scrollToElem){
-      $(target).addClass(addClass);
-
-    } else {
-      $(target).removeClass(addClass);
+(function () {
+  const cols = document.querySelector('.cols')
+  const rows = document.querySelector('.rows')
+  const result = document.querySelector('.result')
+  const btn = document.querySelector('.generate')
+  btn.addEventListener("click", function () {
+    result.innerHTML = '';
+    let template = [];
+    for (let i = 0; i < rows.value; i++) {
+      template.push(1)
+      console.log(rows.value)
     }
-  });
-}
-
-$(document).ready(function () {
-
-});
-$('#test-btn').click(function () {
-  $('#test-text').append( `<strong>Hello</strong>` ).append('b');
-});
+    console.log(template);
+    result.appendChild(document.createTextNode(rows.value))
+  })
+}())
