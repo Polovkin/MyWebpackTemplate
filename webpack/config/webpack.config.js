@@ -94,7 +94,7 @@ module.exports = {
     paths: PATHS,
   },
   entry: {
-    app: ['@babel/polyfill', PATHS.webpack]
+    app: isDev ? PATHS.webpack : ['@babel/polyfill', PATHS.webpack]
     // module: `${PATHS.src}/your-module.js`,
   },
   output: {

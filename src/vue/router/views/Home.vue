@@ -1,12 +1,13 @@
 <template lang="pug">
   .container
-
     p {{size}}
     .links
       router-link(to="/parse") Parse JSON
       router-link(to="/breakpoint") braikpoints
 
-    p {{users}}
+    .grids
+      .card(v-for="(card,index) of cards")
+        img(:src="`https://picsum.photos/id/${200 + index}/200/100`")
     button(@click="cards++") add cart
 </template>
 
@@ -23,7 +24,6 @@ export default {
       test: ['a', 'b', 'c', 'd', 'a', 'b', 'c', 'd', 'a', 'b', 'c', 'd'],
       test2: '',
       cards: 9,
-      users: ''
     };
   },
   methods: {
@@ -40,8 +40,7 @@ export default {
       console.log(_.chunk(this.test, 3))
     }
   },
- async mounted() {
-    this.users = await this.$store.dispatch('GET_NODE_USERS');
+  mounted() {
     this.chunk()
     this.windowSize();
     window.addEventListener("resize", this.windowSize, false);
