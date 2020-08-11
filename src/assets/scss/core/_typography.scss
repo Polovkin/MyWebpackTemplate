@@ -1,14 +1,15 @@
 $font__line-height: auto;
 $font__size: 18px;
 $font__weight: normal;
-$font__family: 'Source Code Pro';
-$font__file-name: 'SourceCodePro-';
+$font__family: 'Lato';
+$font__style:  sans-serif;
+$font__file-name: 'Lato-';
 $font__path: '/assets/fonts/#{$font__file-name}';
-$font__ext: (eot, woff, woff2);
+$font__ext: (woff2, woff, ttf, eot);
 $font__types: (
-    ('Bold', bold, normal),
-    ('Regular', normal, normal),
-    ('It', 500, italic),
+                ('Light', 300, normal),
+                ('Bold', bold, normal),
+                ('Regular', normal, normal),
 );
 
 @each $name, $weight, $style in $font__types {
@@ -21,8 +22,8 @@ html {
   line-height: $font__line-height;
 
   height: 100%;
- @include breakpoint ($desktop__laptop) {
-   font-size: 16px;
+  @include breakpoint ($desktop__laptop) {
+    font-size: 16px;
   }
   @include breakpoint($tablet__all) {
     font-size: 15px;
@@ -36,7 +37,7 @@ html {
 }
 
 body {
-  font-family: $font__family;
+  font-family: $font__family , $font__style;
   font-size: $font__size;
   font-weight: $font__weight;
 
