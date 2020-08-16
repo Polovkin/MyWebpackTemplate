@@ -4,11 +4,9 @@
     .links
       router-link(to="/parse") Parse JSON
       router-link(to="/breakpoint") braikpoints
+      router-link(to="/database") firebase
 
-    .grids
-      .card(v-for="(card,index) of cards")
-        img(:src="`https://picsum.photos/id/${200 + index}/200/100`")
-    button(@click="cards++") add cart
+
 </template>
 
 <script>
@@ -75,8 +73,6 @@ export default {
 .grids {
   $rows: auto;
   //$var-areas: ("row1": 'a1 a2 a3' 'a4 a5 a6', "row2": 'a4 a5 a6');
-
-
 
   grid: {
     gap: 10px;

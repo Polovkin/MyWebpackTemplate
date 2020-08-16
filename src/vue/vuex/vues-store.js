@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import database from './database';
 
 Vue.use(Vuex);
 
@@ -114,6 +115,9 @@ const store = new Vuex.Store({
       return state.counter;
     },
   },
+  modules: {
+    database,
+  }
 });
 
 export default store;

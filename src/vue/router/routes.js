@@ -27,5 +27,9 @@ export default new Router({
       path: '/breakpoint',
       component: () => import('./views/breakpoint.vue'),
     },
+    {
+      path: '/database',
+      component: () => import('./views/database.vue'),
+    },
   ],
 });
