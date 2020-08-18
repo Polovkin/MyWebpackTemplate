@@ -53,11 +53,11 @@ $ring-weight               : 5px;
 
 
 //Pulse circles
-//class= loader > .circle*3
+//class= pulse > .circle*3
 $loader-size        : 10rem;
 $loader-duration    : 2s;
 $loader-color       : #FFA5AB;
-.loader {
+.pulse {
   $loader-size: 10rem;
 
   position: fixed;
