@@ -1,10 +1,22 @@
 extends ../layout/base
 
 block variables
-  - let title = 'test'
+    - let title = 'test'
 
 
 block main
- .main.container
-    #app
-
+  .main.container
+    .app
+      .wrap
+        #select.select.open
+          .select__input
+            span Text
+            i.fas.fa-chevron-down
+          .select__dropdown
+            ul.select__list
+              li.select__item 123
+              li.select__item 123
+              li.select__item 123
+              li.select__item 123
+              li.select__item 123
+              li.select__item 123
