@@ -34,60 +34,50 @@ mixin Img(path,type,alt)
       default
         img(src=imgPath + path, alt=alt)
 
-mixin formItem(type,iD)
+mixin formItem(purpose,iD)
   -
-    let id = `${iD}__${type}`
+    let id = `${iD}__${purpose}`
     inputData = {
       name: {
         pattern: '[A-Za-zА-Яа-яЁё]{3,20}$',
         placeholder: 'name placeholder',
         errorMsg: 'name error',
+        type: 'text',
       },
       password: {
         pattern: '.{6,12}',
         placeholder: 'password placeholder',
         errorMsg: 'password error',
+        type: 'password',
       },
-      tel: {
-        pattern: '',
-        placeholder: 'tel placeholder',
-        errorMsg: 'tel error',
-      },
-      mail: {
+      email: {
         pattern: '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$',
-        placeholder: 'mail placeholder',
-        errorMsg: 'mail error',
-      },
-      textarea: {
-        pattern: '',
-        placeholder: 'textarea placeholder'
-      },
-      file: {
-        pattern: '',
-        placeholder: ''
-      },
+        placeholder: 'email placeholder',
+        errorMsg: 'email error',
+        type: 'email',
+      }
     }
-  if type !== 'textarea'
+  if purpose !== 'textarea'
     label(for=id)
       input(
         id=id,
         form=iD,
-        type=type,
-        name=type,
-        pattern=inputData[type].pattern,
-        placeholder=inputData[type].placeholder,
-        autocomplte="off",
-        required=type !== 'file'
+        type=inputData[purpose].type,
+        name=purpose,
+        pattern=inputData[purpose].pattern,
+        placeholder=inputData[purpose].placeholder,
+        autocomplte='on',
+        required=purpose !== 'file'
         )
-      span.error=inputData[type].errorMsg
+      span.error=inputData[purpose].errorMsg
   else
     label(for=id)
       textarea(
         id=id,
         form=iD,
-        type=type,
-        name=type,
-        placeholder=inputData[type].placeholder)
+        type=inputData[purpose].type,
+        name=purpose,
+        placeholder=inputData[purpose].placeholder)
 
 mixin FormGroup(id,items)
   form(id=id, action='')
