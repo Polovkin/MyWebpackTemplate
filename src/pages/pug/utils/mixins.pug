@@ -34,7 +34,7 @@ mixin Img(path,type,alt)
       default
         img(src=imgPath + path, alt=alt)
 
-mixin formItem(purpose,iD)
+mixin FormItem(purpose,iD,text)
   -
     let id = `${iD}__${purpose}`
     inputData = {
@@ -55,10 +55,16 @@ mixin formItem(purpose,iD)
         placeholder: 'email placeholder',
         errorMsg: 'email error',
         type: 'email',
-      }
+      },
+      phone: {
+        pattern: '[0-9]{10}',
+        placeholder: 'phone placeholder',
+        errorMsg: 'phone error',
+        type: 'let',
+      },
     }
   if purpose !== 'textarea'
-    label(for=id)
+    label(for=id)=text
       input(
         id=id,
         form=iD,
