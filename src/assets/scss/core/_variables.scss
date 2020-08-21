@@ -42,7 +42,7 @@ $phone__small                 : $width__min            $width__mobile-min;      
 $imgPath: '/assets/img/';
 $iconsPath: $imgPath +'icons/';
 
-section,
+body > section,
 .section {
   position: relative;
 

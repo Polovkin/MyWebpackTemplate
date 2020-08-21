@@ -1,12 +1,13 @@
 // JS
 //import '../src/js/utils/base';
-import '../src/js/utils/lazyloading';
+//import '../src/js/utils/lazyloading';
 
 //import '../src/js/scripts/custom';
 //import '../src/js/components/test';
 import '../src/js/project/widget/forms'
 //import '../src/js/project/layouts/header'
 //import '../src/js/project/modules/slider'
+import '../src/js/plugins/select'
 
 
 //import '../src/locales/localization.js'
