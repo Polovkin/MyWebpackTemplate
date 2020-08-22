@@ -1,15 +1,15 @@
 $font__line-height: auto;
 $font__size: 18px;
 $font__weight: normal;
-$font__family: 'Lato';
+$font__family: 'SourceCodePro';
 $font__style:  sans-serif;
-$font__file-name: 'Lato-';
+$font__file-name: 'SourceCodePro-';
 $font__path: '/assets/fonts/#{$font__file-name}';
-$font__ext: (woff2, woff, ttf, eot);
+$font__ext: (woff2);
 $font__types: (
                 ('Light', 300, normal),
-                ('Bold', bold, normal),
-                ('Regular', normal, normal),
+                //('Boldlt', bold, normal),
+               // ('Regularlt', normal, normal),
 );
 
 @each $name, $weight, $style in $font__types {
