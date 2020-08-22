@@ -39,7 +39,7 @@ mixin FormItem(purpose,iD,text)
     let id = `${iD}__${purpose}`
     inputData = {
       name: {
-        pattern: '[A-Za-zА-Яа-яЁё]{3,20}$',
+        pattern: '[A-Za-zА-Яа-яЁёІіЇїЄє]{2,20}',
         placeholder: 'name placeholder',
         errorMsg: 'name error',
         type: 'text',
