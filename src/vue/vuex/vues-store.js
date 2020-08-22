@@ -12,12 +12,12 @@ const store = new Vuex.Store({
   state: {
     counter: 0,
   },
-  mutations: { // Что изменить
+  mutations: {
     CHANGE_COUNTER: (state) => {
       state.counter++;
     },
   },
-  actions: { // Асинхронный вызов мутации
+  actions: {
     GET_CSV: async () => {
       function csvJSON(csv) {
         const lines = csv.split('\n')
@@ -110,7 +110,7 @@ const store = new Vuex.Store({
       return await newUser.json();
     },
   },
-  getters: { // вернуть значение
+  getters: {
     COUNTER_STATE(state) {
       return state.counter;
     },
