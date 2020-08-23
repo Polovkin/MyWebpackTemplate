@@ -21,7 +21,7 @@ import '../src/js/plugins/select'
 import '@/assets/scss/main.scss';
 
 // Vue.js
-//import '@/vue/vue-entry';
+import '@/vue/vue-entry';
 // CSS
 
 

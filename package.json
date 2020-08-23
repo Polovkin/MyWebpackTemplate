@@ -25,7 +25,6 @@
     "@babel/polyfill": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
     "autoprefixer": "^9.8.6",
-    "axios": "^0.20.0",
     "babel-loader": "^8.1.0",
     "breakpoint-sass": "^2.7.1",
     "clean-webpack-plugin": "^3.0.0",
@@ -42,9 +41,11 @@
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-pngquant": "^9.0.0",
     "imagemin-webpack-plugin": "^2.4.2",
+    "install": "^0.13.0",
     "lodash": "^4.17.20",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",
+    "npm": "^6.14.8",
     "npm-check-updates": "^7.1.1",
     "popper.js": "^1.16.1",
     "postcss": "^7.0.32",
@@ -68,7 +69,8 @@
     "webpack-cli": "^3.3.12",
     "webpack-dashboard": "^3.2.0",
     "webpack-dev-server": "^3.11.0",
-    "webpack-merge": "^5.1.2"
+    "webpack-merge": "^5.1.2",
+    "whatwg-fetch": "^3.4.0"
   },
   "browserslist": [
     "> 1%",

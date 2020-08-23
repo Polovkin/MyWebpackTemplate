@@ -5,12 +5,13 @@
       router-link(to="/parse") Parse JSON
       router-link(to="/breakpoint") braikpoints
       router-link(to="/database") firebase
+      router-link(to="/fetch") Fetch
 
 
 </template>
 
 <script>
-let _ = require('lodash');
+
 export default {
   name: 'Home',
   components: {},
@@ -33,10 +34,6 @@ export default {
       let h = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
       this.size = `${w} x ${h}`
     },
-    chunk() {
-
-      console.log(_.chunk(this.test, 3))
-    }
   },
   mounted() {
     this.chunk()

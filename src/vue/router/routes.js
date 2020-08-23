@@ -28,8 +28,8 @@ export default new Router({
       component: () => import('./views/breakpoint.vue'),
     },
     {
-      path: '/database',
-      component: () => import('./views/database.vue'),
+      path: '/fetch',
+      component: () => import('./views/fetch.vue'),
     },
   ],
 });

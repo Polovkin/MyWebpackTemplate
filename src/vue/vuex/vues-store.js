@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import database from './database';
-
+import fetch from './modules/fetch'
 Vue.use(Vuex);
 
 
@@ -116,7 +116,7 @@ const store = new Vuex.Store({
     },
   },
   modules: {
-    database,
+    database,fetch
   }
 });
 
