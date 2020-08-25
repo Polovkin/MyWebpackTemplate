@@ -1,29 +1,9 @@
 include ../../utils/mixins
 -
-  //Localization
-  locale = 'ru'
-  localeData = {
-    en: require("@/locales/en.json"),
-    ru: require("@/locales/ru.json")
-  }
-  lcl = localeData[locale]
-
+  locale='ru'
   //Path
   imgPath = '/assets/img/'
-  basePath = locale === 'ua' ? '/' : `/${locale}/`
-
-  //Links
-  telegramLink = 'https://t.me/BotoAgencyBot'
-  viberLink = 'viber://pa?chatURI=botoagencybot'
-
-  //Data
-  contactData= {
-    action : 'send.php',
-    phone : '+38 (063) 722-72-28',
-    phone2 : '+38 (098) 401-47-63',
-    mail : 'hello@boto.agency',
-  }
-
+  basePath =  '/';
 
 
 block variables
