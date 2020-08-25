@@ -1,7 +1,6 @@
 import 'whatwg-fetch'
 
 
-
 export default {
     state: {
         users: [],
@@ -13,15 +12,17 @@ export default {
     },
     actions: {
         GET_USERS_DATA: async ({commit}) => {
-
-            const response = await window.fetch('https://jsonplaceholder.typicode.com/users');
-            if (response.ok) {
-                let json = await response.json();
-                commit('SET_USERS',json)
-            } else {
-                console.log("Ошибка HTTP: " + response.status);
+            try {
+                const response = await window.fetch('https://jsonplaceholder.typicode.com/users');
+                if (response.ok) {
+                    let json = await response.json();
+                    commit('SET_USERS', json)
+                } else {
+                    console.log("Ошибка HTTP: " + response.status);
+                }
+            } catch (e) {
+                console.log(e);
             }
-
         }
     },
     getters: {
