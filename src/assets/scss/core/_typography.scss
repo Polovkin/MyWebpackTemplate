@@ -1,17 +1,14 @@
-
-
 $font__line-height: auto;
 $font__size: 18px;
 $font__weight: normal;
 $font__family: 'SourceCodePro';
-$font__style:  sans-serif;
+$font__style: sans-serif;
 $font__file-name: 'SourceCodePro-';
 $font__path: '/assets/fonts/#{$font__file-name}';
-$font__ext: (woff2,woff);
+$font__ext: (woff2, woff);
 $font__types: (
-                ('Light', 300, normal),
-                //('Boldlt', bold, normal),
-               // ('Regularlt', normal, normal),
+                ('Light', 300, normal), //('Boldlt', bold, normal),
+  // ('Regularlt', normal, normal),
 );
 
 @each $name, $weight, $style in $font__types {
@@ -24,7 +21,7 @@ html {
   line-height: $font__line-height;
 
   height: 100%;
-  @include breakpoint ($desktop__laptop) {
+  @include breakpoint($desktop__laptop) {
     font-size: 16px;
   }
   @include breakpoint($tablet__all) {
@@ -33,13 +30,13 @@ html {
   @include breakpoint(($width__mobile-min + 1) $width__tablet-port) {
     font-size: 14px;
   }
-  @include breakpoint($width__min  ($width__mobile-min + 1)) {
+  @include breakpoint($width__min ($width__mobile-min + 1)) {
     font-size: 12px;
   }
 }
 
 body {
-  font-family: $font__family , $font__style;
+  font-family: $font__family, $font__style;
   font-size: $font__size;
   font-weight: $font__weight;
 
@@ -217,6 +214,7 @@ a {
     line-height: 24px;
   }
 }
+
 button:hover,
 input[type='button']:hover,
 input[type='reset']:hover,
@@ -298,9 +296,10 @@ textarea {
 }
 
 
-form > label {
-  width: 100%;
-
+form {
+  label {
+    width: 100%;
+  }
   input, textarea {
     width: inherit;
     font-family: $font__family;
@@ -308,5 +307,4 @@ form > label {
 
     color: $color__font--primary;
   }
-
 }

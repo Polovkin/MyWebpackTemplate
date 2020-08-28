@@ -16,14 +16,14 @@ input {
   }
 }
 
-form label {
-  span.error {
-    transition: all .3s;
-    position: relative;
-    color: $color__error;
-    font-size: 13px;
-    top: -7px;
-    left: 7px;
-    opacity: 0;
-  }
+
+span.error {
+  transition: all .3s;
+  position: relative;
+  color: $color__error;
+  font-size: 13px;
+  top: -7px;
+  left: 7px;
+  opacity: 0;
 }
+
