@@ -7,7 +7,7 @@ module.exports = {
       grid: true,
     }),
 
-    require('css-mqpacker')({
+    require('postcss-sort-media-queries')({
       sort: sortCSSmq,
     }),
     require('cssnano')({
