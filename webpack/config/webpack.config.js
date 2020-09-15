@@ -50,9 +50,9 @@ const plugins = (type) => {
                     (page) =>
                         new HtmlWebpackPlugin({
                             template: `${PAGES_DIR}/${page}`,
-                            filename: page,
+                            filename: (page === 'index.html' || page === '404.html' ? page : `${page.split('.')[0]}/index.html`),
                         }),
-                ),);
+                ))
             break;
         }
 
@@ -61,7 +61,6 @@ const plugins = (type) => {
             let pages = fs.readdir(PAGES_DIR, (err, files) => {
                  return  files;
             });
-            console.log(pages);
             const PAGES = fs
                 .readdirSync(PAGES_DIR)
                 .filter((fileName) => fileName.endsWith('.pug'));
@@ -283,7 +282,7 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js'],
     },
 
-    plugins: plugins('pug'),
+    plugins: plugins('html'),
 
 
 };
