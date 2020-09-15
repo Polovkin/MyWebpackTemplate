@@ -1,7 +1,7 @@
 <template lang="pug">
 
   #app
-    h1 app
+    h1 app test
 
 </template>
 
