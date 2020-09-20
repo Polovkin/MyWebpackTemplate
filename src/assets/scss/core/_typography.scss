@@ -4,11 +4,12 @@ $font__weight: normal;
 $font__family: 'SourceCodePro';
 $font__style: sans-serif;
 $font__file-name: 'SourceCodePro-';
-$font__path: '/assets/fonts/#{$font__file-name}';
+$font__path: '~@/assets/fonts/#{$font__file-name}';
 $font__ext: (woff2, woff);
 $font__types: (
-                ('Light', 300, normal), //('Boldlt', bold, normal),
-  // ('Regularlt', normal, normal),
+                ('Light', 300, normal),
+                ('Bold', bold, normal),
+                ('Regular', normal, normal),
 );
 
 @each $name, $weight, $style in $font__types {
@@ -300,6 +301,7 @@ form {
   label {
     width: 100%;
   }
+
   input, textarea {
     width: inherit;
     font-family: $font__family;

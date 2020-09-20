@@ -7,7 +7,7 @@
 import '@/js/project/modules/forms'
 //import '../src/js/project/layouts/header'
 //import '../src/js/project/modules/slider'
-import '../src/js/plugins/select'
+import '@/js/plugins/select'
 
 
 //import '../src/locales/localization.js'

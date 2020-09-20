@@ -7,7 +7,6 @@
       router-link(to="/database") firebase
       router-link(to="/fetch") Fetch
 
-
 </template>
 
 <script>
@@ -36,7 +35,6 @@ export default {
     },
   },
   mounted() {
-    this.chunk()
     this.windowSize();
     window.addEventListener("resize", this.windowSize, false);
   }

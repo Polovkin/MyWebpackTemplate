@@ -16,7 +16,7 @@ const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
 const PATHS = {
     src: path.join(__dirname, '../../src'),
-    dist: path.join(__dirname, (isProd ? '../../public' : '../../dist')),
+    dist: path.join(__dirname, ('../../dist')),
     webpack: path.join(__dirname, '../../webpack'),
     assets: 'assets/',
 };
@@ -28,14 +28,14 @@ const plugins = (type) => {
         new MiniCssExtractPlugin({
             filename: `${PATHS.assets}css/${fileName('css')}`,
         }),
-        new CopyWebpackPlugin({
-            patterns: [
-                {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
-                {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
-                {from: `${PATHS.src}/pages/php`, to: ``},
-                {from: `${PATHS.src}/static`, to: ''},
-            ]
-        }),
+        // new CopyWebpackPlugin({
+        //     patterns: [
+        //         {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
+        //         {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
+        //         {from: `${PATHS.src}/pages/php`, to: ``},
+        //         {from: `${PATHS.src}/static`, to: ''},
+        //     ]
+        // }),
         new CleanWebpackPlugin(),
         //new BundleAnalyzerPlugin()
     ];
@@ -43,52 +43,52 @@ const plugins = (type) => {
         case 'html': {
             const PAGES_DIR = `${PATHS.src}/pages`;
             const PAGES = fs
-                .readdirSync(PAGES_DIR)
-                .filter((fileName) => fileName.endsWith('.html'));
+                    .readdirSync(PAGES_DIR)
+                    .filter((fileName) => fileName.endsWith('.html'));
             base.push(
-                ...PAGES.map(
-                    (page) =>
-                        new HtmlWebpackPlugin({
-                            template: `${PAGES_DIR}/${page}`,
-                            filename: (page === 'index.html' || page === '404.html' ? page : `${page.split('.')[0]}/index.html`),
-                        }),
-                ))
+                    ...PAGES.map(
+                            (page) =>
+                                    new HtmlWebpackPlugin({
+                                        template: `${PAGES_DIR}/${page}`,
+                                        filename: (page === 'index.html' || page === '404.html' ? page : `${page.split('.')[0]}/index.html`),
+                                    }),
+                    ))
             break;
         }
 
         case 'pug': {
             const PAGES_DIR = `${PATHS.src}/pages/pug/includes/pages`;
             let pages = fs.readdir(PAGES_DIR, (err, files) => {
-                 return  files;
+                return files;
             });
             const PAGES = fs
-                .readdirSync(PAGES_DIR)
-                .filter((fileName) => fileName.endsWith('.pug'));
+                    .readdirSync(PAGES_DIR)
+                    .filter((fileName) => fileName.endsWith('.pug'));
             base.push(
-                ...PAGES.map(
-                    (page) =>
-                        new HtmlWebpackPlugin({
-                            template: `${PAGES_DIR}/${page}`,
-                            filename: (page === 'index.pug' || page === '404.pug' ?
-                                page.replace(/\.pug/, '.html') :
-                                `${page.split('.')[0]}/index.html`),
-                        }),
-                ),);
+                    ...PAGES.map(
+                            (page) =>
+                                    new HtmlWebpackPlugin({
+                                        template: `${PAGES_DIR}/${page}`,
+                                        filename: (page === 'index.pug' || page === '404.pug' ?
+                                                page.replace(/\.pug/, '.html') :
+                                                `${page.split('.')[0]}/index.html`),
+                                    }),
+                    ),);
             break;
         }
     }
     const PAGES_PHP = fs
-        .readdirSync(PATHS.src)
-        .filter((fileName) => fileName.endsWith('.php'));
+            .readdirSync(PATHS.src)
+            .filter((fileName) => fileName.endsWith('.php'));
     base.push(
-        ...PAGES_PHP.map(
-            (page) =>
-                new HtmlWebpackPlugin({
-                    template: `${PATHS.src}/${page}`,
-                    filename: `${page}`,
-                    inject: false,
-                }),
-        ),)
+            ...PAGES_PHP.map(
+                    (page) =>
+                            new HtmlWebpackPlugin({
+                                template: `${PATHS.src}/${page}`,
+                                filename: `${page}`,
+                                inject: false,
+                            }),
+            ),)
     return base
 }
 
@@ -185,24 +185,25 @@ module.exports = {
                 test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
                 loader: 'file-loader',
                 options: {
-                    name: `[name].[ext]`,
-                    outputPath: '/assets/fonts/'
+                    name: `assets/fonts/[name].[ext]`,
                 },
             },
             {
-                test: /\.(png|jpg|gif|svg)$/,
+                test: /\.(png|jpe?g|gif|webp)(\?.*)?$/,
                 use: [
                     {
-                        loader: 'file-loader',
+                        loader: "url-loader",
                         options: {
-                            esModule: false,
-                            name: '[name].[ext]',
-                            outputPath: `${PATHS.assets}/img`,
-                            //publicPath: `/${PATHS.assets}img`,
-                        },
-                    },
+                            limit: 4096,
+                            fallback: {
+                                loader: 'file-loader',
+                                options: {
+                                    name: 'assets/img/[name].[hash:8].[ext]'
+                                }
+                            },
+                        }
+                    }
                 ],
-
             },
             {
                 // scss
@@ -276,13 +277,13 @@ module.exports = {
         alias: {
             '~': PATHS.src,
             'vue$': 'vue/dist/vue.js',
-            '@': path.resolve(__dirname, '../../src'),
-            '@img': path.resolve(__dirname, '../../src/assets/img/'),
+            '@': PATHS.src,
+            '@img': path.resolve(__dirname, PATHS.src + '/assets/img/'),
         },
         extensions: ['.tsx', '.ts', '.js'],
     },
 
-    plugins: plugins('html'),
+    plugins: plugins('pug'),
 
 
 };
