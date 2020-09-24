@@ -8,7 +8,7 @@
   }
 mixin imgTest(path)
   .img-wrap
-    img(src=require(`@/assets/img/` + path), alt='alt')
+    img(src=require(`@/assets/img/` + path).default, alt='alt')
 
 mixin Img(path,type,alt)
   -

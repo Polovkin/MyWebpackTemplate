@@ -189,18 +189,12 @@ module.exports = {
                 },
             },
             {
-                test: /\.(png|jpe?g|gif|webp)(\?.*)?$/,
+                test: /\.(png|jpe?g|gif|webp|svg)(\?.*)?$/,
                 use: [
                     {
-                        loader: "url-loader",
+                        loader: 'file-loader',
                         options: {
-                            limit: 4096,
-                            fallback: {
-                                loader: 'file-loader',
-                                options: {
-                                    name: 'assets/img/[name].[hash:8].[ext]'
-                                }
-                            },
+                            name: 'assets/img/[name].[hash:8].[ext]'
                         }
                     }
                 ],
