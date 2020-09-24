@@ -1,8 +1,14 @@
 -
+  function imgRequirePath(path) {
+      return require(`@/assets/img/${path}`);
+  }
   function checkEmptyProp(prop) {
     prop = prop === undefined ? '' : prop
     return prop;
   }
+mixin imgTest(path)
+  .img-wrap
+    img(src=require(`@/assets/img/` + path).default, alt='alt')
 
 mixin Img(path,type,alt)
   -
