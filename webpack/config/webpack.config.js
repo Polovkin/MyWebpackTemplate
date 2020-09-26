@@ -212,8 +212,10 @@ module.exports = {
                     {
                         loader: 'postcss-loader',
                         options: {
+                            postcssOptions: {
+                                config: path.resolve(__dirname, `${PATHS.webpack}/postcss.config.js`),
+                            },
                             sourceMap: true,
-                            config: {path: `${PATHS.webpack}/postcss.config.js`},
                         },
                     },
                     {
@@ -245,8 +247,10 @@ module.exports = {
                     {
                         loader: 'postcss-loader',
                         options: {
+                            postcssOptions: {
+                                config: path.resolve(__dirname, `${PATHS.webpack}/postcss.config.js`),
+                            },
                             sourceMap: true,
-                            config: {path: `${PATHS.webpack}/postcss.config.js`},
                         },
                     },
                 ],
