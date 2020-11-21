@@ -1,12 +1,11 @@
 // JS
-
+import '@/js/main.js'
 // TS
 
 // SCSS
 import '@/assets/scss/app.scss';
 
-// Vue.js
-import '@/vue/vue-entry';
+
 // CSS
 
 

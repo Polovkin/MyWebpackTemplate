@@ -57,7 +57,7 @@ const plugins = (type) => {
         }
 
         case 'pug': {
-            const PAGES_DIR = `${PATHS.src}/pages/pug/includes/pages`;
+            const PAGES_DIR = `${PATHS.src}/project/pages`;
             let pages = fs.readdir(PAGES_DIR, (err, files) => {
                 return files;
             });
