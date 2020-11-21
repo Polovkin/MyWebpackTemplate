@@ -11,7 +11,6 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // Main const. Feel free to change it
-
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
 const PATHS = {
@@ -28,14 +27,14 @@ const plugins = (type) => {
         new MiniCssExtractPlugin({
             filename: `${PATHS.assets}css/${fileName('css')}`,
         }),
-        // new CopyWebpackPlugin({
-        //     patterns: [
-        //         {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
-        //         {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
-        //         {from: `${PATHS.src}/pages/php`, to: ``},
-        //         {from: `${PATHS.src}/static`, to: ''},
-        //     ]
-        // }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
+               //  {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
+               //  {from: `${PATHS.src}/pages/php`, to: ``},
+               // {from: `${PATHS.src}/static`, to: ''},
+            ]
+        }),
         new CleanWebpackPlugin(),
         //new BundleAnalyzerPlugin()
     ];
