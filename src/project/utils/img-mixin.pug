@@ -2,6 +2,7 @@ mixin Img(name,type,alt)
 
     -
       function imgName(path) {return path.split('/')[path.split('/').length - 1];};
+      function picName(path) {return path.split('/')[path.split('/').length - 1].split('.')[0]+'.';};
       function newImgFolderPath(path) {return path.replace(new RegExp(`${imgName(name)}`, "g"), "");}
       function imgAlt(name) {return 'image-'+ imgName(name).split('.')[0]}
       function imgAlt(name, alt) {return alt === undefined ? 'image-' + imgName(name).split('.')[0] : alt}
@@ -9,16 +10,33 @@ mixin Img(name,type,alt)
 
       imageAlt = imgAlt(name);
 
-      imageNewPath = require(`~/assets/img/${newImgFolderPath(name)}${imgName(name)}`);
+      imageNewPath = require(`~/assets/img/${newImgFolderPath(name)+imgName(name)}`);
+
+
 
 
     .img-wrap
       case type
         default
-
           img(
             src=imageNewPath.default
             alt=imageAlt
+            loading="lazy"
           )
-
-
+        when 'lazy'
+          img(
+            class='lazy'
+            data-src=imageNewPath.default
+            alt=imageAlt
+          )
+        when 'pic'
+          picture
+            each pictures,index in ext
+              - let imagePicPath = require(`~/assets/img/${newImgFolderPath(name)+picName(name)+pictures}`);
+              source(
+                src=src=imagePicPath.default,
+                type=index === 0 ? 'image/vnd.ms-photo':'image/' + pictures)
+            img(
+              src=imageNewPath.default
+              alt=imageAlt
+            )
