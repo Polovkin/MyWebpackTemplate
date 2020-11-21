@@ -3,7 +3,7 @@
 // TS
 
 // SCSS
-import '@/assets/scss/main.scss';
+import '@/assets/scss/app.scss';
 
 // Vue.js
 import '@/vue/vue-entry';
