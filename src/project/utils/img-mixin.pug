@@ -1,0 +1,24 @@
+mixin Img(name,type,alt)
+
+    -
+      function imgName(path) {return path.split('/')[path.split('/').length - 1];};
+      function newImgFolderPath(path) {return path.replace(new RegExp(`${imgName(name)}`, "g"), "");}
+      function imgAlt(name) {return 'image-'+ imgName(name).split('.')[0]}
+      function imgAlt(name, alt) {return alt === undefined ? 'image-' + imgName(name).split('.')[0] : alt}
+      let ext = ['jxr', 'jp2', 'webp'];
+
+      imageAlt = imgAlt(name);
+
+      imageNewPath = require(`~/assets/img/${newImgFolderPath(name)}${imgName(name)}`);
+
+
+    .img-wrap
+      case type
+        default
+
+          img(
+            src=imageNewPath.default
+            alt=imageAlt
+          )
+
+
