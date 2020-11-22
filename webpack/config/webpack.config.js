@@ -29,10 +29,11 @@ const plugins = (type) => {
         }),
         // new CopyWebpackPlugin({
         //     patterns: [
-        //         {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
-        //         {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
-        //         {from: `${PATHS.src}/pages/php`, to: ``},
-        //        {from: `${PATHS.src}/static`, to: ''},
+        //         //{from: `${PATHS.src}/${PATHS.assets}icons`, to: `${PATHS.assets}icons`},
+        //        //  {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
+        //        //  {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`},
+        //        //  {from: `${PATHS.src}/pages/php`, to: ``},
+        //        // {from: `${PATHS.src}/static`, to: ''},
         //     ]
         // }),
         new CleanWebpackPlugin(),
@@ -103,7 +104,8 @@ module.exports = {
     output: {
         filename: `${PATHS.assets}js/${fileName('js')}`,
         path: PATHS.dist,
-        publicPath: isDev ? '/' : '',
+
+        publicPath: isDev ? '/' : '/test/',
 
     },
     optimization: {
@@ -181,19 +183,30 @@ module.exports = {
             },
             {
                 // Fonts
-                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
                 loader: 'file-loader',
                 options: {
                     name: `assets/fonts/[name].[ext]`,
                 },
             },
             {
-                test: /\.(png|jpe?g|gif|webp|svg|jxr|jp2)(\?.*)?$/,
+                test: /\.(png|jpe?g|gif|webp|jxr|jp2)(\?.*)?$/,
                 use: [
                     {
                         loader: 'file-loader',
                         options: {
-                            name: 'assets/img/[name].[hash:8].[ext]'
+                            name: isDev ? 'assets/img/[name].[ext]' : 'assets/img/[name].[hash:8].[ext]'
+                        }
+                    }
+                ],
+            },
+            {
+                test: /\.(svg)(\?.*)?$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: isDev ? 'assets/icons/[name].[ext]' : 'assets/icons/[name].[hash:8].[ext]'
                         }
                     }
                 ],

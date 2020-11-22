@@ -12,3 +12,11 @@
 @import 'general/buttons';
 @import 'general/alerts';
 
+.icon {
+  @include size(50px);
+
+  &:after {
+    content: '';
+    @include pseudoElement(50px,'businessman.svg')
+  }
+}
