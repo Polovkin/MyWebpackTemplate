@@ -201,13 +201,11 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(svg)(\?.*)?$/,
+                test:  /\.svg$/,
                 use: [
                     {
-                        loader: 'file-loader',
-                        options: {
-                            name: isDev ? 'assets/icons/[name].[ext]' : 'assets/icons/[name].[hash:8].[ext]'
-                        }
+                        loader: 'url-loader',
+                        options: {}
                     }
                 ],
             },

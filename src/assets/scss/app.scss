@@ -13,10 +13,10 @@
 
 
 .icon {
-  @include size(50px);
+  @include size(150px);
 
   &:after {
     content: '';
-    @include pseudoElement(50px,'businessman.svg')
+    @include pseudoElement(150px,'businessman.svg')
   }
 }

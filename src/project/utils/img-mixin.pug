@@ -17,8 +17,6 @@ mixin Img(name,type,alt)
       case type
         default
           img(src=imageNewPath.default, alt=imageAlt, loading="lazy")
-        when 'icon'
-          img(src=imageNewPath.default, alt=imageAlt, loading="lazy")
         when 'lazy'
           img(class='lazy',data-src=imageNewPath.default, alt=imageAlt)
         when 'pic'
@@ -31,5 +29,5 @@ mixin Img(name,type,alt)
           picture(class='lazy')
             each pictures,index in ext
               - let imagePicPath = require(`~/assets/img/${newImgFolderPath(name)+picName(name)+pictures}`);
-              source(data-srcset=imagePicPath.default,type=index === 0 ? 'image/vnd.ms-photo':'image/' + pictures)
-            img(data-srcset=imageNewPath.default,alt=imageAlt)
+              source(data-srcset=imagePicPath.default, type=index === 0 ? 'image/vnd.ms-photo':'image/' + pictures)
+            img(data-srcset=imageNewPath.default, alt=imageAlt)
