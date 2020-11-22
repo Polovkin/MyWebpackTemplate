@@ -11,14 +11,3 @@
 @import "fixes";
 
 
-
-.icon {
-  @include size(150px);
-
-  &:after {
-    content: '';
-    @include size(150px);
-    @include pseudoElement(150px,'businessman.svg')
-
-  }
-}
