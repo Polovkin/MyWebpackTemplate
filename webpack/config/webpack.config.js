@@ -105,7 +105,7 @@ module.exports = {
         filename: `${PATHS.assets}js/${fileName('js')}`,
         path: PATHS.dist,
 
-        publicPath: isDev ? '/' : '/test/',
+        publicPath: isDev ? '/' : '/',
 
     },
     optimization: {
