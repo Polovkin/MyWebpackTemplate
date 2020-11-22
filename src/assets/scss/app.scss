@@ -17,6 +17,8 @@
 
   &:after {
     content: '';
+    @include size(150px);
     @include pseudoElement(150px,'businessman.svg')
+
   }
 }
