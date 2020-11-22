@@ -1,16 +1,16 @@
 @import "core/base";
-
 @import 'animation/animation';
-@import "modules";
-@import "layouts";
-@import "pages/pages";
-@import "fixes";
-
 @import 'general/typography';
 @import 'general/globals';
 @import 'general/forms';
 @import 'general/buttons';
 @import 'general/alerts';
+@import "modules";
+@import "layouts";
+@import "pages/pages";
+@import "fixes";
+
+
 
 .icon {
   @include size(50px);
