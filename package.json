@@ -44,7 +44,7 @@
     "imagemin-webpack-plugin": "^2.4.2",
     "install": "^0.13.0",
     "mini-css-extract-plugin": "^0.11.2",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "npm-check-updates": "^9.0.2",
     "popper.js": "^1.16.1",
     "postcss": "^8.0.9",
